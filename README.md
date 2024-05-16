@@ -1,1 +1,1 @@
-# QMol-grid_1D
+# QMol-grid
