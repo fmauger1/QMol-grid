@@ -41,39 +41,39 @@ Time propagation on basis sets is not available
 
 ## Example 1: Schrödinger Equation ground state 
 
-This tutorial walks through the process of setting up and calculating the Schrödinger-equation ground state of a one-dimensional hydrogen atom model. The Schrödinger-equation ground-state corresponds to the lowest energy solution to the eigenvalue problem $\hat{H}\psi(x)=E\psi(x)$, where $\hat{\mathcal{H}}$ is the Schrödinger-equation Hamiltonian operator, $\psi$ is the wave function, and  $E$ is its associated energy. In atomic units, the Hamiltonian operator is $\hat{\mathcal{H}} = -\frac{\Delta}{2} + \hat{\mathcal{V}}.$
+Here we illustrate how to use the `QMol-grid` package to calculate the ground-state wave function of a one-dimensional hydrogen-like atom. The Schrödinger-equation ground-state corresponds to the lowest energy solution to the eigenvalue problem $\hat{\mathcal{H}}\psi(x)=E\psi(x)$, where $\hat{\mathcal{H}}$ is the Schrödinger-equation Hamiltonian operator, $\psi$ is the wave function, and  $E$ is its associated energy. In atomic units, the Hamiltonian operator is $\hat{\mathcal{H}} = -\frac{\Delta}{2} + \hat{\mathcal{V}}.$
 
-In this tutorial, we illustrate how to use the QMol-grid package to calculate the ground-state wave function of a one-dimensional hydrogen-like atom. Specifically, it walks through defining (i) the domain and grid-discretization over which the Schrodinger-equation and wave function are calculated, the (ii) atomic potential and (iii) Schrödinger-equation model, and calculating (iv) the ground state associated with these properties.
+Specifically, it walks through defining (i) the domain and grid-discretization over which the Schrödinger-equation and wave function are calculated, the (ii) atomic potential and (iii) Schrödinger-equation model, and calculating (iv) the ground state associated with these properties.
 
-We model the 1D hydrogen model atom using a soft-Coulomb potential with
+We model the one-dimensional hydrogen model atom using a soft-Coulomb potential $V(x)=-1/\sqrt{x^2+a^2}$ with
 ```Matlab
 H = QMol_Va_softCoulomb('softeningParameter',sqrt(2));
 ```
-where  we choose the softening parameter $\sqrt{2}$ to match H's ground state energy. By default, the atom is located at the origin $x=0$.
-Note that H only corresponds to the atomic model, which is shared with molecular systems and various quantum frameworks. Thus, it must be turned into a valid Schrodinger-equation potential, using
+where  we choose the softening parameter $a=\sqrt{2}$ to match H's ground state energy. By default, the atom is located at the origin $x=0$.
+Note that H only corresponds to the atomic model, which is shared with molecular systems and various quantum frameworks. Thus, it must be turned into a valid Schrödinger-equation potential, using
 ```Matlab
 V = QMol_SE_V('atom',H);
 ```
 
-The simulation domain must be a Cartesian grid -- with all increasing, equally spaced discretization points -- and should be wide and with small enough of a discretization step to properly capture the system's wave function. In our case we select a domain ranging -15 to 15 a.u., with a discretization steps of 0.1 a.u.
+The simulation domain must be a Cartesian grid -- with all increasing, equally spaced discretization points -- and should be wide and with small enough of a discretization step to properly capture the wave function. In our case we select a domain ranging -15 to 15 a.u., with a discretization steps of 0.1 a.u.
 ```Matlab
 x = -15:.1:15;
 ```
 
-We now have all the elements to define a Schrodinger-equation model object with the potential and domain defined above
+We now have all the elements to define a Schrödinger-equation model object with the potential and domain defined above
 ```Matlab
 SE = QMol_SE(                        ...
          'xspan',                x,  ...
          'potential',            V);
 ```
 
-With the Schrodinger-equation object defined above, we next move to calculating its associated ground-state wave function and energy using the two commands
+With the Schrödinger-equation object defined above, we next move to calculating its associated ground-state wave function and energy using the two commands
 ```Matlab
 GSS = QMol_SE_eigs;
 GSS.computeGroundState(SE);
 ```
 
-At the end of the calcultation, the ground-state wave function is stored in the input Schrodinger-equation object `SE`, together with relevant information such as the domain discretization. For instance, solely relying on `SE`, one can plot the ground-state wave function with
+At the end of the calculation, the ground-state wave function is stored in the input Schrödinger-equation object SE, together with relevant information such as the domain discretization. For instance, solely relying on SE, one can plot the ground-state wave function with
 ```Matlab
 figure
     plot(SE.xspan,SE.waveFunction.waveFunction,'-','LineWidth',2)
@@ -82,13 +82,13 @@ figure
     ylabel('wave function (a.u.)')
     xlim(SE.xspan([1 end]))
 ```
-producing (note that the ground-state calculation start from a random seed and thus the resulting wave function is defined with an arbitrary sign that can change from calculation to calculation)
+producing (note that the ground-state calculation starts from a random seed and thus the resulting wave function is defined with an arbitrary sign that can change from calculation to calculation)
 
 <p align="center">
   <img src="https://github.com/fmauger1/QMol-grid/blob/main/GS__T01.png" alt="Example 1" width="300"/>
 </p>
 
-From the `plot` command line, we see that the domain-discretization grid may be recovered using the xspan property in the object `SE` (using the standard object-oriented dot notation `SE.xspan`). On the other hans, the wave function is nested inside another object, which explains the consecutive dots `SE.waveFunction.waveFunction`. 
+From the `plot` command line, we see that the domain-discretization grid may be recovered using the xspan property in the object SE (using the standard object-oriented dot notation `SE.xspan`). On the other hand, the wave function is nested inside another object, which explains the consecutive dots `SE.waveFunction.waveFunction`. 
 
 ## Example 2:
 
