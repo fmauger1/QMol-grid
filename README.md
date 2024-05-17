@@ -3,17 +3,22 @@
 The QMol-grid package provides a suite of routines for performing quantum-mechanical simulations in atomic and molecular systems. All simulations use an underlying Cartesian-grid discretization scheme. The QMol-grid package is written using MATLAB's object-oriented features and handle classes.
 
 The QMol-grid package provides support for the following types of computations:
-- Ground-state density-functional theory `DFT`, both using a Cartesian-grid or basis-set discretization
-- Ground-state Hartree Fock `HF`, both using a Cartesian-grid or basis-set discretization
-- Ground-state Schrodinger equation `SE`, both using a Cartesian-grid or basis-set discretization
-- Real-time time-dependent density-functional theory `TDDFT`, both using a Cartesian-grid or basis-set discretization
-- Time-dependent Hartree Fock `TDHF`, for basis-set discretization only
-- Time-dependent Schrodinger equation `TDSE`, both using a Cartesian-grid or basis-set discretization
+- `DFT` Ground-state density-functional theory, both using a Cartesian-grid or basis-set discretization
+- `HF` Ground-state Hartree Fock, both using a Cartesian-grid or basis-set discretization
+- `SE` Ground-state Schrodinger equation, both using a Cartesian-grid or basis-set discretization
+- `TDDFT` Real-time time-dependent density-functional theory, both using a Cartesian-grid or basis-set discretization
+- `TDHF` Time-dependent Hartree Fock, for basis-set discretization only
+- `TDSE` Time-dependent Schrodinger equation, both using a Cartesian-grid or basis-set discretization
 
 
 ## Installation
 - dowload zipped file in the release, and unzip it in a folder of the type *User*/Documents/MATLAB/QMol-grid
 - add permanently the folder *User*/Documents/MATLAB/QMol-grid to the MATLAB path
+
+#### External components
+The QMol-grid package uses the following two external components (included in the Tools toolbox, version 01.00)
+- `fourierTool`, used with fast-Fourier transforms (e.g., when computing derivatives or convolutions)
+- 'convertUnits', used to perform miscellaneous unit conversions
 
 ## Example 1:
 
