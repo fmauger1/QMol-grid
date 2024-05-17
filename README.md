@@ -30,22 +30,21 @@ QMol_test.test;
 
 ### Limitations
 
-The current release is available for one-dimensional computations. 
-Time-dependent Hartree Fock, for basis-set discretization only is not currently available
-Time propagation on basis sets is not available 
+- The current release is available for one-dimensional computations 
+- Time-dependent Hartree Fock is not currently available
+- Time propagation on basis sets is not currently available 
 
-## Example 1: Schrödinger Equation ground state 
+## Example 1: Schrödinger-equation ground state 
 
-Here we illustrate how to use the `QMol-grid` package to calculate the ground-state wave function of a one-dimensional hydrogen-like atom. The Schrödinger-equation ground-state corresponds to the lowest energy solution to the eigenvalue problem $\hat{\mathcal{H}}\psi(x)=E\psi(x)$, where $\hat{\mathcal{H}}$ is the Schrödinger-equation Hamiltonian operator, $\psi$ is the wave function, and  $E$ is its associated energy. In atomic units, the Hamiltonian operator is $\hat{\mathcal{H}} = -\frac{\Delta}{2} + \hat{\mathcal{V}}.$
+Here we illustrate how to use the `QMol-grid` package to calculate the ground-state wave function of a one-dimensional hydrogen-like atom. The Schrödinger-equation ground-state corresponds to the lowest-energy solution to the eigenvalue problem $\hat{\mathcal{H}}\psi(x)=E\psi(x)$, where $\hat{\mathcal{H}}$ is the Schrödinger-equation Hamiltonian operator, $\psi$ is the wave function, and  $E$ its associated energy. In atomic units, the Hamiltonian operator is $\hat{\mathcal{H}} = -\frac{\Delta}{2} + \hat{\mathcal{V}}$.
 
-Specifically, it walks through defining (i) the domain and grid-discretization over which the Schrödinger-equation and wave function are calculated, the (ii) atomic potential and (iii) Schrödinger-equation model, and calculating (iv) the ground state associated with these properties.
+Specifically, it walks through defining (i) the domain and grid discretization over which the Schrödinger-equation and wave function are calculated, the (ii) atomic potential and (iii) Schrödinger-equation model, and calculating (iv) the ground state associated with these properties.
 
 We model the one-dimensional hydrogen model atom using a soft-Coulomb potential $V(x)=-1/\sqrt{x^2+a^2}$ with
 ```Matlab
 H = QMol_Va_softCoulomb('softeningParameter',sqrt(2));
 ```
-where  we choose the softening parameter $a=\sqrt{2}$ to match H's ground state energy. By default, the atom is located at the origin $x=0$.
-Note that H only corresponds to the atomic model, which is shared with molecular systems and various quantum frameworks. Thus, it must be turned into a valid Schrödinger-equation potential, using
+where  we choose the softening parameter $a=\sqrt{2}$ to match H's ground state energy. By default, the atom is located at the origin $x=0$. Note that H only corresponds to the atomic model, which is shared with molecular systems and various quantum frameworks. Thus, it must be turned into a valid Schrödinger-equation potential, using
 ```Matlab
 V = QMol_SE_V('atom',H);
 ```
@@ -62,7 +61,7 @@ SE = QMol_SE(                        ...
          'potential',            V);
 ```
 
-With the Schrödinger-equation object defined above, we next move to calculating its associated ground-state wave function and energy using the two commands
+We next move to calculating its associated ground-state wave function and energy using the two commands
 ```Matlab
 GSS = QMol_SE_eigs;
 GSS.computeGroundState(SE);
@@ -77,8 +76,7 @@ figure
     ylabel('wave function (a.u.)')
     xlim(SE.xspan([1 end]))
 ```
-producing (note that the ground-state calculation starts from a random seed and thus the resulting wave function is defined with an arbitrary sign that can change from calculation to calculation)
-
+producing
 <p align="center">
   <img src="https://github.com/fmauger1/QMol-grid/blob/main/GS__T01.png" alt="Example 1" width="300"/>
 </p>
@@ -102,4 +100,4 @@ For more information: <fmauger@lsu.edu>
 
 
 ## Acknowledgments
-The original development of the 1D QMol-grid package was supported by the U.S. Department of Energy, Office of Science, Office of Basic Energy Sciences, under Award No. DE-SC0012462.
+The original development of the `QMol-grid` package was supported by the U.S. Department of Energy, Office of Science, Office of Basic Energy Sciences, under Award No. DE-SC0012462.
