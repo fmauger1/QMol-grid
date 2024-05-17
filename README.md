@@ -85,7 +85,7 @@ figure
 producing (note that the ground-state calculation start from a random seed and thus the resulting wave function is defined with an arbitrary sign that can change from calculation to calculation)
 
 <p align="center">
-  <img src="https://github.com/fmauger1/QMol-grid/blob/main/GS__T01.png" alt="Example 1" width="600"/>
+  <img src="https://github.com/fmauger1/QMol-grid/blob/main/GS__T01.png" alt="Example 1" width="300"/>
 </p>
 
 From the `plot` command line, we see that the domain-discretization grid may be recovered using the xspan property in the object `SE` (using the standard object-oriented dot notation `SE.xspan`). On the other hans, the wave function is nested inside another object, which explains the consecutive dots `SE.waveFunction.waveFunction`. 
