@@ -11,8 +11,8 @@ The `QMol-grid` package provides support for the following types of computations
 
 
 ## Installation
-- download the zipped file in the release, and unzip it in a folder of the type `*User*/Documents/MATLAB/QMol-grid`
-- add permanently the folder `*User*/Documents/MATLAB/QMol-grid` to the [MATLAB path](https://mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html)
+- download the zipped file in the release, and unzip it in a folder of the type `<user>/Documents/MATLAB/QMol-grid`
+- add permanently the folder `<user>/Documents/MATLAB/QMol-grid` to the [MATLAB path](https://mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html)
 
 ### Tests
 
