@@ -101,3 +101,4 @@ For more information: <fmauger@lsu.edu>
 
 ## Acknowledgments
 The original development of the `QMol-grid` package was supported by the U.S. Department of Energy, Office of Science, Office of Basic Energy Sciences, under Award No. DE-SC0012462.
+Addition of the (TD)SE features was supported by the National Science Foundation under Grant No. 2207656
