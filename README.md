@@ -1,32 +1,27 @@
 # QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems
 
-The QMol-grid package provides a suite of routines for performing quantum-mechanical simulations in atomic and molecular systems. All simulations use an underlying Cartesian-grid discretization scheme. The QMol-grid package is written using MATLAB's object-oriented features and handle classes.
+The `QMol-grid` package provides a suite of routines for performing quantum-mechanical simulations in atomic and molecular systems. All simulations use an underlying Cartesian-grid discretization scheme. The `QMol-grid` package is written using MATLAB's object-oriented features and handle classes.
 
-The QMol-grid package provides support for the following types of computations:
-- `DFT` Ground-state density-functional theory, both using a Cartesian-grid or basis-set discretization
-- `HF` Ground-state Hartree Fock, both using a Cartesian-grid or basis-set discretization
-- `SE` Ground-state Schrodinger equation, both using a Cartesian-grid or basis-set discretization
-- `TDDFT` Real-time time-dependent density-functional theory, using a Cartesian-grid
-- `TDSE` Time-dependent Schrodinger equation, using a Cartesian-grid
+The `QMol-grid` package provides support for the following types of computations:
+- `DFT` Ground-state density-functional theory, both using a Cartesian grid or basis-set discretization
+- `HF` Ground-state Hartree Fock, both using a Cartesian grid or basis-set discretization
+- `SE` Ground-state Schrödinger equation, both using a Cartesian grid or basis-set discretization
+- `TDDFT` Real-time time-dependent density-functional theory, using a Cartesian grid
+- `TDSE` Time-dependent Schrödinger equation, using a Cartesian grid
 
 
 ## Installation
-- dowload zipped file in the release, and unzip it in a folder of the type *User*/Documents/MATLAB/QMol-grid
-- add permanently the folder *User*/Documents/MATLAB/QMol-grid to the MATLAB path
-
-### External components
-The QMol-grid package uses the following two external components (included in the Tools toolbox, version 01.00)
-- `fourierTool`, used with fast-Fourier transforms (e.g., when computing derivatives or convolutions)
-- 'convertUnits', used to perform miscellaneous unit conversions
+- download the zipped file in the release, and unzip it in a folder of the type `*User*/Documents/MATLAB/QMol-grid`
+- add permanently the folder `*User*/Documents/MATLAB/QMol-grid` to the [MATLAB path](https://mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html)
 
 ### Tests
 
-Display the list of components in the QMol-grid package
+Display the list of components in the `QMol-grid` package
 ```Matlab
 QMol_doc.showComponents;
 ```
 
-The QMol-grid package provides a suite of tests that performs low-level checks on the various properties that are defined throughout its components. The test suite can be used to check basic functions after installing the package or modifying its components.
+The `QMol-grid` package provides a suite of tests that performs low-level checks on the various properties that are defined throughout its components. The test suite can be used to check basic functions after installing the package or modifying its components.
 
 Run all available unit tests using
 ```Matlab
