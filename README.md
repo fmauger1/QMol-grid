@@ -12,7 +12,7 @@ The `QMol-grid` package provides support for the following types of computations
 ___
 ## Table of Contents
   * [Installation](#installation)
-  * [Example 1](#example-1-schrodinger-equation-ground-state)
+  * [Example 1](#example1)
   * [Example 2](#example-2-)
   * [Reference](#reference)
   
@@ -45,7 +45,7 @@ QMol_test.test;
 
 [&uarr;](#table-of-contents)
 ___
-## Example 1: Schrödinger-equation ground state 
+## <a name="example1"></a>Example 1: Schrödinger-equation ground state 
 
 Here we illustrate how to use the `QMol-grid` package to calculate the ground-state wave function of a one-dimensional hydrogen-like atom. The Schrödinger-equation ground-state corresponds to the lowest-energy solution to the eigenvalue problem $\hat{\mathcal{H}}\psi(x)=E\psi(x)$, where $\hat{\mathcal{H}}$ is the Schrödinger-equation Hamiltonian operator, $\psi$ is the wave function, and  $E$ its associated energy. In atomic units, the Hamiltonian operator is $\hat{\mathcal{H}} = -\frac{\Delta}{2} + \hat{\mathcal{V}}$.
 
