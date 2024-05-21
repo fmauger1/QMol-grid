@@ -9,6 +9,14 @@ The `QMol-grid` package provides support for the following types of computations
 - `TDDFT` Real-time time-dependent density-functional theory, using a Cartesian grid
 - `TDSE` Time-dependent Schrödinger equation, using a Cartesian grid
 
+___
+## Table of Contents
+  * [Installation](#installation)
+  * [Example 1](#example-1)
+  * [Example 2](#example-2:schrodinger-equation-ground-state)
+  * [Reference](#reference)
+  
+___
 
 ## Installation
 - download the zipped file in the release, and unzip it in a folder of the type `<user>/Documents/MATLAB/QMol-grid`
@@ -35,6 +43,8 @@ QMol_test.test;
 - Time-dependent Hartree Fock is not currently available
 - Time propagation on basis sets is not currently available 
 
+[&uarr;](#table-of-contents)
+___
 ## Example 1: Schrödinger-equation ground state 
 
 Here we illustrate how to use the `QMol-grid` package to calculate the ground-state wave function of a one-dimensional hydrogen-like atom. The Schrödinger-equation ground-state corresponds to the lowest-energy solution to the eigenvalue problem $\hat{\mathcal{H}}\psi(x)=E\psi(x)$, where $\hat{\mathcal{H}}$ is the Schrödinger-equation Hamiltonian operator, $\psi$ is the wave function, and  $E$ its associated energy. In atomic units, the Hamiltonian operator is $\hat{\mathcal{H}} = -\frac{\Delta}{2} + \hat{\mathcal{V}}$.
@@ -84,10 +94,13 @@ producing
 
 From the `plot` command line, we see that the domain-discretization grid may be recovered using the xspan property in the object SE (using the standard object-oriented dot notation `SE.xspan`). On the other hand, the wave function is nested inside another object, which explains the consecutive dots `SE.waveFunction.waveFunction`. 
 
+[&uarr;](#table-of-contents)
+___
 ## Example 2:
 
-
-## References
+[&uarr;](#table-of-contents)
+___
+## Reference
 - F. Mauger *et al*, *QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems*, [arXiv:24](https://arxiv.org/abs/24)
 ```bibtex
 @unpublished{mauger2024,
@@ -103,3 +116,5 @@ For more information: <fmauger@lsu.edu>
 ## Acknowledgments
 The original development of the `QMol-grid` package was supported by the U.S. Department of Energy, Office of Science, Office of Basic Energy Sciences, under Award No. DE-SC0012462.
 Addition of the (TD)SE features was supported by the National Science Foundation under Grant No. 2207656
+
+[&uarr;](#table-of-contents)
