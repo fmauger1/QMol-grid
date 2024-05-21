@@ -1,5 +1,8 @@
 # QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems
 
+![Version](https://img.shields.io/badge/version-v2.20-blue)
+![License](https://img.shields.io/badge/license-BSD-lightgray)
+
 The `QMol-grid` package provides a suite of routines for performing quantum-mechanical simulations in atomic and molecular systems. All simulations use an underlying Cartesian-grid discretization scheme. The `QMol-grid` package is written using MATLAB's object-oriented features and handle classes.
 
 The `QMol-grid` package provides support for the following types of computations:
