@@ -13,6 +13,7 @@ The `QMol-grid` package provides support for the following types of computations
 ## Installation
 - download the zipped file in the release, and unzip it in a folder of the type `<user>/Documents/MATLAB/QMol-grid`
 - add permanently the folder `<user>/Documents/MATLAB/QMol-grid` to the [MATLAB path](https://mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html)
+- after successful installation, the package documentation will be accessible in MATLAB's, in the "Supplemental Software" section
 
 ### Tests
 
@@ -30,7 +31,7 @@ QMol_test.test;
 
 ### Limitations
 
-- The current release is available for one-dimensional computations 
+- The current release on supports one-dimensional computations 
 - Time-dependent Hartree Fock is not currently available
 - Time propagation on basis sets is not currently available 
 
