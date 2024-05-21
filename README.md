@@ -13,7 +13,7 @@ ___
 ## Table of Contents
   * [Installation](#installation)
   * [Example 1](#example1)
-  * [Example 2](#example-2-)
+  * [Example 2](#example2)
   * [Reference](#reference)
   
 ___
@@ -96,7 +96,7 @@ From the `plot` command line, we see that the domain-discretization grid may be 
 
 [&uarr;](#table-of-contents)
 ___
-## Example 2:
+## <a name="example2"></a>Example 2:
 
 [&uarr;](#table-of-contents)
 ___
