@@ -12,8 +12,8 @@ The `QMol-grid` package provides support for the following types of computations
 ___
 ## Table of Contents
   * [Installation](#installation)
-  * [Example 1](#example-1)
-  * [Example 2](#example-2:schrodinger-equation-ground-state)
+  * [Example 1](#example-1-schrodinger-equation-ground-state)
+  * [Example 2](#example-2-)
   * [Reference](#reference)
   
 ___
