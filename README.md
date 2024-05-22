@@ -171,7 +171,7 @@ At the end of the simulation, the DFT object has been updated to contain the Koh
 Plotting the result
 To conclude this tutorial, we briefly illustrate how to recover calculated observables out of the TDDFT object. Each set of observable is stored in a separate structure property in the TDDFT object, which containts (i) the exact time vector at which the quantity has been saved and (ii) the observable itself. In our case, the structure of interest is TDDFT.outDensity with the up- and down-spin densities respectively stored in the fields totalUp and totalDown. The densities are matrices with columns corresponding to the successive saved times.
 To plot the spin density, defined as the difference between the up- and down-spin one-body densities, we can use
-```
+```Matlab
 figure
     imagesc(TDDFT.outDensity.time,DFT.xspan,TDDFT.outDensity.totalUp-TDDFT.outDensity.totalDown)
     set(gca,'box','on','FontSize',12,'LineWidth',2,'YDir','normal')
@@ -184,7 +184,7 @@ figure
 ```
 producing (note that the ground-state calculation start from a random seed and thus the resulting Kohn-Sham molecular orbitals are defined with an arbitrary sign that can change from calculation to calculation, this means that the resulting figure may be flipped vertically)
 <p align="center">
-  <img src="https://github.com/fmauger1/QMol-grid/blob/main/GS__T07.png" alt="Example 1" width="300"/>
+  <img src="https://github.com/fmauger1/QMol-grid/blob/main/GS__T07.png" alt="Example 2" width="300"/>
 </p>
 
 [&uarr;](#table-of-contents)
