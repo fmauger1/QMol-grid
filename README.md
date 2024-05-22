@@ -159,7 +159,7 @@ TDDFT   =   QMol_TDDFT_SSO_4FR(                     ...
                 'saveDensityTime',      1);
 ```
 In our example, the TDDFT object is created with:
-- The first pair of arguments specifies that the integration should start at time t=0 and end at t=100 a.u. The step of 10 a.u., is unrelated to the propagation time step (next) and instead specifies the time intervals to use in progress display (see also the next tutorial for more details about input parameters).
+- The first pair of arguments specifies that the integration should start at time t=0 and end at t=100 a.u. The step of 10 a.u., is unrelated to the propagation time step and instead specifies the time intervals to use in progress display.
 - The second pair of arguments specifies the (fixed) time step for the propagation.
 - The third pair of arguments indicates that the one-body density should be saved periodically, with the period specified by the fourth pair of arguments, i.e., every 1 a.u. in our case.
 
@@ -170,7 +170,7 @@ TDDFT.propagate(DFT);
 The "Time propagation" block summarizes the propagator options for the numerical integration of equation (2.1). 
 At the end of the simulation, the DFT object has been updated to contain the Kohn-Sham orbitals at t=100 a.u. The time-dependent one-body density is stored in the TDDFT object itself.
 ### Plotting the result
-Next we briefly illustrate how to recover calculated observables out of the TDDFT object. Each set of observable is stored in a separate structure property in the TDDFT object, which containts (i) the exact time vector at which the quantity has been saved and (ii) the observable itself. In our case, the structure of interest is `TDDFT.outDensity` with the up- and down-spin densities respectively stored in the fields `totalUp` and `totalDown`. The densities are matrices with columns corresponding to the successive saved times.
+Next we recover calculated observables out of the TDDFT object. Each set of observable is stored in a separate structure property in the TDDFT object, which containts (i) the exact time vector at which the quantity has been saved and (ii) the observable itself. In our case, the structure of interest is `TDDFT.outDensity` with the up- and down-spin densities respectively stored in the fields `totalUp` and `totalDown`. The densities are matrices with columns corresponding to the successive saved times.
 To plot the spin density, defined as the difference between the up- and down-spin one-body densities, we can use
 ```Matlab
 figure
