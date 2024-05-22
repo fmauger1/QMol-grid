@@ -150,7 +150,7 @@ DFT.set('occupation',{[1 1 1],[1 1]});
 ```
 We now have a non-stationary set of Kohn-Sham orbitals, leading to field-free dynamics under the flow of equation (2.1).
 ### TDDFT simulation
-With the DFT molecular model, including the initial condition, in hand, we now move to integrating the subsequent field-free TDDFT dynamics. For this, we select a fourth-order Forest Ruth [Forest 1990](https://doi.org/10.1016/0167-2789(90)90019-L) symplectic split-operator scheme [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685).
+With the DFT molecular model, including the initial condition, in hand, we now move to integrating the subsequent field-free TDDFT dynamics. For this, we select a [fourth-order Forest Ruth](https://doi.org/10.1016/0167-2789(90)90019-L) symplectic split-operator scheme (see [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685) for more details).
 ```Matlab
 TDDFT   =   QMol_TDDFT_SSO_4FR(                     ...
                 'time',                 0:10:100,   ...
