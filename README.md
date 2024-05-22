@@ -4,7 +4,7 @@
 [![Generic badge](https://img.shields.io/badge/MATLAB-R2022a-orange)](https://fr.mathworks.com/products/matlab.html)
 [![License](https://img.shields.io/badge/license-BSD-lightgray)](https://github.com/fmauger1/QMol-grid/blob/main/LICENSE)
 
-The `QMol-grid` package provides a suite of routines for performing quantum-mechanical simulations in atomic and molecular systems. All simulations use an underlying Cartesian-grid discretization scheme. The `QMol-grid` package is written using MATLAB's object-oriented features and handle classes.
+The `QMol-grid` package provides a suite of routines for performing quantum-mechanical simulations in atomic and molecular systems in one spatial dimension. All simulations use an underlying Cartesian-grid discretization scheme. The `QMol-grid` package is written using MATLAB's object-oriented features and handle classes.
 
 The `QMol-grid` package provides support for the following types of computations:
 - `DFT` Ground-state density-functional theory, both using a Cartesian grid or basis-set discretization
