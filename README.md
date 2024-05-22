@@ -112,7 +112,7 @@ ___
 ## <a name="example2"></a>Example 2: Time-dependent density-functional theory
 
 For a given set of initial Kohn-Sham orbitals $\phi_{k}$, the TDDFT dynamics is described by the nonlinear system of partial differential equations $$i\partial_t \phi_k({\bf x};t) =\hat{\mathcal{H}}_{\rm DFT}[\{\phi_k\}_k;t]({\bf x};t)\ \phi_k({\bf x};t)  .\quad\quad\quad (2.1)$$
-The `QMol-grid` package relies on the canonical Hamiltonian structure of the TDDFT [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685) to integrate the dynamics of equation (2.1). 
+The `QMol-grid` package relies on the canonical Hamiltonian structure of TDDFT [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685) to integrate the dynamics of equation (2.1). 
 In this example, we illustrate how to use the `QMol-grid` package to integrate the TDDFT dynamics of an open-shell one-dimentional molecular ion model with 3 atomic centers and 5 active electrons.
 
 ### Initial condition
@@ -149,6 +149,7 @@ DFT.orbital.set('orbitalDown',[DFT.KSO.KSOdw(:,1) (DFT.KSO.KSOdw(:,2)+DFT.KSO.KS
 DFT.set('occupation',{[1 1 1],[1 1]});
 ```
 We now have a non-stationary set of Kohn-Sham orbitals, leading to field-free dynamics under the flow of equation (2.1).
+
 ### TDDFT simulation
 With the DFT molecular model, including the initial condition, in hand, we now move to integrating the subsequent field-free TDDFT dynamics. For this, we select a [fourth-order Forest Ruth](https://doi.org/10.1016/0167-2789(90)90019-L) symplectic split-operator scheme (see [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685) for more details).
 ```Matlab
@@ -169,6 +170,7 @@ TDDFT.propagate(DFT);
 ```
 The "Time propagation" block summarizes the propagator options for the numerical integration of equation (2.1). 
 At the end of the simulation, the DFT object has been updated to contain the Kohn-Sham orbitals at t=100 a.u. The time-dependent one-body density is stored in the TDDFT object itself.
+
 ### Plotting the result
 Next we recover calculated observables out of the TDDFT object. Each set of observable is stored in a separate structure property in the TDDFT object, which containts (i) the exact time vector at which the quantity has been saved and (ii) the observable itself. In our case, the structure of interest is `TDDFT.outDensity` with the up- and down-spin densities respectively stored in the fields `totalUp` and `totalDown`. The densities are matrices with columns corresponding to the successive saved times.
 To plot the spin density, defined as the difference between the up- and down-spin one-body densities, we can use
