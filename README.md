@@ -1,6 +1,6 @@
 # QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems
 
-![Version](https://img.shields.io/badge/version-v2.20-blue)
+![Version](https://img.shields.io/badge/version-v1.20-blue)
 [![Generic badge](https://img.shields.io/badge/MATLAB-R2022a-orange)](https://fr.mathworks.com/products/matlab.html)
 [![License](https://img.shields.io/badge/license-BSD-lightgray)](https://github.com/fmauger1/QMol-grid/blob/main/LICENSE)
 
