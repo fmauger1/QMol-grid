@@ -111,13 +111,12 @@ From the `plot` command line, we see that the domain-discretization grid may be 
 ___
 ## <a name="example2"></a>Example 2: Time-dependent density-functional theory
 
-For a given set of initial Kohn-Sham orbitals, , the TDDFT dynamics is described by the nonlinear system of partial differential equations $$i\partial_t \phi_k({\bf x};t) =\hat{\mathcal{H}}_{\rm DFT}[\{\phi_k\}_k;t]({\bf x};t)\ \phi_k({\bf x};t) 
-.\quad\quad\quad (1)$$
-In the adiabatic (a.k.a. local in time) approximation  is the same DFT Hamiltonian operator as for ground-state calculations of tutorial 5, except for possible added external driving fields (responsible for the explicit time dependency). The QMol-grid package relies on the canonical Hamiltonian structure of the TDDFT [Mauger 2024] to integrate the dynamics of equation (1). 
-In this tutorial, we illustrate how to use the QMol-grid package to integrate the TDDFT dynamics of an open-shell one-dimentional molecular ion model with 3 atomic centers and 5 active electrons.
+For a given set of initial Kohn-Sham orbitals $\phi_{k}$, the TDDFT dynamics is described by the nonlinear system of partial differential equations $$i\partial_t \phi_k({\bf x};t) =\hat{\mathcal{H}}_{\rm DFT}[\{\phi_k\}_k;t]({\bf x};t)\ \phi_k({\bf x};t)  .\quad\quad\quad (2.1)$$
+The `QMol-grid` package relies on the canonical Hamiltonian structure of the TDDFT [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685) to integrate the dynamics of equation (2.1). 
+In this example, we illustrate how to use the `QMol-grid` package to integrate the TDDFT dynamics of an open-shell one-dimentional molecular ion model with 3 atomic centers and 5 active electrons.
 
-Initial condition
-In the QMol-grid package, TDDFT simulations are decoupled from setting up the initial condition, which must be done independently. For our example, we start by calculating the ground state of the same molecular system as in tutorial 5.
+### Initial condition
+In the `QMol-grid` package, TDDFT simulations are decoupled from setting up the initial condition, which must be done independently. For our example, we start by calculating the ground state:
 ```Matlab
 % Molecular model
 V_1     =   QMol_Va_softCoulomb('atom','X_1','charge',2,'position',-3);
@@ -150,7 +149,8 @@ DFT.orbital.set('orbitalDown',[DFT.KSO.KSOdw(:,1) (DFT.KSO.KSOdw(:,2)+DFT.KSO.KS
 DFT.set('occupation',{[1 1 1],[1 1]});
 ```
 We now have a non-stationary set of Kohn-Sham orbitals, leading to field-free dynamics under the flow of equation (1).
-With the DFT molecular model, including the initial condition, in hand we now move to integrating the subsequent field-free TDDFT dynamics. For this, we select a fourth-order Forest Ruth [Forest 1990] symplectic split-operator scheme [Mauger 2024].
+### TDDFT simulation
+With the DFT molecular model, including the initial condition, in hand, we now move to integrating the subsequent field-free TDDFT dynamics. For this, we select a fourth-order Forest Ruth [Forest 1990](https://doi.org/10.1016/0167-2789(90)90019-L) symplectic split-operator scheme [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685).
 ```Matlab
 TDDFT   =   QMol_TDDFT_SSO_4FR(                     ...
                 'time',                 0:10:100,   ...
@@ -159,17 +159,18 @@ TDDFT   =   QMol_TDDFT_SSO_4FR(                     ...
                 'saveDensityTime',      1);
 ```
 In our example, the TDDFT object is created with:
-The first pair of arguments specifies that the integration should start at time t=0 and end at t=100 a.u. The step of 10 a.u., is unrelated to the propagation time step (next) and instead specifies the time intervals to use in progress display (see also the next tutorial for more details about input parameters).
-The second pair of arguments specifies the (fixed) time step for the propagation.
-The third pair of arguments indicates that the one-body density should be saved periodically, with the period specified by the fourth pair of arguments, i.e., every 1 a.u. in our case.
+- The first pair of arguments specifies that the integration should start at time t=0 and end at t=100 a.u. The step of 10 a.u., is unrelated to the propagation time step (next) and instead specifies the time intervals to use in progress display (see also the next tutorial for more details about input parameters).
+- The second pair of arguments specifies the (fixed) time step for the propagation.
+- The third pair of arguments indicates that the one-body density should be saved periodically, with the period specified by the fourth pair of arguments, i.e., every 1 a.u. in our case.
+
 Then, we launch the TDDFT integration with 
 ```Matlab
 TDDFT.propagate(DFT);
 ```
-The "Time propagation" block summarizes the propagator options for the numerical integration of equation (1). The following "Output results" block lists the observables that are calculated and stored alongside the propagation. Here it confirms that only the one-body density is retained.
-At the end of the simulation, the DFT object has been updated to contain the Kohn-Sham orbitals at t=100 a.u. The time-dependent one-body density is stored in the TDDFT object itself (see next).
-Plotting the result
-To conclude this tutorial, we briefly illustrate how to recover calculated observables out of the TDDFT object. Each set of observable is stored in a separate structure property in the TDDFT object, which containts (i) the exact time vector at which the quantity has been saved and (ii) the observable itself. In our case, the structure of interest is TDDFT.outDensity with the up- and down-spin densities respectively stored in the fields totalUp and totalDown. The densities are matrices with columns corresponding to the successive saved times.
+The "Time propagation" block summarizes the propagator options for the numerical integration of equation (2.1). 
+At the end of the simulation, the DFT object has been updated to contain the Kohn-Sham orbitals at t=100 a.u. The time-dependent one-body density is stored in the TDDFT object itself.
+### Plotting the result
+Next we briefly illustrate how to recover calculated observables out of the TDDFT object. Each set of observable is stored in a separate structure property in the TDDFT object, which containts (i) the exact time vector at which the quantity has been saved and (ii) the observable itself. In our case, the structure of interest is `TDDFT.outDensity` with the up- and down-spin densities respectively stored in the fields `totalUp` and `totalDown`. The densities are matrices with columns corresponding to the successive saved times.
 To plot the spin density, defined as the difference between the up- and down-spin one-body densities, we can use
 ```Matlab
 figure
@@ -182,7 +183,7 @@ figure
     title('spin density')
     colorbar vert
 ```
-producing (note that the ground-state calculation start from a random seed and thus the resulting Kohn-Sham molecular orbitals are defined with an arbitrary sign that can change from calculation to calculation, this means that the resulting figure may be flipped vertically)
+producing 
 <p align="center">
   <img src="https://github.com/fmauger1/QMol-grid/blob/main/GS__T07.png" alt="Example 2" width="300"/>
 </p>
