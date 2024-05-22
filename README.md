@@ -14,13 +14,13 @@ The `QMol-grid` package provides support for the following types of computations
 - `TDSE` Time-dependent Schrödinger equation, using a Cartesian grid
 
 All propagators support field-free and laser-driven simulations (in the dipole approximation) with the following on-the-fly features, each specifying their own time sampling
-- Checkpointing, with the creation of a restart MATLAB file that can be used to resume a calculation that was stopped before it finished
+- Checkpointing, with the creation of a restart MATLAB file that can be used to resume a calculation that was stopped before it was finished
 - Calculation and storage of the dipole, dipole velocity, and dipole acceleration signals
 - Calculation and storage of the wave function(s)/Kohn-Sham orbitals and Hamiltonian-component energies
 - Storage of the wave function(s) (Schrödinger), and Kohn-Sham orbitals and one-body density (DFT)
 - Calculation and storage of the ionization signal, keeping track of how much electronic density is absorbed at the domain boundaries
 - Calculation and storage of the results of installable output functions of the wave function(s) (Schrödinger), and Kohn-Sham orbitals or one-body density (DFT)
-- Saving the intermediate Schrödinger- or DFT-model objects in separate MATLAB files (.mat)
+- Saving the intermediate Schrödinger- or DFT-model objects in separate MATLAB files (`.mat`)
 
 ___
 ## Table of Contents
