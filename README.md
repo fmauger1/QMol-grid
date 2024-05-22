@@ -168,7 +168,6 @@ Then, we launch the TDDFT integration with
 ```Matlab
 TDDFT.propagate(DFT);
 ```
-The "Time propagation" block summarizes the propagator options for the numerical integration of equation (2.1). 
 At the end of the simulation, the DFT object has been updated to contain the Kohn-Sham orbitals at t=100 a.u. The time-dependent one-body density is stored in the TDDFT object itself.
 
 ### Plotting the result
