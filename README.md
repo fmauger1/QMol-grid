@@ -13,7 +13,7 @@ The `QMol-grid` package provides support for the following types of computations
 - `TDDFT` Real-time time-dependent density-functional theory, using a Cartesian grid
 - `TDSE` Time-dependent Schrödinger equation, using a Cartesian grid
 
-All propagators support field-free and laser-driven simulations (in the dipole approximation) with the following on-the-fly features, each specifying their own time sampling
+The time-propagators are computed using symplectic-split operators (2nd, 4th, and 6th order in time, and spectral in space). They support field-free and laser-driven simulations (in the dipole approximation) with the following on-the-fly features, each specifying their own time sampling
 - Checkpointing, with the creation of a restart MATLAB file that can be used to resume a calculation that was stopped before it was finished
 - Calculation and storage of the dipole, dipole velocity, and dipole acceleration signals
 - Calculation and storage of the wave function(s)/Kohn-Sham orbitals and Hamiltonian-component energies
