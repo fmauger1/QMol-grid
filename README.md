@@ -52,7 +52,7 @@ QMol_test.test;
 
 ### Limitations
 
-- The current release on supports one-dimensional computations 
+- The current release only supports one-dimensional computations 
 - Time-dependent Hartree Fock is not currently available
 - Time propagation on basis sets is not currently available 
 
