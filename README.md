@@ -7,9 +7,9 @@
 The `QMol-grid` package provides a suite of routines for performing quantum-mechanical simulations in atomic and molecular systems in one spatial dimension. All simulations use an underlying Cartesian-grid discretization scheme. The `QMol-grid` package is written using MATLAB's object-oriented features and handle classes.
 
 The `QMol-grid` package provides support for the following types of computations:
-- `DFT` Ground-state density-functional theory, both using a Cartesian grid or basis-set discretization
-- `HF` Ground-state Hartree Fock, both using a Cartesian grid or basis-set discretization
-- `SE` Ground-state Schrödinger equation, both using a Cartesian grid or basis-set discretization
+- `DFT` Ground- and excited-state density-functional theory, both using a Cartesian grid or basis-set discretization
+- `HF` Ground- and excited-state Hartree Fock, both using a Cartesian grid or basis-set discretization
+- `SE` Ground- and excited-state Schrödinger equation, both using a Cartesian grid or basis-set discretization
 - `TDDFT` Real-time time-dependent density-functional theory, using a Cartesian grid
 - `TDSE` Time-dependent Schrödinger equation, using a Cartesian grid
 
