@@ -32,8 +32,9 @@ ___
 ___
 
 ## Installation
-- download the zipped file in the release, and unzip the content of the folder `/src/` in a folder of the type `<user>/Documents/MATLAB/QMol-grid`
-- add permanently the folder `<user>/Documents/MATLAB/QMol-grid` (without its subfolders) to the [MATLAB path](https://mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html)
+- from a release: download the zipped file in the release, and unzip the content of the folder `/src/`, including all its subfolders, in a folder of the type `<user>/Documents/MATLAB/QMol-grid` or
+- from the github repository (development version): download the entire content of the folder `/src/`, including all its subfolders, in a folder of the type `<user>/Documents/MATLAB/QMol-grid`
+- add permanently the folder `<user>/Documents/MATLAB/QMol-grid` (without its subfolders) to [MATLAB path](https://mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html)
 - after successful installation, the package documentation will be accessible in MATLAB's, in the "Supplemental Software" section
 
 ### Tests
@@ -53,8 +54,8 @@ QMol_test.test;
 ### Limitations
 
 - The current release only supports one-dimensional computations 
-- Time-dependent Hartree Fock is not currently available
-- Time propagation on basis sets is not currently available 
+- Time-dependent Hartree Fock is currently not available
+- Time propagation on basis sets is currently not available 
 
 [&uarr;](#table-of-contents)
 ___
@@ -73,7 +74,7 @@ where  we choose the softening parameter $a=\sqrt{2}$ to match H's ground state 
 V = QMol_SE_V('atom',H);
 ```
 
-The simulation domain must be a Cartesian grid -- with all increasing, equally spaced discretization points -- and should be wide and with small enough of a discretization step to properly capture the wave function. In our case we select a domain ranging -15 to 15 a.u., with a discretization steps of 0.1 a.u.
+The simulation domain must be a Cartesian grid -- with all increasing, equally spaced discretization points -- and should be wide enough and with small enough of a discretization step to properly capture the wave function. In our case we select a domain ranging -15 to 15 a.u., with a discretization steps of 0.1 a.u.
 ```Matlab
 x = -15:.1:15;
 ```
@@ -105,18 +106,19 @@ producing
   <img src="https://github.com/fmauger1/QMol-grid/blob/main/GS__T01.png" alt="Example 1" width="300"/>
 </p>
 
-From the `plot` command line, we see that the domain-discretization grid may be recovered using the xspan property in the object SE (using the standard object-oriented dot notation `SE.xspan`). On the other hand, the wave function is nested inside another object, which explains the consecutive dots `SE.waveFunction.waveFunction`. 
+From the `plot` command line, we see that the domain-discretization grid may be recovered using the xspan property in the object SE (using the standard object-oriented dot notation `SE.xspan`). On the other hand, the wave function is nested inside another object, which explains the consecutive dots `SE.waveFunction.waveFunction`. Other properties in the object `SE.waveFunction` are used by ground/excited-state and TDSE calculations; we refer to the `QMol_SE_wfcn` documentation page for further details.
 
 [&uarr;](#table-of-contents)
 ___
 ## <a name="example2"></a>Example 2: Time-dependent density-functional theory
 
-For a given set of initial Kohn-Sham orbitals $\phi_{k}$, the TDDFT dynamics is described by the nonlinear system of partial differential equations $$i\partial_t \phi_k({\bf x};t) =\hat{\mathcal{H}}_{\rm DFT}[\{\phi_k\}_k;t]({\bf x};t)\ \phi_k({\bf x};t)  .\quad\quad\quad (2.1)$$
+For a given set of initial Kohn-Sham orbitals $\phi_{k}$, the TDDFT dynamics is described by the nonlinear system of partial differential equations, in atomic units (a.u.)
+$$i\partial_t \phi_k({\bf x};t) =\hat{\mathcal{H}}_{\rm DFT}[\{\phi_k\}_k;t]({\bf x};t)\ \phi_k({\bf x};t)  .\quad\quad\quad (2.1)$$
 The `QMol-grid` package relies on the canonical Hamiltonian structure of TDDFT [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685) to integrate the dynamics of equation (2.1). 
 In this example, we illustrate how to use the `QMol-grid` package to integrate the TDDFT dynamics of an open-shell one-dimentional molecular ion model with 3 atomic centers and 5 active electrons.
 
 ### Initial condition
-In the `QMol-grid` package, TDDFT simulations are decoupled from setting up the initial condition, which must be done independently. For our example, we start by calculating the ground state:
+In the `QMol-grid` package, TDDFT simulations are decoupled from setting up the initial condition, which must be done independently. For our example, we start by calculating the neutral-molecule ground state:
 ```Matlab
 % Molecular model
 V_1     =   QMol_Va_softCoulomb('atom','X_1','charge',2,'position',-3);
@@ -162,7 +164,7 @@ TDDFT   =   QMol_TDDFT_SSO_4FR(                     ...
 In our example, the TDDFT object is created with:
 - The first pair of arguments specifies that the integration should start at time t=0 and end at t=100 a.u. The step of 10 a.u., is unrelated to the propagation time step and instead specifies the time intervals to use in progress display.
 - The second pair of arguments specifies the (fixed) time step for the propagation.
-- The third pair of arguments indicates that the one-body density should be saved periodically, with the period specified by the fourth pair of arguments, i.e., every 1 a.u. in our case.
+- The third pair of arguments indicates that the one-body density should be saved periodically, with the period specified by the fourth pair of arguments, _i.e._, every 1 a.u. in our case.
 
 Then, we launch the TDDFT integration with 
 ```Matlab
@@ -172,7 +174,7 @@ At the end of the simulation, the DFT object has been updated to contain the Koh
 
 ### Plotting the result
 Next we recover calculated observables out of the TDDFT object. Each set of observable is stored in a separate structure property in the TDDFT object, which containts (i) the exact time vector at which the quantity has been saved and (ii) the observable itself. In our case, the structure of interest is `TDDFT.outDensity` with the up- and down-spin densities respectively stored in the fields `totalUp` and `totalDown`. The densities are matrices with columns corresponding to the successive saved times.
-To plot the spin density, defined as the difference between the up- and down-spin one-body densities, we can use
+To plot the spin density, defined as the difference between the up- and down-spin one-body densities, we use
 ```Matlab
 figure
     imagesc(TDDFT.outDensity.time,DFT.xspan,TDDFT.outDensity.totalUp-TDDFT.outDensity.totalDown)
@@ -192,11 +194,11 @@ producing
 [&uarr;](#table-of-contents)
 ___
 ## Reference
-- F. Mauger *et al*, *QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems*, [arXiv:24](https://arxiv.org/abs/24)
+- F. Mauger and C. Chandre, *QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems*, [arXiv:24](https://arxiv.org/abs/24)
 ```bibtex
 @unpublished{mauger2024,
   title = {QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems},
-  author = {Mauger, F. et al},
+  author = {Mauger, Fran\c{c}ois and Chandre, Cristel},
   year = {2024},
   URL = {https://arxiv.org/abs/24}
 }
