@@ -154,7 +154,7 @@ function showFunding
     fprintf('  features, was supported by the U.S. Department of Energy, Office of\n');
     fprintf('  Science, Office of Basic Energy Sciences, under Award No. DE-SC0012462.\n');
     fprintf('    Addition of the (TD)SE features was supported by the National Science\n');
-    fprintf('  Foundation under Grant No. 2207656.\n\n');
+    fprintf('  Foundation under Grant No. PHY-2207656.\n\n');
 end
 function showFooter
 %showFooter displays the footer for the QMol toolbox
@@ -258,8 +258,8 @@ function mauger2024
              '    and Numerical Simulation 129, 107685 (2024).\n']);
 end
 function maugerxxxx
-    fprintf(['  [Mauger XXXX] F. Mauger, et al., "QMol-grid: A MATLAB package for\n' ...
-             '    quantum-mechanical simulations in atomic and molecular systems," \n' ...
+    fprintf(['  [Mauger XXXX] F. Mauger and C. Chandre, "QMol-grid: A MATLAB package\n' ...
+             '    for quantum-mechanical simulations in atomic and molecular systems," \n' ...
              '    arXiv:xxx (XXXX).\n']);
 end                                                                                    %\n (last possible position for line break)
 end
