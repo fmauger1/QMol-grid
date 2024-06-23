@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024a"><title>QMol_TDSE_sympSplitOp</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S3 { margin-bottom: 20px; padding-bottom: 4px;  }
+.S4 { margin: 0px; padding: 10px 0px 10px 5px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 700; text-align: start;  }
+.S5 { margin: -1px 0px 0px; padding: 10px 0px 10px 7px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: start;  }
+.S6 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S7 { margin: 10px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 15px; font-weight: 700; text-align: left;  }
+.S8 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S9 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block }
+.S10 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S11 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0px none rgb(33, 33, 33); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S12 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S13 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0' id = 'T_474FB08F' ><span style=' font-family: monospace;'>QMol_TDSE_sympSplitOp</span></h1><div  class = 'S1'><span>Parent class for time-dependent Schrodinger-equation (TDSE) propagators using a symplectic split-operator scheme.</span></div><h2  class = 'S2' id = 'H_ED346F2A' ><span>Description</span></h2><div  class = 'S1'><span style=' font-family: monospace;'>QMol_TDSE_sympSplitOp</span><span> defines an abstract class for the time propagation of Schrodinger equation models using symplectic split-operator schemes, as discussed in [</span><a href = "#M_9901A92B"><span>Mauger 2024</span></a><span>]. It is designed to be agnostic of the model dimension and spin polarized or restricted configuration but requires a grid discretization. </span><span style=' font-family: monospace;'>QMol_TDSE_sympSplitOp</span><span> overloads the </span><span style=' font-family: monospace;'>QMol_TDSE</span><span> class. Here we only document the new or overloaded properties and methods specific to the </span><span style=' font-family: monospace;'>QMol_TDSE_sympSplitOp</span><span>. We provide a </span><a href = "#H_2FB9B214"><span>quick overview</span></a><span> of the handful of implementation-specific (for a given dimension) required to enable symplectic split-operator schemes in the QMol-grid package.</span></div><div  class = 'S3'><div  class = 'S4'><span style=' font-weight: bold;'>Table of Contents</span></div><div  class = 'S5'><a href = "#H_ED346F2A"><span>Description
+</span></a><a href = "#H_24F205D3"><span>Class properties
+</span></a><span>    </span><a href = "#H_5B03CB4B"><span>Time propagation
+</span></a><span>        </span><a href = "#H_56B22A57"><span>splitMotif
+</span></a><span>        </span><a href = "#H_F8E58A47"><span>externalFieldGauge (EFG)
+</span></a><span>        </span><a href = "#H_054F0F9E"><span>potentialVector (FA)
+</span></a><span>        </span><a href = "#H_35230E97"><span>electricField (FE)
+</span></a><span>        </span><a href = "#H_98CCC7E0"><span>electricFieldDerivative (FDE)
+</span></a><span>        </span><a href = "#H_23189B60"><span>diffDT
+</span></a><span>    </span><a href = "#H_C8F30381"><span>Other hidden class properties
+</span></a><span>        </span><a href = "#H_72CA2050"><span>isVTV
+</span></a><span>        </span><a href = "#H_CC238758"><span>t_
+</span></a><span>        </span><a href = "#H_C7983F60"><span>dt_
+</span></a><span>        </span><a href = "#H_D966B46D"><span>FG
+</span></a><span>        </span><a href = "#H_35BFBABF"><span>uA
+</span></a><span>        </span><a href = "#H_8FC10A6A"><span>uE
+</span></a><span>        </span><a href = "#H_6DBBCAFA"><span>uDE
+</span></a><span>        </span><a href = "#H_BB720E93"><span>xi
+</span></a><span>        </span><a href = "#H_E1EB6D9D"><span>c_
+</span></a><span>        </span><a href = "#H_E2B39E02"><span>expT
+</span></a><span>        </span><a href = "#H_719647B0"><span>expV
+</span></a><span>        </span><a href = "#H_58056FAE"><span>nWfcn
+</span></a><span>        </span><a href = "#H_2FE7B28E"><span>dv
+</span></a><span>        </span><a href = "#H_FD3961AF"><span>pWfcn
+</span></a><span>        </span><a href = "#H_989B5084"><span>X
+</span></a><span>        </span><a href = "#H_85CBE4CA"><span>Y
+</span></a><span>        </span><a href = "#H_8C37AD64"><span>Z
+</span></a><a href = "#H_444F9B6D"><span>Class methods
+</span></a><span>    </span><a href = "#H_686ACD09"><span>Initializing the object
+</span></a><span>        </span><a href = "#H_3FFF1372"><span>Choice of gauge
+</span></a><span>        </span><a href = "#H_31F9A72A"><span>External-field components used in simulations
+</span></a><span>        </span><a href = "#H_1A92E01D"><span>Other initialization methods
+</span></a><span>    </span><a href = "#H_B2D31FE3"><span>Run-time documentation
+</span></a><span>    </span><a href = "#H_AEFB66DB"><span>TDSE propagation
+</span></a><a href = "#H_2FB9B214"><span>Enabling implementation-specific symplectic split-operator schemes
+</span></a><a href = "#H_D431B55B"><span>Test suite
+</span></a><a href = "#H_C89FCBC1"><span>References
+</span></a><a href = "#H_2E204287"><span>Notes</span></a></div></div><h2  class = 'S2' id = 'H_24F205D3' ><span>Class properties</span></h2><h3  class = 'S6' id = 'H_5B03CB4B' ><span>Time propagation</span></h3><h4  class = 'S7' id = 'H_56B22A57' ><span style=' font-family: monospace;'>splitMotif</span></h4><div  class = 'S1'><span>Splitting motif </span><span style=' font-family: monospace;'>[ 'VTV' (default) | 'TVT' ]</span></div><ul  class = 'S8'><li  class = 'S9'><span>Whether the splitting starts with applying the potential (</span><span style=' font-family: monospace;'>'VTV'</span><span>) or kinetic (</span><span style=' font-family: monospace;'>'TVT'</span><span>)  part of the Schrodinger-equation Hamiltonian.</span></li></ul><h4  class = 'S7' id = 'H_F8E58A47' ><span style=' font-family: monospace;'>externalFieldGauge (EFG)</span></h4><div  class = 'S1'><span>Gauge in which the external driving field is described </span><span style=' font-family: monospace;'>[ [] (default) | 'none' | 'length' | 'velocity' ]</span></div><ul  class = 'S8'><li  class = 'S9'><span style=' font-family: monospace;'>'none'</span><span> ignores any input external field and propagates the field-free TDSE dynamics</span></li></ul><h4  class = 'S7' id = 'H_054F0F9E' ><span style=' font-family: monospace;'>potentialVector (FA)</span></h4><div  class = 'S1'><span>Potential vector of the external driving field </span><span style=' font-family: monospace;'>[ [] (default) | function handle | griddedInterpolant ]</span></div><ul  class = 'S8'><li  class = 'S9'><span>For developers: When initializing the class, non-empty </span><span style=' font-family: monospace;'>potentialVector</span><span> is moved into the </span><span style=' font-family: monospace;'>externalField</span><span> property object (if needed creating the object first). During run time, </span><span style=' font-family: monospace;'>FA</span><span> contains the value of the potential vector used in the propagation (where relevant).</span></li></ul><h4  class = 'S7' id = 'H_35230E97' ><span style=' font-family: monospace;'>electricField (FE)</span></h4><div  class = 'S1'><span>Electric field of the external driving field </span><span style=' font-family: monospace;'>[ [] (default) | function handle | griddedInterpolant ]</span></div><ul  class = 'S8'><li  class = 'S9'><span>For developers: When initializing the class, non-empty </span><span style=' font-family: monospace;'>electricField</span><span> is moved into the </span><span style=' font-family: monospace;'>externalField</span><span> property object (if needed creating the object first). During run time, </span><span style=' font-family: monospace;'>FE</span><span> contains the value of the electric field used in the propagation (where relevant).</span></li></ul><h4  class = 'S7' id = 'H_98CCC7E0' ><span style=' font-family: monospace;'>electricFieldDerivative (FDE)</span></h4><div  class = 'S1'><span>Derivative of the electric field of the external driving field </span><span style=' font-family: monospace;'>[ [] (default) | function handle | griddedInterpolant ]</span></div><ul  class = 'S8'><li  class = 'S9'><span>For developers: When initializing the class, non-empty </span><span style=' font-family: monospace;'>electricFieldDerivative</span><span> is moved into the </span><span style=' font-family: monospace;'>externalField</span><span> property object (if needed creating the object first). During run time, </span><span style=' font-family: monospace;'>FDE</span><span> contains the value of the derivative of the electric field used in the propagation (where relevant).</span></li></ul><h4  class = 'S7' id = 'H_23189B60' ><span style=' font-family: monospace;'>diffDT</span></h4><div  class = 'S1'><span>Time step for used for copmuting derivatives </span><span style=' font-family: monospace;'>[ nonnegative scalar (default 1e-5) ]</span></div><h3  class = 'S6' id = 'H_C8F30381' ><span>Other hidden class properties</span></h3><div  class = 'S1'><span style=' font-family: monospace;'>QMol_TDSE_sympSplitOp</span><span> defines a handful of additional hidden properties used for the time propagation. These properties cannot be edited with the </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span> method, nor by any function outisde of the object (</span><span style=' font-family: monospace;'>SetAccess=protected</span><span> attribute).</span></div><h4  class = 'S7' id = 'H_72CA2050' ><span style=' font-family: monospace;'>isVTV</span></h4><div  class = 'S1'><span>Selected splitting motif: </span><span style=' font-family: monospace;'>true</span><span> uses the VTV </span><a href = "#H_56B22A57"><span style=' font-family: monospace;'>splitMotif</span></a><span> and </span><span style=' font-family: monospace;'>false</span><span> the TVT one</span></div><h4  class = 'S7' id = 'H_CC238758' ><span style=' font-family: monospace;'>t_</span></h4><div  class = 'S1'><span>Internal time variable, keeping track of the exact time within each propagation step</span></div><h4  class = 'S7' id = 'H_C7983F60' ><span style=' font-family: monospace;'>dt_</span></h4><div  class = 'S1'><span>Current time step in propagator</span></div><h4  class = 'S7' id = 'H_D966B46D' ><span style=' font-family: monospace;'>FG</span></h4><div  class = 'S1'><span>Field gauge: </span><span style=' font-family: monospace;'>0</span><span> ignores any field, </span><span style=' font-family: monospace;'>1</span><span> uses the length gauge, and </span><span style=' font-family: monospace;'>2</span><span> uses the velocity gauge</span></div><h4  class = 'S7' id = 'H_35BFBABF' ><span>uA</span></h4><div  class = 'S1'><span>Whether to use </span><span style=' font-family: monospace;'>EF.potentialVector</span><span> to get the potential vector (</span><span style=' font-family: monospace;'>true</span><span>) or compute it from the electric field (</span><span style=' font-family: monospace;'>false</span><span>), where relevant</span></div><h4  class = 'S7' id = 'H_8FC10A6A' ><span style=' font-family: monospace;'>uE</span></h4><div  class = 'S1'><span>Whether to use </span><span style=' font-family: monospace;'>EF.electricField</span><span> to get the electric field (</span><span style=' font-family: monospace;'>true</span><span>) or compute it from the potential vector (</span><span style=' font-family: monospace;'>false</span><span>), where relevant</span></div><h4  class = 'S7' id = 'H_6DBBCAFA' ><span style=' font-family: monospace;'>uDE</span></h4><div  class = 'S1'><span>Whether to use </span><span style=' font-family: monospace;'>EF.electricFieldDerivative</span><span> to get the derivative of the electric field (</span><span style=' font-family: monospace;'>true</span><span>) or compute it from the electric field or potential vector (</span><span style=' font-family: monospace;'>false</span><span>), where relevant</span></div><h4  class = 'S7' id = 'H_BB720E93' ><span style=' font-family: monospace;'>xi</span></h4><div  class = 'S1'><span>Autonomized-Hamiltonian energy coordinate</span></div><h4  class = 'S7' id = 'H_E1EB6D9D' ><span style=' font-family: monospace;'>c_</span></h4><div  class = 'S1'><span>Keeping track of the current coefficients for the split kinetic (</span><span style=' font-family: monospace;'>c_(1)</span><span>) and potential (</span><span style=' font-family: monospace;'>c_(2)</span><span>) terms in the propagator</span></div><h4  class = 'S7' id = 'H_E2B39E02' ><span style=' font-family: monospace;'>expT</span></h4><div  class = 'S1'><span>Exponentiated kinetic-term propagator</span></div><h4  class = 'S7' id = 'H_719647B0' ><span style=' font-family: monospace;'>expV</span></h4><div  class = 'S1'><span>Exponentiated potential-term propagator</span></div><h4  class = 'S7' id = 'H_58056FAE' ><span style=' font-family: monospace;'>nWfcn</span></h4><div  class = 'S1'><span>Number of wave functions.</span></div><h4  class = 'S7' id = 'H_2FE7B28E' ><span style=' font-family: monospace;'>dv</span></h4><div  class = 'S1'><span>Grid-discretization symplex volume (</span><span style=' font-family: monospace;'>SE.disc.dx</span><span> in 1D, </span><span style=' font-family: monospace;'>SE.disc.dx</span><span>*</span><span style=' font-family: monospace;'>SE.disc.dy</span><span> in 2D, and </span><span style=' font-family: monospace;'>SE.disc.dx</span><span>*</span><span style=' font-family: monospace;'>SE.disc.dy</span><span>*</span><span style=' font-family: monospace;'>SE.disc.dz</span><span> in 3D)</span></div><h4  class = 'S7' id = 'H_FD3961AF' ><span style=' font-family: monospace;'>pWfcn</span></h4><div  class = 'S1'><span>Holds memory when the projection of the wave functions is requested as an output</span></div><h4  class = 'S7' id = 'H_989B5084' ><span style=' font-family: monospace;'>X</span></h4><div  class = 'S1'><span>X-direction position operator</span></div><h4  class = 'S7' id = 'H_85CBE4CA' ><span style=' font-family: monospace;'>Y</span></h4><div  class = 'S1'><span>Y-direction position operator (in 2D and 3D only)</span></div><h4  class = 'S7' id = 'H_8C37AD64' ><span style=' font-family: monospace;'>Z</span></h4><div  class = 'S1'><span>Z-direction position operator (in 3D only)</span></div><h2  class = 'S2' id = 'H_444F9B6D' ><span>Class methods</span></h2><h3  class = 'S6' id = 'H_686ACD09' ><span>Initializing the object</span></h3><div  class = 'S1'><span style=' font-family: monospace;'>QMol_TDSE_sympSplitOp</span><span> is initialized via </span><span style=' font-family: monospace;'>QMol_TDSE</span><span>'s call to the </span><span style=' font-family: monospace;'>initializeChildren</span><span> method, which sets the proper run-time variables. Notably, when starting a TDSE propagation from scratch (non restart mode), it</span></div><ul  class = 'S8'><li  class = 'S9'><span>Identifies the splitting motif,</span></li><li  class = 'S9'><span>Moves any </span><a href = "#H_054F0F9E"><span style=' font-family: monospace;'>potentialVector</span></a><span>, </span><a href = "#H_35230E97"><span style=' font-family: monospace;'>electricField</span></a><span>, or </span><a href = "#H_98CCC7E0"><span style=' font-family: monospace;'>electricFieldDerivative</span></a><span> into the </span></li><li  class = 'S9'><span>Identifies the gauge</span></li><li  class = 'S9'><span>Determines which (if any) external-field components should be used in the propagation</span></li></ul><h4  class = 'S7' id = 'H_3FFF1372' ><span>Choice of gauge</span></h4><div  class = 'S1'><span>If no specific gauge is specified with </span><a href = "#H_F8E58A47"><span style=' font-family: monospace;'>externalFieldGauge</span></a><span>, the selected gauge is</span></div><ul  class = 'S8'><li  class = 'S9'><span>Length gauge if </span><span style=' font-family: monospace;'>externalField.electricField</span><span> is a function handle, otherwise</span></li><li  class = 'S9'><span>Velocity gauge if e</span><span style=' font-family: monospace;'>xternalField.potentialVector</span><span> is a function handle, otherwise</span></li><li  class = 'S9'><span>Length gauge if </span><span style=' font-family: monospace;'>externalField.electricField</span><span> is a </span><span style=' font-family: monospace;'>griddedInterpolant</span><span>, otherwise</span></li><li  class = 'S9'><span>Velocity gauge if </span><span style=' font-family: monospace;'>externalField.potentialVector</span><span> is a </span><span style=' font-family: monospace;'>griddedInterpolant</span><span>, otherwise</span></li><li  class = 'S9'><span>Field free (ignore any input field)</span></li></ul><h4  class = 'S7' id = 'H_31F9A72A' ><span>External-field components used in simulations</span></h4><div  class = 'S1'><span>Depending on the types of input, not all provided external-field may be used in the simulations. For the potential vector and electric field: </span></div><ul  class = 'S8'><li  class = 'S9'><span>If both are provided as function handles, then </span><span style=' font-family: monospace;'>externalField.electricField</span><span> and e</span><span style=' font-family: monospace;'>xternalField.potentialVector</span><span> are called whenever the values for the potential vector or electric field are required. Note that the TDSE propagator does </span><span style=' text-decoration: underline;'>not</span><span> check whether the provided potential vector and electric field are consistent with each other (</span><span texencoding="E(t)=-\partial_t A(t)" style="vertical-align:-6px"><img src="data:image/png;base64,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" width="92.5" height="19.5" /></span><span>) and providing non-matching components will likely result in erroneous results. Otherwise,</span></li><li  class = 'S9'><span>If only one of them is provided as a function handle, then both the potential vector and electric field are computed from that same function handle (see </span><a href = "#M_0A78CFE1"><span>below</span></a><span> for details on how this is done). Otherwise,</span></li><li  class = 'S9'><span>In the length gauge, if </span><span style=' font-family: monospace;'>externalField.electricField</span><span> is a </span><span style=' font-family: monospace;'>griddedInterpolant</span><span> then it is used to compute both the electric field and potential vector, otherwise e</span><span style=' font-family: monospace;'>xternalField.potentialVector</span><span> is used to compute them both.</span></li><li  class = 'S9'><span>In the velocity gauge, if </span><span style=' font-family: monospace;'>externalField.potentialVector</span><span> is a </span><span style=' font-family: monospace;'>griddedInterpolant</span><span> then it is used to compute both the electric field and potential vector, otherwise e</span><span style=' font-family: monospace;'>xternalField.electricField</span><span> is used to compute them both.</span></li><li  class = 'S9'><span>If none of the </span><span style=' font-family: monospace;'>externalField.electricField</span><span> and </span><span style=' font-family: monospace;'>externalField.potentialVector</span><span> are defined, the TDSE propagation is performed field free irrespective of the choice of </span><a href = "#H_F8E58A47"><span style=' font-family: monospace;'>externalFieldGauge</span></a><span> and even if an </span><span style=' font-family: monospace;'>externalField.electricFieldDerivative</span><span> is defined.</span></li></ul><div  class = 'S1'><span>The choice of ignoring some (interpolated) input fields is to ensure the self-consistency of the TDSE dynamics, and associated observables, during the numerical propagation. To force using an interpolated field input, one can encapsulate it into a function handle </span><span style=' font-family: monospace;'>@(t) interpolatedField(t)</span><span>. </span></div><div  class = 'S1'><span>For the electric-field derivative:</span></div><ul  class = 'S8'><li  class = 'S9'><span>If </span><span style=' font-family: monospace;'>externalField.electricFieldDerivative</span><span> is defined as a function handle, then </span><span style=' font-family: monospace;'>externalField.electricFieldDerivative</span><span> is called when the derivative of the electric field is required.</span></li><li  class = 'S9'><span>Otherwise the electric-field derivative is numerically computed from </span><span style=' font-family: monospace;'>externalField.electricField</span><span> or </span><span style=' font-family: monospace;'>externalField.potentialVector</span><span>, depending on which field component(s) are being used in the TDSE propagation. </span></li></ul><div  class = 'S1' id = 'M_0A78CFE1' ><span>Numerical computation of missing or ignored field components:</span></div><ul  class = 'S8'><li  class = 'S9'><span>Where required, the potential vector is computed from the electric field using a Simpson's 1/3 quadrature rule.</span></li><li  class = 'S9'><span>Where required, the electric field is computed from the potential vector using a second-order centered finite difference with </span><a href = "#H_23189B60"><span style=' font-family: monospace;'>diffDT</span></a><span> time step.</span></li><li  class = 'S9'><span>Where required, the electric field derivative is computed from the electric field or the potential vector using a second-order centered finite difference with </span><a href = "#H_23189B60"><span style=' font-family: monospace;'>diffDT</span></a><span> time step.</span></li></ul><h4  class = 'S7' id = 'H_1A92E01D' ><span>Other initialization methods</span></h4><div  class = 'S1'><span>These methods are defined with a </span><span style=' font-family: monospace;'>protected</span><span> attribute</span></div><ul  class = 'S8'><li  class = 'S9'><span style=' font-family: monospace;'>initializeChildren</span><span>: Initializes the symplectic split-operator scheme</span></li><li  class = 'S9'><span style=' font-family: monospace;'>setOutputExternalField</span><span>: Initializes and cleans up the external-field ioformation appended to the output external structures.</span></li><li  class = 'S9'><span style=' font-family: monospace;'>setOutputWaveFunction</span><span>: Initializes and cleans up the output structure in which the saved wave functions and their projection are saved</span></li></ul><h3  class = 'S6' id = 'H_B2D31FE3' ><span>Run-time documentation</span></h3><div  class = 'S1'><span>These methods are defined with a </span><span style=' font-family: monospace;'>protected</span><span> attribute</span></div><ul  class = 'S8'><li  class = 'S9'><span style=' font-family: monospace;'>getMemoryProfileWaveFunction</span><span>: Estimates the memory footprint of saving the wave functions</span></li><li  class = 'S9'><span style=' font-family: monospace;'>getMemoryProfilePropagator</span><span>: Estimates the memory footprint of the symplectic split-operator propagator</span></li><li  class = 'S9'><span style=' font-family: monospace;'>showDoc</span><span>: Displays the part of the run-dime documentation describing the symplectic split-operator scheme</span></li></ul><h3  class = 'S6' id = 'H_AEFB66DB' ><span>TDSE propagation</span></h3><div  class = 'S1'><span>These methods are defined with a </span><span style=' font-family: monospace;'>protected</span><span> attribute</span></div><ul  class = 'S8'><li  class = 'S9'><span style=' font-family: monospace;'>addOutputExternalField</span><span>: Adds the external driving-field information to the named output structure.</span></li><li  class = 'S9'><span style=' font-family: monospace;'>saveOutputWaveFunction</span><span>: Saves the wave functions and projection to their respective output structures</span></li><li  class = 'S9'><span style=' font-family: monospace;'>setExpT(obj,d)</span><span>: Sets the exponentiated kinetic-term propagator </span><a href = "#H_E2B39E02"><span style=' font-family: monospace;'>expT</span></a><span> and intermediate-step coefficient </span><span style=' font-family: monospace;'>d</span></li><li  class = 'S9'><span style=' font-family: monospace;'>setExpV(obj,c)</span><span>: Sets the exponentiated potential-term propagator </span><a href = "#H_719647B0"><span style=' font-family: monospace;'>expV</span></a><span> and intermediate-step coefficient </span><span style=' font-family: monospace;'>c</span></li></ul><h2  class = 'S2' id = 'H_2FB9B214' ><span>Enabling implementation-specific symplectic split-operator schemes</span></h2><div  class = 'S1'><span>To enable symplectic split-operator schemes for a given implementation, one must implement a </span><span style=' font-family: monospace;'>QMol_TDSE_SSO</span><span> class overloading </span><span style=' font-family: monospace;'>QMol_TDSE_sympSplitOp</span><span> (</span><span style=' font-family: monospace;'>classdef QMol_TDSE_SSO &lt; QMol_TDSE_sympSplitOp</span><span>) with the following signature and methods</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >methods (Access=protected)</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">function </span><span >saveOutputIonization(obj,K,t) </span><span style="color: #008013;">%=====================================</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">%saveOutputIonization</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Compute ionization (if any)</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Add external field</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #0e00ff;">if </span><span >obj.sEF,         obj.addOutputExternalField(</span><span style="color: #a709f5;">'oIon'</span><span >,K,t);             </span><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Update counter ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    obj.oIon.n          =   obj.oIon.n + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">function </span><span >saveOutputDipole(obj,K,t) </span><span style="color: #008013;">%=======================================</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">%saveOutputDipole</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Dipole signal ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #0e00ff;">if </span><span >K == obj.oDip.ind(obj.oDip.n)</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #008013;">% Compute dipole (if any)</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #008013;">% Add external field</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #0e00ff;">if </span><span >obj.sEF,         obj.addOutputExternalField(</span><span style="color: #a709f5;">'oDip'</span><span >,K,t);        </span><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #008013;">% Update counter</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        obj.oDip.n      =   obj.oDip.n + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Dipole velocity signal ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #0e00ff;">if </span><span >K == obj.oVel.ind(obj.oVel.n)</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #008013;">% Compute dipole velocity (if any)</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #008013;">% Add external field</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #0e00ff;">if </span><span >obj.sEF,         obj.addOutputExternalField(</span><span style="color: #a709f5;">'oVel'</span><span >,K,t);        </span><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #008013;">% Update counter</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        obj.oVel.n      =   obj.oVel.n + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Dipole acceleration signal ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #0e00ff;">if </span><span >K == obj.oAcc.ind(obj.oAcc.n)</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #008013;">% Compute dipole acceleration</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #008013;">% Add external field</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #0e00ff;">if </span><span >obj.sEF,         obj.addOutputExternalField(</span><span style="color: #a709f5;">'oAcc'</span><span >,K,t);        </span><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        </span><span style="color: #008013;">% Update counter</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >        obj.oAcc.n      =   obj.oAcc.n + 1;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">function </span><span >[E,DE] = getExternalFieldEnergy(obj,~)</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">%getExternalFieldEnergy</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Compute the external-field energy</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Autonomization</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >    DE                  =   obj.xi;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">function </span><span >applyExpT(obj) </span><span style="color: #008013;">%==================================================</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">%applyExpT apply the Liouville operator for the kinetic term. Recall that </span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">%   obj.expT contains the exponentiated kinetic-term operator.</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">function </span><span >applyExpV(obj) </span><span style="color: #008013;">%==================================================</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">%applyExpV apply the Liouville operator for the potential term. Recall that</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">%   obj.expV, obj.expVup, and obj.expVdw contain the exponentiated </span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">%   potential-term operators.</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S12'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div></div><h2  class = 'S2' id = 'H_D431B55B' ><span>Test suite</span></h2><div  class = 'S1'><span>For consistency with the rest of the QMol-grid package, </span><span style=' font-family: monospace;'>QMol_TDSE_sympSplitOp</span><span> defines an associated test suite. Run the test suite for the class in normal or </span><a href = "./Test_suite.html"><span>summary mode</span></a><span> respectively with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'TDSE_sympSplitOp'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S12'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'-summary'</span><span >,</span><span style="color: #a709f5;">'TDSE_sympSplitOp'</span><span >);</span></span></div></div></div><div  class = 'S13'><span>See </span><a href = "./QMol_test,html"><span style=' font-family: monospace;'>QMol_test</span></a><span> for details regarding how to create a test suite for new classes.</span></div><h2  class = 'S2' id = 'H_C89FCBC1' ><span>References</span></h2><div  class = 'S1' id = 'M_9901A92B' ><span>[Mauger 2024] F. Mauger, C. Chandre, M.B. Gaarde, K. Lopata, and K.J. Schafer, "Hamiltonian formulation and symplectic split-operator schemes for time-dependent density-functional-theory equations of electron dynamics in molecules," Communications in Nonlinear Science and Numerical Simulation 129, 107685 (2024).</span></div><h2  class = 'S2' id = 'H_2E204287' ><span>Notes</span></h2><ul  class = 'S8'><li  class = 'S9'><span style=' font-family: monospace;'>QMol_TDSE_sympSplitOp</span><span> was intorduced in version 01.20</span></li></ul>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% |QMol_TDSE_sympSplitOp|
+% Parent class for time-dependent Schrodinger-equation (TDSE) propagators using 
+% a symplectic split-operator scheme.
+%% Description
+% |QMol_TDSE_sympSplitOp| defines an abstract class for the time propagation 
+% of Schrodinger equation models using symplectic split-operator schemes, as discussed 
+% in [Mauger 2024]. It is designed to be agnostic of the model dimension and spin 
+% polarized or restricted configuration but requires a grid discretization. |QMol_TDSE_sympSplitOp| 
+% overloads the |QMol_TDSE| class. Here we only document the new or overloaded 
+% properties and methods specific to the |QMol_TDSE_sympSplitOp|. We provide a 
+% quick overview of the handful of implementation-specific (for a given dimension) 
+% required to enable symplectic split-operator schemes in the QMol-grid package.
+%% Class properties
+% Time propagation
+% |splitMotif|
+% Splitting motif |[ 'VTV' (default) | 'TVT' ]|
+%% 
+% * Whether the splitting starts with applying the potential (|'VTV'|) or kinetic 
+% (|'TVT'|)  part of the Schrodinger-equation Hamiltonian.
+% |externalFieldGauge (EFG)|
+% Gauge in which the external driving field is described |[ [] (default) | 'none' 
+% | 'length' | 'velocity' ]|
+%% 
+% * |'none'| ignores any input external field and propagates the field-free 
+% TDSE dynamics
+% |potentialVector (FA)|
+% Potential vector of the external driving field |[ [] (default) | function 
+% handle | griddedInterpolant ]|
+%% 
+% * For developers: When initializing the class, non-empty |potentialVector| 
+% is moved into the |externalField| property object (if needed creating the object 
+% first). During run time, |FA| contains the value of the potential vector used 
+% in the propagation (where relevant).
+% |electricField (FE)|
+% Electric field of the external driving field |[ [] (default) | function handle 
+% | griddedInterpolant ]|
+%% 
+% * For developers: When initializing the class, non-empty |electricField| is 
+% moved into the |externalField| property object (if needed creating the object 
+% first). During run time, |FE| contains the value of the electric field used 
+% in the propagation (where relevant).
+% |electricFieldDerivative (FDE)|
+% Derivative of the electric field of the external driving field |[ [] (default) 
+% | function handle | griddedInterpolant ]|
+%% 
+% * For developers: When initializing the class, non-empty |electricFieldDerivative| 
+% is moved into the |externalField| property object (if needed creating the object 
+% first). During run time, |FDE| contains the value of the derivative of the electric 
+% field used in the propagation (where relevant).
+% |diffDT|
+% Time step for used for copmuting derivatives |[ nonnegative scalar (default 
+% 1e-5) ]|
+% Other hidden class properties
+% |QMol_TDSE_sympSplitOp| defines a handful of additional hidden properties 
+% used for the time propagation. These properties cannot be edited with the |set| 
+% method, nor by any function outisde of the object (|SetAccess=protected| attribute).
+% |isVTV|
+% Selected splitting motif: |true| uses the VTV |splitMotif| and |false| the 
+% TVT one
+% |t_|
+% Internal time variable, keeping track of the exact time within each propagation 
+% step
+% |dt_|
+% Current time step in propagator
+% |FG|
+% Field gauge: |0| ignores any field, |1| uses the length gauge, and |2| uses 
+% the velocity gauge
+% uA
+% Whether to use |EF.potentialVector| to get the potential vector (|true|) or 
+% compute it from the electric field (|false|), where relevant
+% |uE|
+% Whether to use |EF.electricField| to get the electric field (|true|) or compute 
+% it from the potential vector (|false|), where relevant
+% |uDE|
+% Whether to use |EF.electricFieldDerivative| to get the derivative of the electric 
+% field (|true|) or compute it from the electric field or potential vector (|false|), 
+% where relevant
+% |xi|
+% Autonomized-Hamiltonian energy coordinate
+% |c_|
+% Keeping track of the current coefficients for the split kinetic (|c_(1)|) 
+% and potential (|c_(2)|) terms in the propagator
+% |expT|
+% Exponentiated kinetic-term propagator
+% |expV|
+% Exponentiated potential-term propagator
+% |nWfcn|
+% Number of wave functions.
+% |dv|
+% Grid-discretization symplex volume (|SE.disc.dx| in 1D, |SE.disc.dx|*|SE.disc.dy| 
+% in 2D, and |SE.disc.dx|*|SE.disc.dy|*|SE.disc.dz| in 3D)
+% |pWfcn|
+% Holds memory when the projection of the wave functions is requested as an 
+% output
+% |X|
+% X-direction position operator
+% |Y|
+% Y-direction position operator (in 2D and 3D only)
+% |Z|
+% Z-direction position operator (in 3D only)
+%% Class methods
+% Initializing the object
+% |QMol_TDSE_sympSplitOp| is initialized via |QMol_TDSE|'s call to the |initializeChildren| 
+% method, which sets the proper run-time variables. Notably, when starting a TDSE 
+% propagation from scratch (non restart mode), it
+%% 
+% * Identifies the splitting motif,
+% * Moves any |potentialVector|, |electricField|, or |electricFieldDerivative| 
+% into the 
+% * Identifies the gauge
+% * Determines which (if any) external-field components should be used in the 
+% propagation
+% Choice of gauge
+% If no specific gauge is specified with |externalFieldGauge|, the selected 
+% gauge is
+%% 
+% * Length gauge if |externalField.electricField| is a function handle, otherwise
+% * Velocity gauge if e|xternalField.potentialVector| is a function handle, 
+% otherwise
+% * Length gauge if |externalField.electricField| is a |griddedInterpolant|, 
+% otherwise
+% * Velocity gauge if |externalField.potentialVector| is a |griddedInterpolant|, 
+% otherwise
+% * Field free (ignore any input field)
+% External-field components used in simulations
+% Depending on the types of input, not all provided external-field may be used 
+% in the simulations. For the potential vector and electric field: 
+%% 
+% * If both are provided as function handles, then |externalField.electricField| 
+% and e|xternalField.potentialVector| are called whenever the values for the potential 
+% vector or electric field are required. Note that the TDSE propagator does not 
+% check whether the provided potential vector and electric field are consistent 
+% with each other ($E(t)=-\partial_t A(t)$) and providing non-matching components 
+% will likely result in erroneous results. Otherwise,
+% * If only one of them is provided as a function handle, then both the potential 
+% vector and electric field are computed from that same function handle (see below 
+% for details on how this is done). Otherwise,
+% * In the length gauge, if |externalField.electricField| is a |griddedInterpolant| 
+% then it is used to compute both the electric field and potential vector, otherwise 
+% e|xternalField.potentialVector| is used to compute them both.
+% * In the velocity gauge, if |externalField.potentialVector| is a |griddedInterpolant| 
+% then it is used to compute both the electric field and potential vector, otherwise 
+% e|xternalField.electricField| is used to compute them both.
+% * If none of the |externalField.electricField| and |externalField.potentialVector| 
+% are defined, the TDSE propagation is performed field free irrespective of the 
+% choice of |externalFieldGauge| and even if an |externalField.electricFieldDerivative| 
+% is defined.
+%% 
+% The choice of ignoring some (interpolated) input fields is to ensure the self-consistency 
+% of the TDSE dynamics, and associated observables, during the numerical propagation. 
+% To force using an interpolated field input, one can encapsulate it into a function 
+% handle |@(t) interpolatedField(t)|. 
+% 
+% For the electric-field derivative:
+%% 
+% * If |externalField.electricFieldDerivative| is defined as a function handle, 
+% then |externalField.electricFieldDerivative| is called when the derivative of 
+% the electric field is required.
+% * Otherwise the electric-field derivative is numerically computed from |externalField.electricField| 
+% or |externalField.potentialVector|, depending on which field component(s) are 
+% being used in the TDSE propagation. 
+%% 
+% Numerical computation of missing or ignored field components:
+%% 
+% * Where required, the potential vector is computed from the electric field 
+% using a Simpson's 1/3 quadrature rule.
+% * Where required, the electric field is computed from the potential vector 
+% using a second-order centered finite difference with |diffDT| time step.
+% * Where required, the electric field derivative is computed from the electric 
+% field or the potential vector using a second-order centered finite difference 
+% with |diffDT| time step.
+% Other initialization methods
+% These methods are defined with a |protected| attribute
+%% 
+% * |initializeChildren|: Initializes the symplectic split-operator scheme
+% * |setOutputExternalField|: Initializes and cleans up the external-field ioformation 
+% appended to the output external structures.
+% * |setOutputWaveFunction|: Initializes and cleans up the output structure 
+% in which the saved wave functions and their projection are saved
+% Run-time documentation
+% These methods are defined with a |protected| attribute
+%% 
+% * |getMemoryProfileWaveFunction|: Estimates the memory footprint of saving 
+% the wave functions
+% * |getMemoryProfilePropagator|: Estimates the memory footprint of the symplectic 
+% split-operator propagator
+% * |showDoc|: Displays the part of the run-dime documentation describing the 
+% symplectic split-operator scheme
+% TDSE propagation
+% These methods are defined with a |protected| attribute
+%% 
+% * |addOutputExternalField|: Adds the external driving-field information to 
+% the named output structure.
+% * |saveOutputWaveFunction|: Saves the wave functions and projection to their 
+% respective output structures
+% * |setExpT(obj,d)|: Sets the exponentiated kinetic-term propagator |expT| 
+% and intermediate-step coefficient |d|
+% * |setExpV(obj,c)|: Sets the exponentiated potential-term propagator |expV| 
+% and intermediate-step coefficient |c|
+%% Enabling implementation-specific symplectic split-operator schemes
+% To enable symplectic split-operator schemes for a given implementation, one 
+% must implement a |QMol_TDSE_SSO| class overloading |QMol_TDSE_sympSplitOp| (|classdef 
+% QMol_TDSE_SSO < QMol_TDSE_sympSplitOp|) with the following signature and methods
+
+methods (Access=protected)
+function saveOutputIonization(obj,K,t) %=====================================
+%saveOutputIonization
+
+    % Compute ionization (if any)
+
+    % Add external field
+    if obj.sEF,         obj.addOutputExternalField('oIon',K,t);             end
+
+    % Update counter ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    obj.oIon.n          =   obj.oIon.n + 1;
+
+end
+function saveOutputDipole(obj,K,t) %=======================================
+%saveOutputDipole
+
+    % Dipole signal ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    if K == obj.oDip.ind(obj.oDip.n)
+        % Compute dipole (if any)
+        
+        % Add external field
+        if obj.sEF,         obj.addOutputExternalField('oDip',K,t);        end
+        
+        % Update counter
+        obj.oDip.n      =   obj.oDip.n + 1;
+
+    end
+    % Dipole velocity signal ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    if K == obj.oVel.ind(obj.oVel.n)
+        % Compute dipole velocity (if any)
+        
+        % Add external field
+        if obj.sEF,         obj.addOutputExternalField('oVel',K,t);        end
+
+        % Update counter
+        obj.oVel.n      =   obj.oVel.n + 1;
+    end
+
+    % Dipole acceleration signal ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    if K == obj.oAcc.ind(obj.oAcc.n)
+        % Compute dipole acceleration
+
+        % Add external field
+        if obj.sEF,         obj.addOutputExternalField('oAcc',K,t);        end
+
+        % Update counter
+        obj.oAcc.n      =   obj.oAcc.n + 1;
+    end
+end
+function [E,DE] = getExternalFieldEnergy(obj,~)
+%getExternalFieldEnergy
+
+    % Compute the external-field energy
+    
+    % Autonomization
+    DE                  =   obj.xi;
+
+end
+function applyExpT(obj) %==================================================
+%applyExpT apply the Liouville operator for the kinetic term. Recall that 
+%   obj.expT contains the exponentiated kinetic-term operator.
+
+end
+function applyExpV(obj) %==================================================
+%applyExpV apply the Liouville operator for the potential term. Recall that
+%   obj.expV, obj.expVup, and obj.expVdw contain the exponentiated 
+%   potential-term operators.
+
+end
+end
+%% Test suite
+% For consistency with the rest of the QMol-grid package, |QMol_TDSE_sympSplitOp| 
+% defines an associated test suite. Run the test suite for the class in normal 
+% or <./Test_suite.html summary mode> respectively with
+
+QMol_test.test('TDSE_sympSplitOp');
+QMol_test.test('-summary','TDSE_sympSplitOp');
+%% 
+% See <./QMol_test,html |QMol_test|> for details regarding how to create a test 
+% suite for new classes.
+%% References
+% [Mauger 2024] F. Mauger, C. Chandre, M.B. Gaarde, K. Lopata, and K.J. Schafer, 
+% "Hamiltonian formulation and symplectic split-operator schemes for time-dependent 
+% density-functional-theory equations of electron dynamics in molecules," Communications 
+% in Nonlinear Science and Numerical Simulation 129, 107685 (2024).
+%% Notes
+%% 
+% * |QMol_TDSE_sympSplitOp| was intorduced in version 01.20
+##### SOURCE END #####
+-->
+</div></body></html>

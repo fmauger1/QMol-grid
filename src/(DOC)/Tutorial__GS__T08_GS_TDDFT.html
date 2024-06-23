@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024a"><title>Tutorial 7: Input parameters and output variables for time-dependent density-functional theory</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S3 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }</style></head><body><div class = rtcContent><h1  class = 'S0' id = 'T_BAAFB43D' ><span>Tutorial 7: Input parameters and output variables for time-dependent density-functional theory</span></h1><div  class = 'S1'><span>The interface for defining and changing input parameters, and recovering output results, in time-dependent density-functional theory (TDDFT) simulations is similar to the Schrödinger equation case. Here we summarize the main features of TDDFT simulations and refer to its </span><a href = "./TDDFT.html"><span>documentation page</span></a><span> for more details. The documentation page also includes examples for each set of observable that can be calculated on the fly while the propagation is performed.</span></div><ul  class = 'S2'><li  class = 'S3'><span style=' text-decoration: underline;'>External driving field:</span><span> driving fields are taken in the dipole approximation and the propagation can be done using the length or velocity gauge.</span></li><li  class = 'S3'><span style=' text-decoration: underline;'>Absorbing boundaries:</span><span> both complex absorbing potentials and mask functions can be used as absorbers.</span></li><li  class = 'S3'><span style=' text-decoration: underline;'>Propagators:</span><span> currently, propagation is only available for grid-based models (not basis-set discretization), with orders 2, 4, or 6 in time.</span></li><li  class = 'S3'><span style=' text-decoration: underline;'>Propagation results:</span><span> besides the propagation of the wave function(s), propagators can calculate and save the dipole signal, energy, ionization, wave function, as well as the result of a user-defined installable function. Each resulting output is stored in a separate structure in the TDDFT-propagator object. Each requested output can independently define its own time sampling. For field-driven calculations, the exact values for the driving field used in the simulation at the time each output is saved can be added to each output structure.</span></li><li  class = 'S3'><span style=' text-decoration: underline;'>Restart file:</span><span> a restart file can be generated, from which the propagation can be restarted in case it gets stopped before the end of the propagation (without having to start over from the beginning).</span></li></ul>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Tutorial 7: Input parameters and output variables for time-dependent density-functional theory
+% The interface for defining and changing input parameters, and recovering output 
+% results, in time-dependent density-functional theory (TDDFT) simulations is 
+% similar to the Schrödinger equation case. Here we summarize the main features 
+% of TDDFT simulations and refer to its <./TDDFT.html documentation page> for 
+% more details. The documentation page also includes examples for each set of 
+% observable that can be calculated on the fly while the propagation is performed.
+%% 
+% * External driving field: driving fields are taken in the dipole approximation 
+% and the propagation can be done using the length or velocity gauge.
+% * Absorbing boundaries: both complex absorbing potentials and mask functions 
+% can be used as absorbers.
+% * Propagators: currently, propagation is only available for grid-based models 
+% (not basis-set discretization), with orders 2, 4, or 6 in time.
+% * Propagation results: besides the propagation of the wave function(s), propagators 
+% can calculate and save the dipole signal, energy, ionization, wave function, 
+% as well as the result of a user-defined installable function. Each resulting 
+% output is stored in a separate structure in the TDDFT-propagator object. Each 
+% requested output can independently define its own time sampling. For field-driven 
+% calculations, the exact values for the driving field used in the simulation 
+% at the time each output is saved can be added to each output structure.
+% * Restart file: a restart file can be generated, from which the propagation 
+% can be restarted in case it gets stopped before the end of the propagation (without 
+% having to start over from the beginning).
+##### SOURCE END #####
+-->
+</div></body></html>

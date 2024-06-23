@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024a"><title>QMol_suite</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S3 { margin: 10px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 15px; font-weight: 700; text-align: left;  }
+.S4 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block }
+.S5 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S7 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S8 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S9 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0px none rgb(33, 33, 33); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S10 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S11 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span style=' font-family: monospace;'>QMol_suite</span></h1><div  class = 'S1'><span>Parent class for all QMol-grid objects.</span></div><h2  class = 'S2'><span>Description</span></h2><div  class = 'S1'><span style=' font-family: monospace;'>QMol_suite</span><span> defines an abstract class from which all objects in the QMol-grid package derive. It provides unified interface and support for parameter (re)initialization. Many classes in the QMol-grid package also restrict set access for their properties to </span><span style=' font-family: monospace;'>QMol_suite</span><span> objects (</span><span style=' font-family: monospace;'>SetAccess=?QMol_suite</span><span>).</span></div><h2  class = 'S2'><span>Class properties</span></h2><h4  class = 'S3' id = 'H_11930D30' ><span style=' font-family: monospace;'>isInitialized (isInit)</span></h4><div  class = 'S1'><span>Throughout the QMol-grid package, this logical flag is used to track whether the object is properly initialized for simulations. Normally, </span><span style=' font-family: monospace;'>isInitialized</span><span> is set to a </span><span style=' font-family: monospace;'>true</span><span> value after successfully running the initialize method of the class, and back to its default </span><span style=' font-family: monospace;'>false</span><span> after creation or running either of the </span><span style=' font-family: monospace;'>set</span><span>, </span><span style=' font-family: monospace;'>reset</span><span>, or </span><span style=' font-family: monospace;'>clear</span><span> methods.</span></div><h2  class = 'S2'><span>Class methods</span></h2><h3  class = 'S4'><span>Creation</span></h3><h4  class = 'S3' id = 'H_414BA4F7' ><span>default constructor</span></h4><div  class = 'S1'><span>Classes overloading </span><span style=' font-family: monospace;'>QMol_suite</span><span> inherit a default case-insensitive name-value pair constructor</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >obj = QMol_child_class(name1,value1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre"><span >obj = QMol_child_class(name1,value1,name2,value2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S7'><span>The list of allocatable properties is specified in the </span><a href = "#H_884CFDF5"><span style=' font-family: monospace;'>propertyNames</span></a><span> method that each child class must overload.</span></div><h3  class = 'S4'><span>Changing class properties</span></h3><div  class = 'S1'><span>Classes overloading </span><span style=' font-family: monospace;'>QMol_suite</span><span> also inherit various methods to interface with properties.</span></div><h4  class = 'S3' id = 'H_4405B79D' ><span style=' font-family: monospace;'>set</span></h4><div  class = 'S1'><span>Update the </span><span style=' font-family: monospace;'>name</span><span> properties of a child-class object to the specified </span><span style=' font-family: monospace;'>value</span><span>. Several </span><span style=' font-family: monospace;'>name-value</span><span> pairs can be specified consecutively. Suitable </span><span style=' font-family: monospace;'>name</span><span> are specified in the </span><a href = "#H_884CFDF5"><span style=' font-family: monospace;'>propertyNames</span></a><span> method and are case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >obj.set(name1,value1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre"><span >obj.set(name1,value1,name2,value2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S7'><span>The </span><span style=' font-family: monospace;'>set</span><span> method also </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the class. After running, the </span><span style=' font-family: monospace;'>set</span><span> property updates the </span><a href = "#H_11930D30"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to a </span><span style=' font-family: monospace;'>false</span><span> value.</span></div><h4  class = 'S3' id = 'H_BF84FCE7' ><span style=' font-family: monospace;'>reset</span></h4><div  class = 'S1'><span>Reset the object and update the </span><a href = "#H_11930D30"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to a </span><span style=' font-family: monospace;'>false</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S8'><span style="white-space: pre"><span >obj.reset;</span></span></div></div></div><div  class = 'S7'><span>Default </span><span style=' font-family: monospace;'>reset</span><span> only updates the </span><a href = "#H_11930D30"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag. Overloaded reset methods can call the parent default feature following the template</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >methods (Access=public)</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #0e00ff;">function </span><span >reset(obj)</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #008013;">%reset the object</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    </span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Run parent reset (updates isInit)</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    reset@QMol_TDDFT(obj);</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Add all object-specific reset computations here</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div></div><h4  class = 'S3' id = 'H_C729A888' ><span style=' font-family: monospace;'>clear</span></h4><div  class = 'S1'><span>Clear all class properties (specifically all properties listed in the </span><a href = "#H_884CFDF5"><span style=' font-family: monospace;'>propertyNames</span></a><span> method)</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S8'><span style="white-space: pre"><span >obj.clear;</span></span></div></div></div><div  class = 'S7'><span>Clear a specific set of the class properties. Suitable </span><span style=' font-family: monospace;'>name</span><span> are specified in the </span><a href = "#H_884CFDF5"><span style=' font-family: monospace;'>propertyNames</span></a><span> method and are case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S8'><span style="white-space: pre"><span >obj.clear(name1,name2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S7'><span>The </span><span style=' font-family: monospace;'>clear</span><span> method also </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the class. The </span><span style=' font-family: monospace;'>clear</span><span> method can be used to delete specific properties before saving an instance of the child class.</span></div><div  class = 'S1'><span>The </span><span style=' font-family: monospace;'>clear</span><span> method only deletes the specified properties without performing any default-value reinitialization. For that, one should overload the method following the template</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >methods (Access=public)</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #0e00ff;">function </span><span >clear(obj,varargin)</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #008013;">%clear clears all or selected member properties</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    </span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Run parent clear</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    clear@QMol_suite(obj,varargin{:});</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Add all object-specific clear computations here</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div></div><h2  class = 'S2'><span>Overloading the class</span></h2><h4  class = 'S3' id = 'H_884CFDF5' ><span style=' font-family: monospace;'>propertyNames</span></h4><div  class = 'S1'><span>To enable name-value pair </span><a href = "#H_414BA4F7"><span>constructor</span></a><span>, name-value pair </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span>, and the </span><a href = "#H_C729A888"><span style=' font-family: monospace;'>clear</span></a><span> methods, each child class of </span><span style=' font-family: monospace;'>QMol_suite</span><span> must overload the </span><span style=' font-family: monospace;'>propertyNames</span><span> method following the template</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >methods (Static=true,Access=?QMol_suite)</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #0e00ff;">function </span><span >[ClassName,PropNames] = propertyNames()</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #008013;">%propertyNames returns the names of member properties that can be set</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #008013;">%   through name-value assignment</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    </span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    ClassName           =   </span><span style="color: #a709f5;">'QMol_child_class'</span><span >;</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    PropNames           =   {</span><span style="color: #a709f5;">'property1'</span><span >,</span><span style="color: #a709f5;">'property2'</span><span >};</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div></div><div  class = 'S7'><span>The output </span><span style=' font-family: monospace;'>ClassName</span><span> is a string matching the name of the class object. It is used in the </span><a href = "#H_414BA4F7"><span>constructor</span></a><span>, </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span>, and the </span><a href = "#H_C729A888"><span style=' font-family: monospace;'>clear</span></a><span> methods if a </span><span style=' font-family: monospace;'>name</span><span> property cannot be identified.</span></div><div  class = 'S1'><span>The output </span><span style=' font-family: monospace;'>PropNames</span><span> is a cell of string containing the list of the member properties that can be allocated as name-value pairs in the  </span><a href = "#H_414BA4F7"><span>constructor</span></a><span> and </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span>, and  </span><a href = "#H_C729A888"><span style=' font-family: monospace;'>clear</span></a><span>ed. All of the allocatable properties listed in </span><span style=' font-family: monospace;'>PropNames</span><span> must grant </span><span style=' font-family: monospace;'>setAccess</span><span> right to </span><span style=' font-family: monospace;'>QMol_suite</span><span> classes</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S8'><span style="white-space: pre"><span >properties (</span><span style="color: rgb(225, 27, 20);">___</span><span >,SetAccess=?QMol_suite)</span></span></div></div></div><div  class = 'S7'><span>If overloading the class that already defines a set of allocatable and clearable properties, one can automatically collect these using the template</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >methods (Static=true,Access=?QMol_suite)</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #0e00ff;">function </span><span >[ClassName,PropNames] = propertyNames()</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #008013;">%propertyNames returns the names of member properties that can be set</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #008013;">%   through name-value assignment</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    </span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    </span><span style="color: #008013;">% Parent-class components</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    [~,PropNames]       =   QMol_parent_class.propertyNames;</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    ClassName           =   </span><span style="color: #a709f5;">'QMol_child_class'</span><span >;</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >    PropNames           =   [PropNames,{</span><span style="color: #a709f5;">'property1'</span><span >,</span><span style="color: #a709f5;">'property2'</span><span >}];</span></span></div></div><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre"><span style="color: #0e00ff;">end</span></span></div></div></div><h2  class = 'S2'><span>Test suite</span></h2><div  class = 'S1'><span>For consistency with the rest of the QMol-grid package, </span><span style=' font-family: monospace;'>QMol_suite</span><span> defines an associated test suite. Run the test suite for the class in normal or </span><a href = "./Test_suite.html"><span>summary mode</span></a><span> respectively with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'suite'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'-summary'</span><span >,</span><span style="color: #a709f5;">'suite'</span><span >);</span></span></div></div></div><div  class = 'S7'><span>See </span><a href = "./QMol_test,html"><span style=' font-family: monospace;'>QMol_test</span></a><span> for details regarding how to create a test suite for new classes.</span></div><h2  class = 'S2'><span>Notes</span></h2><ul  class = 'S10'><li  class = 'S11'><span style=' font-family: monospace;'>QMol_suite</span><span> was intorduced in version 01.00.</span></li><li  class = 'S11'><span>Version 01.10 moved the run-time documentation components to </span><a href = "./QMol_doc.html"><span style=' font-family: monospace;'>QMol_doc</span></a><span>.</span></li></ul>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% |QMol_suite|
+% Parent class for all QMol-grid objects.
+%% Description
+% |QMol_suite| defines an abstract class from which all objects in the QMol-grid 
+% package derive. It provides unified interface and support for parameter (re)initialization. 
+% Many classes in the QMol-grid package also restrict set access for their properties 
+% to |QMol_suite| objects (|SetAccess=?QMol_suite|).
+%% Class properties
+% |isInitialized (isInit)|
+% Throughout the QMol-grid package, this logical flag is used to track whether 
+% the object is properly initialized for simulations. Normally, |isInitialized| 
+% is set to a |true| value after successfully running the initialize method of 
+% the class, and back to its default |false| after creation or running either 
+% of the |set|, |reset|, or |clear| methods.
+%% Class methods
+% Creation
+% default constructor
+% Classes overloading |QMol_suite| inherit a default case-insensitive name-value 
+% pair constructor
+
+obj = QMol_child_class(name1,value1);
+obj = QMol_child_class(name1,value1,name2,value2,___);
+%% 
+% The list of allocatable properties is specified in the |propertyNames| method 
+% that each child class must overload.
+% Changing class properties
+% Classes overloading |QMol_suite| also inherit various methods to interface 
+% with properties.
+% |set|
+% Update the |name| properties of a child-class object to the specified |value|. 
+% Several |name-value| pairs can be specified consecutively. Suitable |name| are 
+% specified in the |propertyNames| method and are case insensitive.
+
+obj.set(name1,value1);
+obj.set(name1,value1,name2,value2,___);
+%% 
+% The |set| method also |reset| the class. After running, the |set| property 
+% updates the |isInitialized| flag to a |false| value.
+% |reset|
+% Reset the object and update the |isInitialized| flag to a |false|.
+
+obj.reset;
+%% 
+% Default |reset| only updates the |isInitialized| flag. Overloaded reset methods 
+% can call the parent default feature following the template
+
+methods (Access=public)
+function reset(obj)
+%reset the object
+    
+    % Run parent reset (updates isInit)
+    reset@QMol_TDDFT(obj);
+
+    % Add all object-specific reset computations here
+end
+end
+% |clear|
+% Clear all class properties (specifically all properties listed in the |propertyNames| 
+% method)
+
+obj.clear;
+%% 
+% Clear a specific set of the class properties. Suitable |name| are specified 
+% in the |propertyNames| method and are case insensitive.
+
+obj.clear(name1,name2,___);
+%% 
+% The |clear| method also |reset| the class. The |clear| method can be used 
+% to delete specific properties before saving an instance of the child class.
+% 
+% The |clear| method only deletes the specified properties without performing 
+% any default-value reinitialization. For that, one should overload the method 
+% following the template
+
+methods (Access=public)
+function clear(obj,varargin)
+%clear clears all or selected member properties
+    
+    % Run parent clear
+    clear@QMol_suite(obj,varargin{:});
+
+    % Add all object-specific clear computations here
+end
+end
+%% Overloading the class
+% |propertyNames|
+% To enable name-value pair constructor, name-value pair |set|, and the |clear| 
+% methods, each child class of |QMol_suite| must overload the |propertyNames| 
+% method following the template
+
+methods (Static=true,Access=?QMol_suite)
+function [ClassName,PropNames] = propertyNames()
+%propertyNames returns the names of member properties that can be set
+%   through name-value assignment
+    
+    ClassName           =   'QMol_child_class';
+    PropNames           =   {'property1','property2'};
+end
+end
+%% 
+% The output |ClassName| is a string matching the name of the class object. 
+% It is used in the constructor, |set|, and the |clear| methods if a |name| property 
+% cannot be identified.
+% 
+% The output |PropNames| is a cell of string containing the list of the member 
+% properties that can be allocated as name-value pairs in the  constructor and 
+% |set|, and  |clear|ed. All of the allocatable properties listed in |PropNames| 
+% must grant |setAccess| right to |QMol_suite| classes
+
+properties (___,SetAccess=?QMol_suite)
+%% 
+% If overloading the class that already defines a set of allocatable and clearable 
+% properties, one can automatically collect these using the template
+
+methods (Static=true,Access=?QMol_suite)
+function [ClassName,PropNames] = propertyNames()
+%propertyNames returns the names of member properties that can be set
+%   through name-value assignment
+    
+    % Parent-class components
+    [~,PropNames]       =   QMol_parent_class.propertyNames;
+
+    ClassName           =   'QMol_child_class';
+    PropNames           =   [PropNames,{'property1','property2'}];
+end
+end
+%% Test suite
+% For consistency with the rest of the QMol-grid package, |QMol_suite| defines 
+% an associated test suite. Run the test suite for the class in normal or <./Test_suite.html 
+% summary mode> respectively with
+
+QMol_test.test('suite');
+QMol_test.test('-summary','suite');
+%% 
+% See <./QMol_test,html |QMol_test|> for details regarding how to create a test 
+% suite for new classes.
+%% Notes
+%% 
+% * |QMol_suite| was intorduced in version 01.00.
+% * Version 01.10 moved the run-time documentation components to <./QMol_doc.html 
+% |QMol_doc|>.
+##### SOURCE END #####
+-->
+</div></body></html>

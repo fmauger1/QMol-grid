@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024a"><title>QMol_DFT_Vks_basis</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S3 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S4 { margin: 10px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 15px; font-weight: 700; text-align: left;  }
+.S5 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S6 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block }
+.S7 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S9 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S10 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span></h1><div  class = 'S1'><span>Kohn-Sham-potential operator object</span></div><h2  class = 'S2'><span>Description</span></h2><div  class = 'S1'><span>Use </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> to store the Kohn-Sham-potential operator for (TD)DFT simulations with a basis-set discretization. </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> is a handle class.</span></div><h2  class = 'S2' id = 'H_4B2702F0' ><span>Class properties</span></h2><h3  class = 'S3' id = 'H_E0304EE8' ><span>Kohn-Sham potential</span></h3><div  class = 'S1'><span>The </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> class defines the following public get-access properties; each can be changed using the </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span> method:</span></div><h4  class = 'S4' id = 'H_1E867BF5' ><span style=' font-family: monospace;'>potential (V)</span></h4><div  class = 'S1'><span>Discretization of the explicit part of the Kohn-Sham potential </span><span style=' font-family: monospace;'>[ vector (default []) ]</span></div><ul  class = 'S5'><li  class = 'S6'><span>For spin restricted DFT model; irrelevant for spin restricted ones</span></li><li  class = 'S6'><span>Properly allocated </span><span style=' font-family: monospace;'>potential</span><span> is a </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vector matching the </span><a href = "./Discretization.html"><span>domain discretization</span></a><span> of the associated (TD)DFT model</span></li></ul><h4  class = 'S4' id = 'H_DEB46406' ><span style=' font-family: monospace;'>potentialUp (Vup)</span></h4><div  class = 'S1'><span>Discretization of the explicit part of the up-spin channel Kohn-Sham potential </span><span style=' font-family: monospace;'>[ vector (default []) ]</span></div><ul  class = 'S5'><li  class = 'S6'><span>For spin polarized DFT model; irrelevant for spin restricted ones</span></li><li  class = 'S6'><span>Properly allocated </span><span style=' font-family: monospace;'>potentialUp</span><span> is a </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vector matching the </span><a href = "./Discretization.html"><span>domain discretization</span></a><span> of the associated (TD)DFT model</span></li></ul><h4  class = 'S4' id = 'H_690E6A35' ><span style=' font-family: monospace;'>potentialDown (Vdw)</span></h4><div  class = 'S1'><span>Discretization of the explicit part of the down-spin channel Kohn-Sham potential </span><span style=' font-family: monospace;'>[ vector (default []) ]</span></div><ul  class = 'S5'><li  class = 'S6'><span>For spin polarized DFT model; irrelevant for spin restricted ones</span></li><li  class = 'S6'><span>Properly allocated </span><span style=' font-family: monospace;'>potentialDown</span><span> is a </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vector matching the </span><a href = "./Discretization.html"><span>domain discretization</span></a><span> of the associated (TD)DFT model</span></li></ul><h4  class = 'S4' id = 'H_9FCFBD9C' ><span style=' font-family: monospace;'>potentialImplicit (Vimp)</span></h4><div  class = 'S1'><span>Implicit components of the Kohn-Sham potential </span><span style=' font-family: monospace;'>[ cell of hangle functions (default {}) ]</span><span> </span></div><ul  class = 'S5'><li  class = 'S6'><span>For both spin restricted and polarized models, holds the implicit components of the Kohn-Sham potential. Implicit potential are defined through their action on orbitals instead of the value-at-grid-point their explicit counterparts.</span></li><li  class = 'S6'><span>Each component of </span><span style=' font-family: monospace;'>potentialImplicit</span><span> contains a handle function describing one implicit-potential component.</span></li><li  class = 'S6'><span>For spin resctricted models, the signature for implicit-potential components is </span><span style=' font-family: monospace;'>Hp = funV(p)</span><span>. </span><span style=' font-family: monospace;'>p</span><span> and </span><span style=' font-family: monospace;'>Hp</span><span> are both </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vectors respectively containing the discretization of the orbital to which the potential should be applied and its result.</span></li><li  class = 'S6'><span>For spin polarized models, the signature for implicit-potential components is </span><span style=' font-family: monospace;'>Hp = funV(p,isUp)</span><span>. </span><span style=' font-family: monospace;'>p</span><span> and </span><span style=' font-family: monospace;'>Hp</span><span> are both </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vectors respectively containing the discretization of the orbital to which the potential should be applied and its result. The second logical input </span><span style=' font-family: monospace;'>isUp</span><span> specifies whether applying the up- (</span><span style=' font-family: monospace;'>true</span><span>) or down-spin (</span><span style=' font-family: monospace;'>false</span><span>) potential operator to the input orbital.</span></li></ul><h4  class = 'S4'><span style=' font-family: monospace;'>isSpinPol</span></h4><div  class = 'S1'><span>Whether the Kohn-Sham potential is spin polarized (</span><span style=' font-family: monospace;'>true</span><span>) or spin restricted (</span><span style=' font-family: monospace;'>false</span><span>). </span><span style=' font-family: monospace;'>isSpinPol</span><span> is used by other classes to determine whether they should use the </span><span style=' font-family: monospace;'>potential</span><span> or </span><span style=' font-family: monospace;'>potentialUp</span><span> and </span><span style=' font-family: monospace;'>potentialDown</span><span> properties, and the proper interface for any </span><span style=' font-family: monospace;'>potentialImplicit</span><span> component, in their calculations.</span></div><h3  class = 'S3'><span>Other properties</span></h3><div  class = 'S1'><span>These properties cannot be edited with the </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span> method.</span></div><h4  class = 'S4' id = 'H_0ED64D82' ><span style=' font-family: monospace;'>isInitialized (isInit)</span></h4><div  class = 'S1'><span>Whether the Kohn-Sham-potential operator object is properly initialized. This is used throughout the QMol-grid package to check that the potential object holds meaningful information and is ready for use. Changing its </span><span style=' font-family: monospace;'>isSpinPol</span><span> may cause simulations to fail or produce erroneous results.</span></div><h4  class = 'S4'><span style=' font-weight: bold; font-family: monospace;'>isBasis</span></h4><div  class = 'S1'><span>Flag indicating that </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> objects are discretization over a basis set </span><span style=' font-family: monospace;'>[ false ]</span></div><ul  class = 'S5'><li  class = 'S6'><span>At run time, </span><span style=' font-family: monospace;'>isBasis</span><span> can be used to discriminate </span><a href = "./QMol_DFT_Vks.html"><span style=' font-family: monospace;'>QMol_DFT_Vks</span></a><span> objects from </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> (which overloads the class)</span></li><li  class = 'S6'><span>For class development purposes, </span><span style=' font-family: monospace;'>isBasis</span><span> is technically a static method. Practically, though, it can virtually almost always be treated as a constant property.</span></li></ul><h2  class = 'S2'><span>Class methods</span></h2><h3  class = 'S3'><span>Creation</span></h3><h4  class = 'S4'><span>constructor</span></h4><div  class = 'S1'><span>Create a Kohn-Sham-potential operator object with empty class properties.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj = QMol_DFT_Vks;</span></span></div></div></div><div  class = 'S8'><span>Create a Kohn-Sham-potential operator object with the </span><span style=' font-family: monospace;'>name</span><span> properties set to the specified </span><span style=' font-family: monospace;'>value</span><span>. Several </span><span style=' font-family: monospace;'>name-value</span><span> pairs can be specified consecutively. Suitable </span><span style=' font-family: monospace;'>name</span><span> is any of the </span><a href = "#H_E0304EE8"><span>Kohn-Sham potential properties</span></a><span> and is case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >obj = QMol_DFT_Vks(name1,value1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >obj = QMol_DFT_Vks(name1,value1,name2,value2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S8'><span>Most often, Kohn-Sham-potential operator objects are created through domain-discretization or DFT objects.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >obj = disc.DFT_allocatePotential;</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >obj = DFT.getPotential;</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>Note: potential property assignation is provided for extended support. Most end users will not need these as </span><span style=' text-decoration: underline;'>editing the potential may cause simulations to produce erroneous results or fail altogether</span><span>.</span></li></ul><h3  class = 'S3'><span>Changing class properties</span></h3><h4  class = 'S4' id = 'H_4405B79D' ><span style=' font-family: monospace;'>set</span></h4><div  class = 'S1'><span>Update the </span><span style=' font-family: monospace;'>name</span><span> properties of a Kohn-Sham potential object to the specified </span><span style=' font-family: monospace;'>value</span><span>. Several </span><span style=' font-family: monospace;'>name-value</span><span> pairs can be specified consecutively. Suitable </span><span style=' font-family: monospace;'>name</span><span> is any of the </span><a href = "#H_E0304EE8"><span>Kohn-Sham potential properties</span></a><span> and is case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >obj.set(name1,value1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >obj.set(name1,value1,name2,value2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S8'><span>This is the common name-value pair assignment method used throughout the QMol-grid package. The </span><span style=' font-family: monospace;'>set</span><span> method also </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the class. After running, the </span><span style=' font-family: monospace;'>set</span><span> property updates the </span><a href = "#H_0ED64D82"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to </span><span style=' font-family: monospace;'>false</span><span>.</span></div><ul  class = 'S5'><li  class = 'S6'><span>Note: potential property assignation is provided for extended support. Most end users will not need these as </span><span style=' text-decoration: underline;'>editing the potential may cause simulations to produce erroneous results or fail altogether</span><span>.</span></li></ul><h4  class = 'S4' id = 'H_BF84FCE7' ><span style=' font-family: monospace;'>reset</span></h4><div  class = 'S1'><span>Reset the object by deleting/re-initializing all run-time properties of the class and updating the </span><a href = "#H_0ED64D82"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to </span><span style=' font-family: monospace;'>false</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.reset;</span></span></div></div></div><div  class = 'S8'><span>This is the common </span><span style=' font-family: monospace;'>reset</span><span> method available to all classes throughout the QMol-grid package.</span></div><h4  class = 'S4' id = 'H_C729A888' ><span style=' font-family: monospace;'>clear</span></h4><div  class = 'S1'><span>Clear all class properties</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.clear;</span></span></div></div></div><div  class = 'S8'><span>Clear a specific set of the class properties. Suitable </span><span style=' font-family: monospace;'>name</span><span> is any of the </span><a href = "#H_E0304EE8"><span>Kohn-Sham potential properties</span></a><span> and is case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.clear(name1,name2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S8'><span>This is the common </span><span style=' font-family: monospace;'>clear</span><span> method available to all classes throughout the QMol-grid package. The </span><span style=' font-family: monospace;'>clear</span><span> method also </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the class. The </span><span style=' font-family: monospace;'>clear</span><span> method can be used to delete specific properties before saving an instance of the </span><span style=' font-family: monospace;'>QMol_DFT_Vks</span><span> class.</span></div><h3  class = 'S3'><span>Initializing the object</span></h3><h4  class = 'S4' id = 'H_4F780A35' ><span style=' font-family: monospace;'>initialize</span></h4><div  class = 'S1'><span>Initialize a Kohn-Sham-potential operator object and sets the </span><a href = "#H_0ED64D82"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to </span><span style=' font-family: monospace;'>true</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.initialize(disc);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>To avoid any mismatch in internal properties, </span><span style=' font-family: monospace;'>initialize</span><span> first </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the object before performing the initialization.</span></li><li  class = 'S6'><span>The object must be initialized with its associated domain-discretization object </span><span style=' font-family: monospace;'>disc</span><span> (unlike for the grid-based discretization </span><a href = "./QMol_DFT_Vks.html"><span style=' font-family: monospace;'>QMol_DFT_Vks</span></a><span> for which it is optional, albeit recommended).</span></li></ul><h3  class = 'S3'><span>Run-time documentation</span></h3><h4  class = 'S4' id = 'H_E3988947' ><span style=' font-family: monospace;'>getMemoryProfile</span></h4><div  class = 'S1'><span>Get an estimate of the memory held by a </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> object with either</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >mem = obj.getMemoryProfile;</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >mem = obj.getMemoryProfile(false);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>The object must be properly </span><a href = "#H_4F780A35"><span style=' font-family: monospace;'>initialize</span></a><span>d with a domain discretization.</span></li><li  class = 'S6'><span>The estimate only includes the discretization of the explicit part of the Kohn-Sham potential on the domain grid and ignores other (small) properties.</span></li><li  class = 'S6'><span>The output </span><span style=' font-family: monospace;'>mem</span><span> is the estimated size in bytes.</span></li></ul><div  class = 'S1'><span>Additionally display the detail of the memory footprint with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >mem = obj.getMemoryProfile(true);</span></span></div></div></div><h3  class = 'S3'><span>Arithmetic with potentials</span></h3><h4  class = 'S4'><span style=' font-family: monospace;'>add</span></h4><div  class = 'S1'><span>For spin restricted DFT models, add an explicit potential component to a </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> object</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.add(V);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>This performs the in-place addition </span><a href = "#H_1E867BF5"><span style=' font-family: monospace;'>potential</span></a><span style=' font-family: monospace;'> = </span><a href = "#H_1E867BF5"><span style=' font-family: monospace;'>potential</span></a><span style=' font-family: monospace;'> + V</span></li><li  class = 'S6'><span>The input </span><span style=' font-family: monospace;'>V</span><span> should be a </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vector matching the </span><a href = "./Discretization.html"><span>domain discretization</span></a><span> of the associated (TD)DFT model</span></li></ul><div  class = 'S1'><span>For spin polarized DFT models, add the same explicit potential components to both the up- and down-spin components of a </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> object</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.add(V);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>This performs the in-place additions </span><a href = "#H_DEB46406"><span style=' font-family: monospace;'>potentialUp</span></a><span style=' font-family: monospace;'> = </span><a href = "#H_DEB46406"><span style=' font-family: monospace;'>potentialUp</span></a><span style=' font-family: monospace;'> + V</span><span> and </span><a href = "#H_690E6A35"><span style=' font-family: monospace;'>potentialDown</span></a><span style=' font-family: monospace;'> = </span><a href = "#H_690E6A35"><span style=' font-family: monospace;'>potentialDown</span></a><span style=' font-family: monospace;'> + V</span></li><li  class = 'S6'><span>The input </span><span style=' font-family: monospace;'>V</span><span> should be a </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vector matching the </span><a href = "./Discretization.html"><span>domain discretization</span></a><span> of the associated (TD)DFT model</span></li></ul><div  class = 'S1'><span>For spin polarized DFT models, add different explicit potential components to the up- and down-spin components of a </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> object</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.add(Vup,Vdown);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>This performs the in-place additions </span><a href = "#H_DEB46406"><span style=' font-family: monospace;'>potentialUp</span></a><span style=' font-family: monospace;'> = </span><a href = "#H_DEB46406"><span style=' font-family: monospace;'>potentialUp</span></a><span style=' font-family: monospace;'> + Vup</span><span> and </span><a href = "#H_690E6A35"><span style=' font-family: monospace;'>potentialDown</span></a><span style=' font-family: monospace;'> = </span><a href = "#H_690E6A35"><span style=' font-family: monospace;'>potentialDown</span></a><span style=' font-family: monospace;'> + Vdown</span></li><li  class = 'S6'><span>The inputs </span><span style=' font-family: monospace;'>Vup</span><span> and </span><span style=' font-family: monospace;'>Vdown</span><span> should each be </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vector matching the </span><a href = "./Discretization.html"><span>domain discretization</span></a><span> of the associated (TD)DFT model</span></li><li  class = 'S6'><span>Replace any of </span><span style=' font-family: monospace;'>Vup</span><span> and </span><span style=' font-family: monospace;'>Vdown</span><span> by scalar </span><span style=' font-family: monospace;'>0</span><span> to add an explicit potential component solely to the other spin channel.</span></li></ul><div  class = 'S1'><span>For both spin restricted and polarized DFT models, add an implicit potential component to a </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> object</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.add(funV);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span style=' font-family: monospace;'>funV</span><span> is a function handle describing the implicit-potential component (which is then added to the </span><a href = "#H_9FCFBD9C"><span style=' font-family: monospace;'>potentialImplicit</span></a><span> list).</span></li><li  class = 'S6'><span>For spin resctricted models, the signature for the input function handle is </span><span style=' font-family: monospace;'>Hp = funV(p)</span><span>. </span><span style=' font-family: monospace;'>p</span><span> and </span><span style=' font-family: monospace;'>Hp</span><span> are both </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vectors respectively containing the discretization of the orbital to which the potential should be applied and its result.</span></li><li  class = 'S6'><span>For spin polarized models, the signature for the input function handle is </span><span style=' font-family: monospace;'>Hp = funV(p,isUp)</span><span>. </span><span style=' font-family: monospace;'>p</span><span> and </span><span style=' font-family: monospace;'>Hp</span><span> are both </span><span style=' font-family: monospace;'>numel(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.xspan)-by-1</span><span> vectors respectively containing the discretization of the orbital to which the potential should be applied and its result. The second logical input </span><span style=' font-family: monospace;'>isUp</span><span> specifies whether applying the up- (</span><span style=' font-family: monospace;'>true</span><span>) or down-spin (</span><span style=' font-family: monospace;'>false</span><span>) potential operator to the input orbital.</span></li></ul><h4  class = 'S4'><span style=' font-family: monospace;'>applyPotential</span></h4><div  class = 'S1'><span>For spin-restricted models, apply the potential operator to a wave function</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >Hp = obj.applyPotential(p);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>This computes the action of the entire -- including both explicit and implicit components -- Kohn-Sham potential operator on the input wave function </span><span style=' font-family: monospace;'>p</span><span>. All implicit components require the associated functional object to have their potential kernels properly set beforehand (with </span><span style=' font-family: monospace;'>setPotentialKernel</span><span> -- see the functional documentation). </span><span style=' font-family: monospace;'>applyPotential</span><span> </span><span style=' text-decoration: underline;'>does not</span><span> perform or check for this initialization.</span></li><li  class = 'S6'><span style=' font-family: monospace;'>p</span><span> and </span><span style=' font-family: monospace;'>Hp</span><span> are both size</span><span style=' font-family: monospace;'>(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.basis,2)-by-1</span><span> vectors respectively containing the discretization of the orbital to which the potential should be applied and its result.</span></li><li  class = 'S6'><span style=' font-family: monospace;'>applyPotential</span><span> requires the Kohn-Sham potential object to have been </span><a href = "#H_4F780A35"><span>initialized</span></a></li></ul><div  class = 'S1'><span>For spin-polarized models, apply the up- and down-spin Kohn-Sham potential operators to a wave function respectively with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >Hp = obj.applyPotential(p,true);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >Hp = obj.applyPotential(p,false);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>This computes the action of the entire -- including both explicit and implicit components -- Kohn-Sham potential operator on the input wave function </span><span style=' font-family: monospace;'>p</span><span>. All implicit components require the associated functional object to have their potential kernels properly set beforehand (with </span><span style=' font-family: monospace;'>setPotentialKernel</span><span> -- see the functional documentation). </span><span style=' font-family: monospace;'>applyPotential</span><span> </span><span style=' text-decoration: underline;'>does not</span><span> perform or check for this initialization.</span></li><li  class = 'S6'><span style=' font-family: monospace;'>p</span><span> and </span><span style=' font-family: monospace;'>Hp</span><span> are both size</span><span style=' font-family: monospace;'>(</span><a href = "./QMol_disc.html"><span style=' font-family: monospace;'>disc</span></a><span style=' font-family: monospace;'>.basis,2)-by-1</span><span> vectors respectively containing the discretization of the orbital to which the potential should be applied and its result.</span></li><li  class = 'S6'><span style=' font-family: monospace;'>applyPotential</span><span> requires the Kohn-Sham potential object to have been </span><a href = "#H_4F780A35"><span>initialized</span></a></li></ul><h2  class = 'S2'><span>Examples</span></h2><div  class = 'S1'><span>Most users will not use Kohn-Sham potential objects directly or will get them indirectly, through </span><a href = "./DFT.html"><span>DFT</span></a><span> and </span><a href = "./TDDFT.html"><span>TDDFT</span></a><span> simulations -- see their respective documentations for examples.</span></div><h2  class = 'S2'><span>Test suite</span></h2><div  class = 'S1'><span>Run the test suite for the class in normal or </span><a href = "./Test_suite.html"><span>summary mode</span></a><span> respectively with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'DFT_Vks_basis'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'-summary'</span><span >,</span><span style="color: #a709f5;">'DFT_Vks_basis'</span><span >);</span></span></div></div></div><h2  class = 'S2'><span>For developers</span></h2><div  class = 'S1'><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> implements a streamlined version of the </span><a href = "#H_C729A888"><span style=' font-family: monospace;'>clear</span></a><span> all method, since it might be called frequently in </span><a href = "./DFT.html"><span>DFT</span></a><span> and </span><a href = "./TDDFT.html"><span>TDDFT</span></a><span> computations. If adding properties to the class, the streamlined </span><a href = "#H_C729A888"><span style=' font-family: monospace;'>clear</span></a><span> all must be updated accirdingly.</span></div><div  class = 'S1'><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> overloads </span><a href = "./QMol_DFT_Vks.html"><span style=' font-family: monospace;'>QMol_DFT_Vks</span></a><span> (and thus also </span><a href = "./QMol_suite.html"><span style=' font-family: monospace;'>QMol_suite</span></a><span style=' font-family: monospace;'>)</span><span>.</span></div><div  class = 'S1'><span>For internal use </span><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> defines additional transient properties. These </span><span style=' text-decoration: underline;'>cannot</span><span> be edited with the </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span> method but can be directly edited by classes in the QMol-grig package.</span></div><h4  class = 'S4'><span style=' font-family: monospace;'>mV</span></h4><div  class = 'S1'><span>Matrix representation of the </span><a href = "#H_1E867BF5"><span>explicit part of the Kohn-Sham potential</span></a><span> </span><span style=' font-family: monospace;'>[ square matrix (default []) ]</span></div><ul  class = 'S5'><li  class = 'S6'><span style=' font-family: monospace;'>mV</span><span> is computed at the </span><a href = "#H_4F780A35"><span>initialization</span></a><span> of the object</span></li><li  class = 'S6'><span>It is defined as </span><span style=' font-family: monospace;'>mV(k,l) = sum(conj(disc.v(:,k)).*obj.</span><a href = "#H_1E867BF5"><span style=' font-family: monospace;'>V</span></a><span style=' font-family: monospace;'>.*disc.v(:,l))*disc.dx</span></li></ul><h4  class = 'S4'><span style=' font-family: monospace;'>mVup</span></h4><div  class = 'S1'><span>Matrix representation of the </span><a href = "#H_DEB46406"><span>explicit part of the spin-up channel Kohn-Sham potential</span></a><span> </span><span style=' font-family: monospace;'>[ square matrix (default []) ]</span></div><ul  class = 'S5'><li  class = 'S6'><span style=' font-family: monospace;'>mVup</span><span> is computed at the </span><a href = "#H_4F780A35"><span>initialization</span></a><span> of the object</span></li><li  class = 'S6'><span>It is defined as </span><span style=' font-family: monospace;'>mVup(k,l) = sum(conj(disc.v(:,k)).*obj.</span><a href = "#H_DEB46406"><span style=' font-family: monospace;'>Vup</span></a><span style=' font-family: monospace;'>.*disc.v(:,l))*disc.dx</span></li></ul><h4  class = 'S4'><span style=' font-family: monospace;'>mVdw</span></h4><div  class = 'S1'><span>Matrix representation of the </span><a href = "#H_690E6A35"><span>explicit part of the spin-down channel Kohn-Sham potential</span></a><span> </span><span style=' font-family: monospace;'>[ square matrix (default []) ]</span></div><ul  class = 'S5'><li  class = 'S6'><span style=' font-family: monospace;'>mVdw</span><span> is computed at the </span><a href = "#H_4F780A35"><span>initialization</span></a><span> of the object</span></li><li  class = 'S6'><span>It is defined as </span><span style=' font-family: monospace;'>mVdw(k,l) = sum(conj(disc.v(:,k)).*obj.</span><a href = "#H_690E6A35"><span style=' font-family: monospace;'>Vdw</span></a><span style=' font-family: monospace;'>.*disc.v(:,l))*disc.dx</span></li></ul><h2  class = 'S2'><span>Notes</span></h2><ul  class = 'S5'><li  class = 'S6'><span style=' font-family: monospace;'>QMol_DFT_Vks_basis</span><span> was introduced in version 01.00</span></li><li  class = 'S6'><span>Version 01.10 integrated initialization with a </span><a href = "./Discretization.html"><span>domain discretization</span></a><span> object</span></li><li  class = 'S6'><a href = "#H_E3988947"><span style=' font-family: monospace;'>getMemoryProfile</span></a><span> was introduced in version 01.10</span></li></ul>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% |QMol_DFT_Vks_basis|
+% Kohn-Sham-potential operator object
+%% Description
+% Use |QMol_DFT_Vks_basis| to store the Kohn-Sham-potential operator for (TD)DFT 
+% simulations with a basis-set discretization. |QMol_DFT_Vks_basis| is a handle 
+% class.
+%% Class properties
+% Kohn-Sham potential
+% The |QMol_DFT_Vks_basis| class defines the following public get-access properties; 
+% each can be changed using the |set| method:
+% |potential (V)|
+% Discretization of the explicit part of the Kohn-Sham potential |[ vector (default 
+% []) ]|
+%% 
+% * For spin restricted DFT model; irrelevant for spin restricted ones
+% * Properly allocated |potential| is a |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vector matching the <./Discretization.html domain discretization> of the associated 
+% (TD)DFT model
+% |potentialUp (Vup)|
+% Discretization of the explicit part of the up-spin channel Kohn-Sham potential 
+% |[ vector (default []) ]|
+%% 
+% * For spin polarized DFT model; irrelevant for spin restricted ones
+% * Properly allocated |potentialUp| is a |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vector matching the <./Discretization.html domain discretization> of the associated 
+% (TD)DFT model
+% |potentialDown (Vdw)|
+% Discretization of the explicit part of the down-spin channel Kohn-Sham potential 
+% |[ vector (default []) ]|
+%% 
+% * For spin polarized DFT model; irrelevant for spin restricted ones
+% * Properly allocated |potentialDown| is a |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vector matching the <./Discretization.html domain discretization> of the associated 
+% (TD)DFT model
+% |potentialImplicit (Vimp)|
+% Implicit components of the Kohn-Sham potential |[ cell of hangle functions 
+% (default {}) ]| 
+%% 
+% * For both spin restricted and polarized models, holds the implicit components 
+% of the Kohn-Sham potential. Implicit potential are defined through their action 
+% on orbitals instead of the value-at-grid-point their explicit counterparts.
+% * Each component of |potentialImplicit| contains a handle function describing 
+% one implicit-potential component.
+% * For spin resctricted models, the signature for implicit-potential components 
+% is |Hp = funV(p)|. |p| and |Hp| are both |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vectors respectively containing the discretization of the orbital to which the 
+% potential should be applied and its result.
+% * For spin polarized models, the signature for implicit-potential components 
+% is |Hp = funV(p,isUp)|. |p| and |Hp| are both |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vectors respectively containing the discretization of the orbital to which the 
+% potential should be applied and its result. The second logical input |isUp| 
+% specifies whether applying the up- (|true|) or down-spin (|false|) potential 
+% operator to the input orbital.
+% |isSpinPol|
+% Whether the Kohn-Sham potential is spin polarized (|true|) or spin restricted 
+% (|false|). |isSpinPol| is used by other classes to determine whether they should 
+% use the |potential| or |potentialUp| and |potentialDown| properties, and the 
+% proper interface for any |potentialImplicit| component, in their calculations.
+% Other properties
+% These properties cannot be edited with the |set| method.
+% |isInitialized (isInit)|
+% Whether the Kohn-Sham-potential operator object is properly initialized. This 
+% is used throughout the QMol-grid package to check that the potential object 
+% holds meaningful information and is ready for use. Changing its |isSpinPol| 
+% may cause simulations to fail or produce erroneous results.
+% |*isBasis*|
+% Flag indicating that |QMol_DFT_Vks_basis| objects are discretization over 
+% a basis set |[ false ]|
+%% 
+% * At run time, |isBasis| can be used to discriminate <./QMol_DFT_Vks.html 
+% |QMol_DFT_Vks|> objects from |QMol_DFT_Vks_basis| (which overloads the class)
+% * For class development purposes, |isBasis| is technically a static method. 
+% Practically, though, it can virtually almost always be treated as a constant 
+% property.
+%% Class methods
+% Creation
+% constructor
+% Create a Kohn-Sham-potential operator object with empty class properties.
+
+obj = QMol_DFT_Vks;
+%% 
+% Create a Kohn-Sham-potential operator object with the |name| properties set 
+% to the specified |value|. Several |name-value| pairs can be specified consecutively. 
+% Suitable |name| is any of the Kohn-Sham potential properties and is case insensitive.
+
+obj = QMol_DFT_Vks(name1,value1);
+obj = QMol_DFT_Vks(name1,value1,name2,value2,___);
+%% 
+% Most often, Kohn-Sham-potential operator objects are created through domain-discretization 
+% or DFT objects.
+
+obj = disc.DFT_allocatePotential;
+obj = DFT.getPotential;
+%% 
+% * Note: potential property assignation is provided for extended support. Most 
+% end users will not need these as editing the potential may cause simulations 
+% to produce erroneous results or fail altogether.
+% Changing class properties
+% |set|
+% Update the |name| properties of a Kohn-Sham potential object to the specified 
+% |value|. Several |name-value| pairs can be specified consecutively. Suitable 
+% |name| is any of the Kohn-Sham potential properties and is case insensitive.
+
+obj.set(name1,value1);
+obj.set(name1,value1,name2,value2,___);
+%% 
+% This is the common name-value pair assignment method used throughout the QMol-grid 
+% package. The |set| method also |reset| the class. After running, the |set| property 
+% updates the |isInitialized| flag to |false|.
+%% 
+% * Note: potential property assignation is provided for extended support. Most 
+% end users will not need these as editing the potential may cause simulations 
+% to produce erroneous results or fail altogether.
+% |reset|
+% Reset the object by deleting/re-initializing all run-time properties of the 
+% class and updating the |isInitialized| flag to |false|.
+
+obj.reset;
+%% 
+% This is the common |reset| method available to all classes throughout the 
+% QMol-grid package.
+% |clear|
+% Clear all class properties
+
+obj.clear;
+%% 
+% Clear a specific set of the class properties. Suitable |name| is any of the 
+% Kohn-Sham potential properties and is case insensitive.
+
+obj.clear(name1,name2,___);
+%% 
+% This is the common |clear| method available to all classes throughout the 
+% QMol-grid package. The |clear| method also |reset| the class. The |clear| method 
+% can be used to delete specific properties before saving an instance of the |QMol_DFT_Vks| 
+% class.
+% Initializing the object
+% |initialize|
+% Initialize a Kohn-Sham-potential operator object and sets the |isInitialized| 
+% flag to |true|.
+
+obj.initialize(disc);
+%% 
+% * To avoid any mismatch in internal properties, |initialize| first |reset| 
+% the object before performing the initialization.
+% * The object must be initialized with its associated domain-discretization 
+% object |disc| (unlike for the grid-based discretization <./QMol_DFT_Vks.html 
+% |QMol_DFT_Vks|> for which it is optional, albeit recommended).
+% Run-time documentation
+% |getMemoryProfile|
+% Get an estimate of the memory held by a |QMol_DFT_Vks_basis| object with either
+
+mem = obj.getMemoryProfile;
+mem = obj.getMemoryProfile(false);
+%% 
+% * The object must be properly |initialize|d with a domain discretization.
+% * The estimate only includes the discretization of the explicit part of the 
+% Kohn-Sham potential on the domain grid and ignores other (small) properties.
+% * The output |mem| is the estimated size in bytes.
+%% 
+% Additionally display the detail of the memory footprint with
+
+mem = obj.getMemoryProfile(true);
+% Arithmetic with potentials
+% |add|
+% For spin restricted DFT models, add an explicit potential component to a |QMol_DFT_Vks_basis| 
+% object
+
+obj.add(V);
+%% 
+% * This performs the in-place addition |potential| |=| |potential| |+ V|
+% * The input |V| should be a |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vector matching the <./Discretization.html domain discretization> of the associated 
+% (TD)DFT model
+%% 
+% For spin polarized DFT models, add the same explicit potential components 
+% to both the up- and down-spin components of a |QMol_DFT_Vks_basis| object
+
+obj.add(V);
+%% 
+% * This performs the in-place additions |potentialUp| |=| |potentialUp| |+ 
+% V| and |potentialDown| |=| |potentialDown| |+ V|
+% * The input |V| should be a |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vector matching the <./Discretization.html domain discretization> of the associated 
+% (TD)DFT model
+%% 
+% For spin polarized DFT models, add different explicit potential components 
+% to the up- and down-spin components of a |QMol_DFT_Vks_basis| object
+
+obj.add(Vup,Vdown);
+%% 
+% * This performs the in-place additions |potentialUp| |=| |potentialUp| |+ 
+% Vup| and |potentialDown| |=| |potentialDown| |+ Vdown|
+% * The inputs |Vup| and |Vdown| should each be |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vector matching the <./Discretization.html domain discretization> of the associated 
+% (TD)DFT model
+% * Replace any of |Vup| and |Vdown| by scalar |0| to add an explicit potential 
+% component solely to the other spin channel.
+%% 
+% For both spin restricted and polarized DFT models, add an implicit potential 
+% component to a |QMol_DFT_Vks_basis| object
+
+obj.add(funV);
+%% 
+% * |funV| is a function handle describing the implicit-potential component 
+% (which is then added to the |potentialImplicit| list).
+% * For spin resctricted models, the signature for the input function handle 
+% is |Hp = funV(p)|. |p| and |Hp| are both |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vectors respectively containing the discretization of the orbital to which the 
+% potential should be applied and its result.
+% * For spin polarized models, the signature for the input function handle is 
+% |Hp = funV(p,isUp)|. |p| and |Hp| are both |numel(|<./QMol_disc.html |disc|>|.xspan)-by-1| 
+% vectors respectively containing the discretization of the orbital to which the 
+% potential should be applied and its result. The second logical input |isUp| 
+% specifies whether applying the up- (|true|) or down-spin (|false|) potential 
+% operator to the input orbital.
+% |applyPotential|
+% For spin-restricted models, apply the potential operator to a wave function
+
+Hp = obj.applyPotential(p);
+%% 
+% * This computes the action of the entire REPLACE_WITH_DASH_DASH including both explicit and implicit 
+% components REPLACE_WITH_DASH_DASH Kohn-Sham potential operator on the input wave function |p|. All 
+% implicit components require the associated functional object to have their potential 
+% kernels properly set beforehand (with |setPotentialKernel| REPLACE_WITH_DASH_DASH see the functional 
+% documentation). |applyPotential| does not perform or check for this initialization.
+% * |p| and |Hp| are both size|(|<./QMol_disc.html |disc|>|.basis,2)-by-1| vectors 
+% respectively containing the discretization of the orbital to which the potential 
+% should be applied and its result.
+% * |applyPotential| requires the Kohn-Sham potential object to have been initialized
+%% 
+% For spin-polarized models, apply the up- and down-spin Kohn-Sham potential 
+% operators to a wave function respectively with
+
+Hp = obj.applyPotential(p,true);
+Hp = obj.applyPotential(p,false);
+%% 
+% * This computes the action of the entire REPLACE_WITH_DASH_DASH including both explicit and implicit 
+% components REPLACE_WITH_DASH_DASH Kohn-Sham potential operator on the input wave function |p|. All 
+% implicit components require the associated functional object to have their potential 
+% kernels properly set beforehand (with |setPotentialKernel| REPLACE_WITH_DASH_DASH see the functional 
+% documentation). |applyPotential| does not perform or check for this initialization.
+% * |p| and |Hp| are both size|(|<./QMol_disc.html |disc|>|.basis,2)-by-1| vectors 
+% respectively containing the discretization of the orbital to which the potential 
+% should be applied and its result.
+% * |applyPotential| requires the Kohn-Sham potential object to have been initialized
+%% Examples
+% Most users will not use Kohn-Sham potential objects directly or will get them 
+% indirectly, through <./DFT.html DFT> and <./TDDFT.html TDDFT> simulations REPLACE_WITH_DASH_DASH 
+% see their respective documentations for examples.
+%% Test suite
+% Run the test suite for the class in normal or <./Test_suite.html summary mode> 
+% respectively with
+
+QMol_test.test('DFT_Vks_basis');
+QMol_test.test('-summary','DFT_Vks_basis');
+%% For developers
+% |QMol_DFT_Vks_basis| implements a streamlined version of the |clear| all method, 
+% since it might be called frequently in <./DFT.html DFT> and <./TDDFT.html TDDFT> 
+% computations. If adding properties to the class, the streamlined |clear| all 
+% must be updated accirdingly.
+% 
+% |QMol_DFT_Vks_basis| overloads <./QMol_DFT_Vks.html |QMol_DFT_Vks|> (and thus 
+% also <./QMol_suite.html |QMol_suite|>|)|.
+% 
+% For internal use |QMol_DFT_Vks_basis| defines additional transient properties. 
+% These cannot be edited with the |set| method but can be directly edited by classes 
+% in the QMol-grig package.
+% |mV|
+% Matrix representation of the explicit part of the Kohn-Sham potential |[ square 
+% matrix (default []) ]|
+%% 
+% * |mV| is computed at the initialization of the object
+% * It is defined as |mV(k,l) = sum(conj(disc.v(:,k)).*obj.||V||.*disc.v(:,l))*disc.dx|
+% |mVup|
+% Matrix representation of the explicit part of the spin-up channel Kohn-Sham 
+% potential |[ square matrix (default []) ]|
+%% 
+% * |mVup| is computed at the initialization of the object
+% * It is defined as |mVup(k,l) = sum(conj(disc.v(:,k)).*obj.||Vup||.*disc.v(:,l))*disc.dx|
+% |mVdw|
+% Matrix representation of the explicit part of the spin-down channel Kohn-Sham 
+% potential |[ square matrix (default []) ]|
+%% 
+% * |mVdw| is computed at the initialization of the object
+% * It is defined as |mVdw(k,l) = sum(conj(disc.v(:,k)).*obj.||Vdw||.*disc.v(:,l))*disc.dx|
+%% Notes
+%% 
+% * |QMol_DFT_Vks_basis| was introduced in version 01.00
+% * Version 01.10 integrated initialization with a <./Discretization.html domain 
+% discretization> object
+% * |getMemoryProfile| was introduced in version 01.10
+##### SOURCE END #####
+-->
+</div></body></html>

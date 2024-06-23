@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024a"><title>QMol_extField_dipole</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S3 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S4 { margin: 10px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 15px; font-weight: 700; text-align: left;  }
+.S5 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S6 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block }
+.S7 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S9 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S10 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S11 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0px none rgb(33, 33, 33); border-radius: 0px; padding: 0px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S12 { border-left: 0px none rgb(33, 33, 33); border-right: 0px none rgb(33, 33, 33); border-top: 0px none rgb(33, 33, 33); border-bottom: 0px none rgb(33, 33, 33); border-radius: 0px; padding: 0px; line-height: 15.6px; min-height: 16px; white-space: pre; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 12px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span style=' font-family: monospace;'>QMol_extField_dipole</span></h1><div  class = 'S1'><span>External driving field in the dipole approximation</span></div><h2  class = 'S2'><span>Description</span></h2><div  class = 'S1'><span>Use </span><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> to store the components (electric field, derivative of the electric field, and potential vector) of an external driving field in the dipole approximation. </span><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> is a handle class.</span></div><div  class = 'S1'><span style=' text-decoration: underline;'>Note:</span><span> </span><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> is mainly a container class and it does not check the consistency between the stored electric field, derivative of the electric field, and potential vector. Supplying external-field component that do not match each other will lead to erroneous calculations, </span><span style=' font-style: italic;'>e.g.</span><span>, if used in </span><a href = "./TDSE.html"><span>TDSE</span></a><span> or </span><a href = "./TDDFT.html"><span>TDDFT</span></a><span> propagation. For reminder, in the dipole approximation, the electric field and potential vector are related with </span><span texencoding="E(t)=-\partial_t A(t)" style="vertical-align:-6px"><img src="data:image/png;base64,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" width="92.5" height="19.5" /></span><span>.</span></div><h2  class = 'S2' id = 'H_4B2702F0' ><span>Class properties</span></h2><h3  class = 'S3' id = 'H_E0304EE8' ><span>External field</span></h3><div  class = 'S1'><span>The </span><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> class defines the following public get-access properties; each can be changed using the </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span> method:</span></div><h4  class = 'S4' id = 'H_1E867BF5' ><span style=' font-family: monospace;'>electricField (E)</span></h4><div  class = 'S1'><span>Electric-field component </span><span style=' font-family: monospace;'>[ [] (default) | function handle | griddedInterpolant ]</span></div><ul  class = 'S5'><li  class = 'S6'><span>Function handle should have the following signature </span><span style=' font-family: monospace;'>@(t) fun(t)</span><span> and return the value(s) of the electric field at the querried time(s)</span></li><li  class = 'S6'><span style=' font-family: monospace;'>griddedInterpolant</span><span> enables arbitrary, non-analytic, electric field definition</span></li></ul><h4  class = 'S4' id = 'H_DEB46406' ><span style=' font-family: monospace;'>electricFieldDerivative (DE)</span></h4><div  class = 'S1'><span>Derivative of the electric-field component </span><span style=' font-family: monospace;'>[ [] (default) | function handle | griddedInterpolant ]</span></div><ul  class = 'S5'><li  class = 'S6'><span>Function handle should have the following signature </span><span style=' font-family: monospace;'>@(t) fun(t)</span><span> and return the value(s) of the derivative of the electric field at the querried time(s)</span></li><li  class = 'S6'><span style=' font-family: monospace;'>griddedInterpolant</span><span> enables arbitrary, non-analytic, electric field derivative definition</span></li></ul><h4  class = 'S4' id = 'H_DEB46406' ><span style=' font-family: monospace;'>potentialVector (A)</span></h4><div  class = 'S1'><span>potential-vectorcomponent </span><span style=' font-family: monospace;'>[ [] (default) | function handle | griddedInterpolant ]</span></div><ul  class = 'S5'><li  class = 'S6'><span>Function handle should have the following signature </span><span style=' font-family: monospace;'>@(t) fun(t)</span><span> and return the value(s) of the potential vector at the querried time(s)</span></li><li  class = 'S6'><span style=' font-family: monospace;'>griddedInterpolant</span><span> enables arbitrary, non-analytic, potential vector definition</span></li></ul><h3  class = 'S3'><span>Other properties</span></h3><div  class = 'S1'><span>These properties cannot be edited with the </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span> method.</span></div><h4  class = 'S4' id = 'H_0ED64D82' ><span style=' font-family: monospace;'>isInitialized (isInit)</span></h4><div  class = 'S1'><span>Whether the external-field container object is properly initialized. This is used throughout the QMol-grid package to check that the object holds meaningful information and is ready for use. Changing its </span><span style=' font-family: monospace;'>isSpinPol</span><span> may cause simulations to fail or produce erroneous results.</span></div><h2  class = 'S2'><span>Class methods</span></h2><h3  class = 'S3'><span>Creation</span></h3><h4  class = 'S4'><span>constructor</span></h4><div  class = 'S1'><span>Create an external-field container object with empty class properties.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj = QMol_extField_dipole;</span></span></div></div></div><div  class = 'S8'><span>Create an external-field container object with the </span><span style=' font-family: monospace;'>name</span><span> properties set to the specified </span><span style=' font-family: monospace;'>value</span><span>. Several </span><span style=' font-family: monospace;'>name-value</span><span> pairs can be specified consecutively. Suitable </span><span style=' font-family: monospace;'>name</span><span> is any of the </span><a href = "#H_E0304EE8"><span>external-field properties</span></a><span> and is case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >obj = QMol_extField_dipole(name1,value1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >obj = QMol_extField_dipole(name1,value1,name2,value2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><h3  class = 'S3'><span>Changing class properties</span></h3><h4  class = 'S4' id = 'H_4405B79D' ><span style=' font-family: monospace;'>set</span></h4><div  class = 'S1'><span>Update the </span><span style=' font-family: monospace;'>name</span><span> properties of an external-field container object to the specified </span><span style=' font-family: monospace;'>value</span><span>. Several </span><span style=' font-family: monospace;'>name-value</span><span> pairs can be specified consecutively. Suitable </span><span style=' font-family: monospace;'>name</span><span> is any of the </span><a href = "#H_E0304EE8"><span>external-field properties</span></a><span> and is case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >obj.set(name1,value1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >obj.set(name1,value1,name2,value2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S8'><span>This is the common name-value pair assignment method used throughout the QMol-grid package. The </span><span style=' font-family: monospace;'>set</span><span> method also </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the class. After running, the </span><span style=' font-family: monospace;'>set</span><span> property updates the </span><a href = "#H_0ED64D82"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to </span><span style=' font-family: monospace;'>false</span><span>.</span></div><h4  class = 'S4' id = 'H_BF84FCE7' ><span style=' font-family: monospace;'>reset</span></h4><div  class = 'S1'><span>Reset the object by deleting/re-initializing all run-time properties of the class and updating the </span><a href = "#H_0ED64D82"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to </span><span style=' font-family: monospace;'>false</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.reset;</span></span></div></div></div><div  class = 'S8'><span>This is the common </span><span style=' font-family: monospace;'>reset</span><span> method available to all classes throughout the QMol-grid package.</span></div><h4  class = 'S4' id = 'H_C729A888' ><span style=' font-family: monospace;'>clear</span></h4><div  class = 'S1'><span>Clear all class properties</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.clear;</span></span></div></div></div><div  class = 'S8'><span>Clear a specific set of the class properties. Suitable </span><span style=' font-family: monospace;'>name</span><span> is any of the </span><a href = "#H_E0304EE8"><span>external-field properties</span></a><span> and is case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.clear(name1,name2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S8'><span>This is the common </span><span style=' font-family: monospace;'>clear</span><span> method available to all classes throughout the QMol-grid package. The </span><span style=' font-family: monospace;'>clear</span><span> method also </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the class. The </span><span style=' font-family: monospace;'>clear</span><span> method can be used to delete specific properties before saving an instance of the </span><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> class.</span></div><h3  class = 'S3'><span>Initializing the object</span></h3><h4  class = 'S4' id = 'H_4F780A35' ><span style=' font-family: monospace;'>initialize</span></h4><div  class = 'S1'><span>Initialize an external-field container object and sets the </span><a href = "#H_0ED64D82"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to </span><span style=' font-family: monospace;'>true</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.initialize;</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>To avoid any mismatch in internal properties, </span><span style=' font-family: monospace;'>initialize</span><span> first </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the object before performing the initialization.</span></li><li  class = 'S6'><span>For compatibility with time propagators, the object can also be initialized using the signature </span><span style=' font-family: monospace;'>obj.initialize(disc)</span><span>, where </span><span style=' font-family: monospace;'>disc</span><span> is a domain-discretization handle</span></li></ul><h3  class = 'S3'><span>Run-time documentation</span></h3><h4  class = 'S4' id = 'H_E3988947' ><span style=' font-family: monospace;'>getMemoryProfile</span></h4><div  class = 'S1'><span>Get an estimate of the memory held by a </span><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> object with either</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >mem = obj.getMemoryProfile;</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >mem = obj.getMemoryProfile(false);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>The estimate only includes </span><a href = "#H_E0304EE8"><span>external-field components</span></a><span> described with a griddedInterpolant and ignores other (small) properties.</span></li><li  class = 'S6'><span>The output </span><span style=' font-family: monospace;'>mem</span><span> is the estimated size in bytes.</span></li></ul><div  class = 'S1'><span>Additionally display the detail of the memory footprint with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >mem = obj.getMemoryProfile(true);</span></span></div></div></div><h4  class = 'S4' id = 'H_4D7CFC3D' ><span style=' font-family: monospace;'>showDocumentation</span></h4><div  class = 'S1'><span>Display the run-time documentation for the specific configuration of a </span><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> object</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >ref = obj.showDocumentation;</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>The output </span><span style=' font-family: monospace;'>ref</span><span> is a cell vector containing the list of references to be included in the bibliography.</span></li></ul><h2  class = 'S2'><span>Examples</span></h2><div  class = 'S1'><span>Create an external-field container with a -vector and electric-field components</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span style="color: #008013;">% Potential vector as a function</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >A  = @(t) cos(0.05*t).*exp(-t.^2/2/1e5);</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">% Interpolated electric field</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >t  = -1500:1500;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >dt = 1e-5;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >E  = -(A(t+.5*dt)-A(t-.5*dt))/dt;</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span >E  = griddedInterpolant(t,E,</span><span style="color: #a709f5;">'pchip'</span><span >,</span><span style="color: #a709f5;">'nearest'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S11'>&nbsp;</div></div><div class="inlineWrapper"><div  class = 'S11'><span style="white-space: pre"><span style="color: #008013;">% Create external-field container</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >EF = QMol_extField_dipole(</span><span style="color: #a709f5;">'electricField'</span><span >,E,</span><span style="color: #a709f5;">'potentialVector'</span><span >,A);</span></span></div></div></div><div  class = 'S8'><span>Display the run-time documentation</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >EF.showDocumentation;</span></span></div></div></div><div class = 'preformatted-plain' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S12'><span style="white-space: pre"><span >  * External driving field                            dipole approximation</span></span></div><div  class = 'S12'><span style="white-space: pre"><span >    Potential vector:          function</span></span></div><div  class = 'S12'><span style="white-space: pre"><span >    Electric field:            interpolation</span></span></div><div  class = 'S12'><span style="white-space: pre"><span >    Electric field derivative: N/A</span></span></div><div  class = 'S12'><span style="white-space: pre"><span >    V-01.21.000 (06/17/2024)                                     F. Mauger</span></span></div></div><div  class = 'S1'><span>Display the estimated memory footprint</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >EF.getMemoryProfile(true);</span></span></div></div></div><div class = 'preformatted-plain' style = 'margin: 10px 3px 10px 55px; padding: 10px 10px 10px 5px; '><div  class = 'S12'><span style="white-space: pre"><span >  * External driving field (dipole approx.)                      </span></span></div><div  class = 'S12'><span style="white-space: pre"><span >    &gt; Electric field                                               46.9 KB</span></span></div></div><h2  class = 'S2'><span>Test suite</span></h2><div  class = 'S1'><span>Run the test suite for the class in normal or </span><a href = "./Test_suite.html"><span>summary mode</span></a><span> respectively with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'extField_dipole'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'-summary'</span><span >,</span><span style="color: #a709f5;">'extField_dipole'</span><span >);</span></span></div></div></div><h2  class = 'S2'><span>For developers</span></h2><h3  class = 'S3'><span>Other hidden class properties</span></h3><div  class = 'S1'><span>For compatibility with time propagators, </span><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> retains a copy of the domain-discretization handle provided when the object is </span><a href = "#H_4F780A35"><span style=' font-family: monospace;'>initialize</span></a><span>d. It cannot be edited with the </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span> method, nor by any function outisde of the object (except for </span><a href = "./QMol_TDDFT.html"><span style=' font-family: monospace;'>QMol_TDDFT</span></a><span> and </span><a href = "./QMol_TDSEhtml"><span style=' font-family: monospace;'>QMol_TDSE</span></a><span> classes). Un-initialized </span><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> objects, </span><span style=' font-style: italic;'>i.e.</span><span>, </span><a href = "#H_11930D30"><span style=' font-family: monospace;'>isInitialized</span></a><span style=' font-family: monospace;'> == false</span><span>, have hempty </span><span style=' font-family: monospace;'>disc.</span></div><h2  class = 'S2'><span>Notes</span></h2><div  class = 'S1'><span>The results displayed in this documentation page were generated using version 01.21 of the QMol-grid package.</span></div><ul  class = 'S5'><li  class = 'S6'><span style=' font-family: monospace;'>QMol_extField_dipole</span><span> was introduced in version 01.10</span></li></ul>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% |QMol_extField_dipole|
+% External driving field in the dipole approximation
+%% Description
+% Use |QMol_extField_dipole| to store the components (electric field, derivative 
+% of the electric field, and potential vector) of an external driving field in 
+% the dipole approximation. |QMol_extField_dipole| is a handle class.
+% 
+% Note: |QMol_extField_dipole| is mainly a container class and it does not check 
+% the consistency between the stored electric field, derivative of the electric 
+% field, and potential vector. Supplying external-field component that do not 
+% match each other will lead to erroneous calculations, _e.g._, if used in <./TDSE.html 
+% TDSE> or <./TDDFT.html TDDFT> propagation. For reminder, in the dipole approximation, 
+% the electric field and potential vector are related with $E(t)=-\partial_t A(t)$.
+%% Class properties
+% External field
+% The |QMol_extField_dipole| class defines the following public get-access properties; 
+% each can be changed using the |set| method:
+% |electricField (E)|
+% Electric-field component |[ [] (default) | function handle | griddedInterpolant 
+% ]|
+%% 
+% * Function handle should have the following signature |@(t) fun(t)| and return 
+% the value(s) of the electric field at the querried time(s)
+% * |griddedInterpolant| enables arbitrary, non-analytic, electric field definition
+% |electricFieldDerivative (DE)|
+% Derivative of the electric-field component |[ [] (default) | function handle 
+% | griddedInterpolant ]|
+%% 
+% * Function handle should have the following signature |@(t) fun(t)| and return 
+% the value(s) of the derivative of the electric field at the querried time(s)
+% * |griddedInterpolant| enables arbitrary, non-analytic, electric field derivative 
+% definition
+% |potentialVector (A)|
+% potential-vectorcomponent |[ [] (default) | function handle | griddedInterpolant 
+% ]|
+%% 
+% * Function handle should have the following signature |@(t) fun(t)| and return 
+% the value(s) of the potential vector at the querried time(s)
+% * |griddedInterpolant| enables arbitrary, non-analytic, potential vector definition
+% Other properties
+% These properties cannot be edited with the |set| method.
+% |isInitialized (isInit)|
+% Whether the external-field container object is properly initialized. This 
+% is used throughout the QMol-grid package to check that the object holds meaningful 
+% information and is ready for use. Changing its |isSpinPol| may cause simulations 
+% to fail or produce erroneous results.
+%% Class methods
+% Creation
+% constructor
+% Create an external-field container object with empty class properties.
+
+obj = QMol_extField_dipole;
+%% 
+% Create an external-field container object with the |name| properties set to 
+% the specified |value|. Several |name-value| pairs can be specified consecutively. 
+% Suitable |name| is any of the external-field properties and is case insensitive.
+
+obj = QMol_extField_dipole(name1,value1);
+obj = QMol_extField_dipole(name1,value1,name2,value2,___);
+% Changing class properties
+% |set|
+% Update the |name| properties of an external-field container object to the 
+% specified |value|. Several |name-value| pairs can be specified consecutively. 
+% Suitable |name| is any of the external-field properties and is case insensitive.
+
+obj.set(name1,value1);
+obj.set(name1,value1,name2,value2,___);
+%% 
+% This is the common name-value pair assignment method used throughout the QMol-grid 
+% package. The |set| method also |reset| the class. After running, the |set| property 
+% updates the |isInitialized| flag to |false|.
+% |reset|
+% Reset the object by deleting/re-initializing all run-time properties of the 
+% class and updating the |isInitialized| flag to |false|.
+
+obj.reset;
+%% 
+% This is the common |reset| method available to all classes throughout the 
+% QMol-grid package.
+% |clear|
+% Clear all class properties
+
+obj.clear;
+%% 
+% Clear a specific set of the class properties. Suitable |name| is any of the 
+% external-field properties and is case insensitive.
+
+obj.clear(name1,name2,___);
+%% 
+% This is the common |clear| method available to all classes throughout the 
+% QMol-grid package. The |clear| method also |reset| the class. The |clear| method 
+% can be used to delete specific properties before saving an instance of the |QMol_extField_dipole| 
+% class.
+% Initializing the object
+% |initialize|
+% Initialize an external-field container object and sets the |isInitialized| 
+% flag to |true|.
+
+obj.initialize;
+%% 
+% * To avoid any mismatch in internal properties, |initialize| first |reset| 
+% the object before performing the initialization.
+% * For compatibility with time propagators, the object can also be initialized 
+% using the signature |obj.initialize(disc)|, where |disc| is a domain-discretization 
+% handle
+% Run-time documentation
+% |getMemoryProfile|
+% Get an estimate of the memory held by a |QMol_extField_dipole| object with 
+% either
+
+mem = obj.getMemoryProfile;
+mem = obj.getMemoryProfile(false);
+%% 
+% * The estimate only includes external-field components described with a griddedInterpolant 
+% and ignores other (small) properties.
+% * The output |mem| is the estimated size in bytes.
+%% 
+% Additionally display the detail of the memory footprint with
+
+mem = obj.getMemoryProfile(true);
+% |showDocumentation|
+% Display the run-time documentation for the specific configuration of a |QMol_extField_dipole| 
+% object
+
+ref = obj.showDocumentation;
+%% 
+% * The output |ref| is a cell vector containing the list of references to be 
+% included in the bibliography.
+%% Examples
+% Create an external-field container with a -vector and electric-field components
+
+% Potential vector as a function
+A  = @(t) cos(0.05*t).*exp(-t.^2/2/1e5);
+
+% Interpolated electric field
+t  = -1500:1500;
+dt = 1e-5;
+E  = -(A(t+.5*dt)-A(t-.5*dt))/dt;
+E  = griddedInterpolant(t,E,'pchip','nearest');
+
+% Create external-field container
+EF = QMol_extField_dipole('electricField',E,'potentialVector',A);
+%% 
+% Display the run-time documentation
+
+EF.showDocumentation;
+%%
+% 
+%    * External driving field                            dipole approximation
+%      Potential vector:          function
+%      Electric field:            interpolation
+%      Electric field derivative: N/A
+%      V-01.21.000 (06/17/2024)                                     F. Mauger
+%
+%% 
+% Display the estimated memory footprint
+
+EF.getMemoryProfile(true);
+%%
+% 
+%    * External driving field (dipole approx.)                      
+%      > Electric field                                               46.9 KB
+%
+%% Test suite
+% Run the test suite for the class in normal or <./Test_suite.html summary mode> 
+% respectively with
+
+QMol_test.test('extField_dipole');
+QMol_test.test('-summary','extField_dipole');
+%% For developers
+% Other hidden class properties
+% For compatibility with time propagators, |QMol_extField_dipole| retains a 
+% copy of the domain-discretization handle provided when the object is |initialize|d. 
+% It cannot be edited with the |set| method, nor by any function outisde of the 
+% object (except for <./QMol_TDDFT.html |QMol_TDDFT|> and <./QMol_TDSEhtml |QMol_TDSE|> 
+% classes). Un-initialized |QMol_extField_dipole| objects, _i.e._, |isInitialized| 
+% |== false|, have hempty |disc.|
+%% Notes
+% The results displayed in this documentation page were generated using version 
+% 01.21 of the QMol-grid package.
+%% 
+% * |QMol_extField_dipole| was introduced in version 01.10
+##### SOURCE END #####
+-->
+</div></body></html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024a"><title>QMol_info</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S3 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block }
+.S4 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S6 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S7 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span style=' font-family: monospace;'>QMol_info</span></h1><div  class = 'S1'><span>Run-time documentation for the implementation-specific components of the QMol-grid package.</span></div><h2  class = 'S2'><span>Description</span></h2><div  class = 'S1'><span style=' font-family: monospace;'>QMol_info</span><span> overloads </span><a href = "./QMol_doc.html"><span style=' font-family: monospace;'>QMol_doc</span></a><span> and defines an abstract class handling the implementation-specific components of the run-time documentation capabilities of the QMol-grid package. It also defines citable references for the implementation-specific components of the package.</span></div><h2  class = 'S2'><span>Class properties</span></h2><div  class = 'S1'><span style=' font-family: monospace;'>QMol_info</span><span> does not define any member properties</span></div><h2  class = 'S2'><span>Class methods</span></h2><div  class = 'S1'><span>All the </span><span style=' font-family: monospace;'>QMol_info</span><span> methods are intended for run-time documentation purposes and not directly accessible to end users.</span></div><h3  class = 'S3'><span>Creation</span></h3><div  class = 'S1'><span style=' font-family: monospace;'>QMol_info</span><span> is an abstract class and cannot be instantiated.</span></div><h2  class = 'S2'><span>Test suite</span></h2><div  class = 'S1'><span>For consistency with the rest of the QMol-grid package, </span><span style=' font-family: monospace;'>QMol_info</span><span> defines an associated test suite. Run the test suite for the class in normal or </span><a href = "./Test_suite.html"><span>summary mode</span></a><span> respectively with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'info'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S5'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'-summary'</span><span >,</span><span style="color: #a709f5;">'info'</span><span >);</span></span></div></div></div><h2  class = 'S2'><span>For developers</span></h2><div  class = 'S1'><span>The list of implementation-specific components is not automatically generated and one need to add the relevant entry in the </span><span style=' font-family: monospace;'>showComponents</span><span> method.</span></div><h2  class = 'S2'><span>Notes</span></h2><ul  class = 'S6'><li  class = 'S7'><span style=' font-family: monospace;'>QMol_info</span><span> was intorduced in version 01.00.</span></li></ul>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% |QMol_info|
+% Run-time documentation for the implementation-specific components of the QMol-grid 
+% package.
+%% Description
+% |QMol_info| overloads <./QMol_doc.html |QMol_doc|> and defines an abstract 
+% class handling the implementation-specific components of the run-time documentation 
+% capabilities of the QMol-grid package. It also defines citable references for 
+% the implementation-specific components of the package.
+%% Class properties
+% |QMol_info| does not define any member properties
+%% Class methods
+% All the |QMol_info| methods are intended for run-time documentation purposes 
+% and not directly accessible to end users.
+% Creation
+% |QMol_info| is an abstract class and cannot be instantiated.
+%% Test suite
+% For consistency with the rest of the QMol-grid package, |QMol_info| defines 
+% an associated test suite. Run the test suite for the class in normal or <./Test_suite.html 
+% summary mode> respectively with
+
+QMol_test.test('info');
+QMol_test.test('-summary','info');
+%% For developers
+% The list of implementation-specific components is not automatically generated 
+% and one need to add the relevant entry in the |showComponents| method.
+%% Notes
+%% 
+% * |QMol_info| was intorduced in version 01.00.
+##### SOURCE END #####
+-->
+</div></body></html>

@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding="utf-8"?>
+<toc version="2.0">
+
+    <tocitem target="main.html">                                        QMol-grid
+<!-- Ground-state DFT -->
+        <tocitem target="DFT.html">Density-functional theory (DFT)
+            <tocitem target="QMol_DFT_density.html">                        QMol_DFT_density</tocitem>
+            <tocitem target="QMol_DFT_eigs.html">                           QMol_DFT_eigs</tocitem>
+            <tocitem target="QMol_DFT_eig_basis.html">                      QMol_DFT_eig_basis</tocitem>
+            <tocitem target="QMol_DFT_orbital.html">                        QMol_DFT_orbital</tocitem>
+            <tocitem target="QMol_DFT_orbital_basis.html">                  QMol_DFT_orbital_basis</tocitem>
+            <tocitem target="QMol_DFT_profiler.html">                       QMol_DFT_profiler</tocitem>
+            <tocitem target="QMol_DFT_SCF_Anderson.html">                   QMol_DFT_SCF_Anderson</tocitem>
+            <tocitem target="QMol_DFT_spinPol.html">                        QMol_DFT_spinPol</tocitem>
+            <tocitem target="QMol_DFT_spinRes.html">                        QMol_DFT_spinRes</tocitem>
+            <tocitem target="QMol_DFT_Vc_LDA_soft.html">                    QMol_DFT_Vc_LDA_soft</tocitem>
+            <tocitem target="QMol_DFT_Vext.html">                           QMol_DFT_Vext</tocitem>
+            <tocitem target="QMol_DFT_Vh_conv.html">                        QMol_DFT_Vh_conv</tocitem>
+            <tocitem target="QMol_DFT_Vh_fft.html">                         QMol_DFT_Vh_fft</tocitem>
+            <tocitem target="QMol_DFT_Vks.html">                            QMol_DFT_Vks</tocitem>
+            <tocitem target="QMol_DFT_Vks_basis.html">                      QMol_DFT_Vks_basis</tocitem>
+            <tocitem target="QMol_DFT_Vks_grad.html">                       QMol_DFT_Vks_grad</tocitem>
+            <tocitem target="QMol_DFT_Vx_LDA_exp.html">                     QMol_DFT_Vx_LDA_exp</tocitem>
+            <tocitem target="QMol_DFT_Vx_LDA_soft.html">                    QMol_DFT_Vx_LDA_soft</tocitem>
+            <tocitem target="QMol_DFT_Vx_XX_conv.html">                     QMol_DFT_Vx_XX_conv</tocitem>
+            <tocitem target="QMol_DFT_Vx_XX_fft.html">                      QMol_DFT_Vx_XX_fft</tocitem>
+        </tocitem>
+<!-- HF -->
+        <tocitem target="HF.html">                                      Hartree-Fock theory (HF)
+        </tocitem>
+<!-- SE -->
+        <tocitem target="SE.html">                                      Schrodinger equation (SE)
+            <tocitem target="QMol_SE.html">                                 QMol_SE</tocitem>
+            <tocitem target="QMol_SE_eigs.html">                            QMol_SE_eigs</tocitem>
+            <tocitem target="QMol_SE_eig_basis.html">                       QMol_SE_eig_basis</tocitem>
+            <tocitem target="QMol_SE_profiler.html">                        QMol_SE_profiler</tocitem>
+            <tocitem target="QMol_SE_V.html">                               QMol_SE_V</tocitem>
+            <tocitem target="QMol_SE_wfcn.html">                            QMol_SE_wfcn</tocitem>
+            <tocitem target="QMol_SE_wfcn_basis.html">                      QMol_SE_wfcn_basis</tocitem>
+        </tocitem>
+<!-- TDDFT (propagation) -->
+        <tocitem target="TDDFT.html">                                   Time-dependent density-functional theory (TDDFT)
+            <tocitem target="QMol_TDDFT_abs_CAP.html">                      QMol_TDDFT_abs_CAP</tocitem>
+            <tocitem target="QMol_TDDFT_abs_mask.html">                     QMol_TDDFT_abs_mask</tocitem>
+            <tocitem target="QMol_TDDFT_SSO_2S.html">                       QMol_TDDFT_SSO_2S</tocitem>
+            <tocitem target="QMol_TDDFT_SSO_4BM.html">                      QMol_TDDFT_SSO_4BM</tocitem>
+            <tocitem target="QMol_TDDFT_SSO_4FR.html">                      QMol_TDDFT_SSO_4FR</tocitem>
+            <tocitem target="QMol_TDDFT_SSO_6BM.html">                      QMol_TDDFT_SSO_6BM</tocitem>
+        </tocitem>
+<!-- TDHF -->
+<!--        <tocitem target="TDHF.html">                                    Time-dependent Hartree-Fock theory (TDHF)
+        </tocitem> -->
+<!-- TDSE -->
+        <tocitem target="TDSE.html">                                    Time-dependent Schrodinger equation (TDSE)
+            <tocitem target="QMol_TDSE_abs_CAP.html">                       QMol_TDSE_abs_CAP</tocitem>
+            <tocitem target="QMol_TDSE_abs_mask.html">                      QMol_TDSE_abs_mask</tocitem>
+            <tocitem target="QMol_TDSE_SSO_2S.html">                        QMol_TDSE_SSO_2S</tocitem>
+            <tocitem target="QMol_TDSE_SSO_4BM.html">                       QMol_TDSE_SSO_4BM</tocitem>
+            <tocitem target="QMol_TDSE_SSO_4FR.html">                       QMol_TDSE_SSO_4FR</tocitem>
+            <tocitem target="QMol_TDSE_SSO_6BM.html">                       QMol_TDSE_SSO_6BM</tocitem>
+        </tocitem>
+<!-- Discretization -->
+        <tocitem target="Discretization.html">                          Discretization
+            <tocitem target="QMol_disc.html">                               QMol_disc</tocitem>
+            <tocitem target="QMol_disc_basis.html">                         QMol_disc_basis</tocitem>
+        </tocitem>
+<!-- Pseudopotential -->
+        <tocitem target="Pseudopotential.html">                         Pseudopotential
+            <tocitem target="QMol_Va_Gaussian.html">                        QMol_Va_Gaussian</tocitem>
+            <tocitem target="QMol_Va_softCoulomb.html">                     QMol_Va_softCoulomb</tocitem>
+        </tocitem>
+<!-- External field -->
+        <tocitem target="External_field.html">                          External field
+            <tocitem target="QMol_extField_dipole.html">                    QMol_extField_dipole</tocitem>
+        </tocitem>
+<!-- External components -->
+        <tocitem target="External_components.html">                     External components
+            <tocitem target="convertLaser.html">                            convertLaser</tocitem>
+            <tocitem target="convertUnit.html">                             convertUnit</tocitem>
+            <tocitem target="fourierTool.html">                             fourierTool</tocitem>
+        </tocitem>
+<!-- Tutorials -->
+        <tocitem target="Tutorials.html">                               Tutorials
+            <tocitem target="Tutorial__GS__T01_GS_SE.html">                 Tutorial 1: Schrodinger Equation ground state</tocitem>
+            <tocitem target="Tutorial__GS__T02_GS_SE.html">                 Tutorial 2: Schrodinger Equation input and output</tocitem>
+            <tocitem target="Tutorial__GS__T03_GS_TDSE.html">               Tutorial 3: Time-dependent Schrödinger equation</tocitem>
+            <tocitem target="Tutorial__GS__T04_GS_TDSE.html">               Tutorial 4: Time-dependent Schrödinger equation input and output</tocitem>
+            <tocitem target="Tutorial__GS__T05_GS_DFT.html">                Tutorial 5: Density-functional theory ground state</tocitem>
+            <tocitem target="Tutorial__GS__T07_GS_TDDFT.html">              Tutorial 6: Time-dependent density-functional theory</tocitem>
+            <tocitem target="Tutorial__GS__T08_GS_TDDFT.html">              Tutorial 7: Time-dependent density-functional theory input and output</tocitem>
+        </tocitem>
+<!-- Documentation -->
+        <tocitem target="Documentation.html">                           Documentation
+        </tocitem>
+<!-- Test suite -->
+        <tocitem target="Test_suite.html">                              Test suite
+        </tocitem>
+<!-- For developers section -->
+        <tocitem target="for_developers.html">                          For developers
+            <tocitem target="QMol_DFT.html">                                QMol_DFT</tocitem>
+            <tocitem target="QMol_doc.html">                                QMol_doc</tocitem>
+            <tocitem target="QMol_info.html">                               QMol_info</tocitem>
+            <tocitem target="QMol_SEq.html">                                QMol_SEq</tocitem>
+            <tocitem target="QMol_suite.html">                              QMol_suite</tocitem>
+            <tocitem target="QMol_TDDFT.html">                              QMol_TDDFT</tocitem>
+            <tocitem target="QMol_TDDFT_sympSplitOp.html">                  QMol_TDDFT_sympSplitOp</tocitem>
+            <tocitem target="QMol_TDSE.html">                               QMol_TDSE</tocitem>
+            <tocitem target="QMol_TDSE_sympSplitOp.html">                   QMol_TDSE_sympSplitOp</tocitem>
+            <tocitem target="QMol_test.html">                               QMol_test</tocitem>
+            <tocitem target="QMol_testInfo.html">                           QMol_testInfo</tocitem>
+            <tocitem target="QMol_Vmol.html">                               QMol_Vmol</tocitem>
+        </tocitem>
+<!-- Footer -->
+    </tocitem>
+
+</toc>

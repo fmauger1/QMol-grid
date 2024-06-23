@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024a"><title>Documentation</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block }
+.S3 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S5 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.S6 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Documentation</span></h1><div  class = 'S1'><span>The QMol-grid package provides facilities for run-time documentation, including handling of bibliographic references that can be displayed at the end of the documentation output.</span></div><div  class = 'S1'><span style=' font-weight: bold;'>By default and unless otherwise specified, all parameters in the QMol-grid package are specified in atomic units.</span></div><h2  class = 'S2'><span>Run-time documentation</span></h2><div  class = 'S1'><span>Most classes in the QMol-grid package provide run-time documentation features providing information about their function as well as the specific values of their parameters (class properties). The specific prototype for acceessing each class' run-time documentation can vary and we refer to their specific documentation for details. Most often, objects need to have been initialized before the run-time documentation can be querried.</span></div><h2  class = 'S2'><span>Component list</span></h2><div  class = 'S1'><span>DIsplay the list of components in the QMol-grid package</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >QMol_doc.showComponents;</span></span></div></div></div><h2  class = 'S2'><span>References</span></h2><div  class = 'S1'><span>The documentation part of the QMol-grid package enables dynamic compilation of the list of cited references when running the code. These references are defined in the </span><a href = "./QMol_doc.html"><span style=' font-family: monospace;'>QMol_doc</span></a><span> (for kernel-level components) and </span><a href = "./QMol_info.html"><span style=' font-family: monospace;'>QMol_info</span></a><span> (for implementation components) classes. The two combined, the current list of citable references are</span></div><ul  class = 'S4'><li  class = 'S5'><span>[Anderson 1965] D.G. Anderson, "Iterative procedures for nonlinear integral equations," Journal of the ACM 12, 547 (1965).</span></li><li  class = 'S5'><span>[Baker 2015] T.E. Baker, E.M. Stoudenmire, L.O. Wagner, K. Burke, and S.R. White, "One-dimensional mimicking of electronic structure: The case for exponentials," Physical Review B 91, 235141 (2015).</span></li><li  class = 'S5'><span>[Blanes 2002] S. Blanes and P.C. Moan, "Practical symplectic partitioned Runge-Kutta and Runge-Kutta-Nystrom methods," Journal of Computational and Applied Mathematics 142, 313 (2002).</span></li><li  class = 'S5'><span>[Casa 2006] F. Casas and A. Iserles, "Explicit Magnus expansions for nonlinear equations," Journal of Physics A: Mathematical and General 39, 5445 (2006).</span></li><li  class = 'S5'><span>[Forest 1990] E. Forest and R.D. Ruth, "Fourth-order symplectic integration," Physica D: Nonlinear Phenomena 43, 105 (1990).</span></li><li  class = 'S5'><span>[Helbig 2011] N. Helbig, J.I. Fuks, M. Casula, M.J. Verstraete, M.A.L. Marques, I.V. Tokatly, and A. Rubio, "Density functional theory beyond the linear regime: Validating an adiabatic local density approximation," Physical Review A 83, 032503 (2011).</span></li><li  class = 'S5'><span>[Javanainen 1988] J. Javanainen, J.H. Eberly, and Q. Su, "Numerical simulations of multiphoton ionization and above-threshold electron spectra," Physical Review A 38, 3430 (1988).</span></li><li  class = 'S5'><span>[Johnson 1988] D. D. Johnson, "Modified Broyden''s method for accelerating convergence in self-consistent calculations," Physical Review B 38, 12807 (1988).</span></li><li  class = 'S5'><span>[Kohn 1965] W. Kohn and L.J. Sham, "Self-Consistent Equations Including Exchange and Correlation Effects," Physical Review 140, A1133 (1965).</span></li><li  class = 'S5'><span>[Legrand 2002] C. Legrand, E. Suraud, and P.-G. Reinhard, "Comparison of self-interaction-corrections for metal clusters," Journal of Physics B: Atomic, Molecular and Optical Physics 35, 1115 (2002).</span></li><li  class = 'S5'><span>[Mauger 2024] F. Mauger, C. Chandre, M.B. Gaarde, K. Lopata, and K.J. Schafer, "Hamiltonian formulation and symplectic split-operator schemes for time-dependent density-functional-theory equations of electron dynamics in molecules," Communications in Nonlinear Science and Numerical Simulation 129, 107685 (2024).</span></li><li  class = 'S5'><span>[Mauger XXXX] F. Mauger, et al., "QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems," arXiv:xxx (XXXX).</span></li><li  class = 'S5'><span>[REF] Missing reference.</span></li></ul><div  class = 'S1'><span>References in the </span><a href = "./QMol_doc.html"><span style=' font-family: monospace;'>QMol_doc</span></a><span> and </span><a href = "./QMol_info.html"><span style=' font-family: monospace;'>QMol_info</span></a><span> classes are handled in a similar fashion. Future versions of the QMol-grid package might move some of the reference from </span><a href = "./QMol_info.html"><span style=' font-family: monospace;'>QMol_info</span></a><span> to </span><a href = "./QMol_doc.html"><span style=' font-family: monospace;'>QMol_doc</span></a><span> without warning.</span></div><h2  class = 'S2'><span>Contributors</span></h2><h3  class = 'S6'><span>Code development</span></h3><ul  class = 'S4'><li  class = 'S5'><span>Francois Mauger</span></li></ul><h3  class = 'S6'><span>Algorithms and release</span></h3><ul  class = 'S4'><li  class = 'S5'><span>Cristel Chandre</span></li><li  class = 'S5'><span>Francois Mauger</span></li></ul><h3  class = 'S6'><span>Tutorials</span></h3><ul  class = 'S4'><li  class = 'S5'><span>William DeNooyer</span></li><li  class = 'S5'><span>Francois Mauger</span></li></ul><h2  class = 'S2'><span>For developers</span></h2><div  class = 'S1'><span>The QMol-grid package does not provide automatic listing of its components. These must be specified in</span></div><ul  class = 'S4'><li  class = 'S5'><a href = "./QMol_doc.html"><span style=' font-family: monospace;'>QMol_doc</span></a><span> (</span><span style=' font-family: monospace;'>showComponents</span><span> method) for kernel components</span></li><li  class = 'S5'><a href = "./QMol_info.html"><span style=' font-family: monospace;'>QMol_info</span></a><span> (</span><span style=' font-family: monospace;'>showComponents</span><span> method) for implementation-specific components</span></li><li  class = 'S5'><a href = "./QMol_testInfo.html"><span style=' font-family: monospace;'>QMol_testInfo</span></a><span> (</span><span style=' font-family: monospace;'>testList</span><span> method) for test-suite components</span></li></ul>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Documentation
+% The QMol-grid package provides facilities for run-time documentation, including 
+% handling of bibliographic references that can be displayed at the end of the 
+% documentation output.
+% 
+% *By default and unless otherwise specified, all parameters in the QMol-grid 
+% package are specified in atomic units.*
+%% Run-time documentation
+% Most classes in the QMol-grid package provide run-time documentation features 
+% providing information about their function as well as the specific values of 
+% their parameters (class properties). The specific prototype for acceessing each 
+% class' run-time documentation can vary and we refer to their specific documentation 
+% for details. Most often, objects need to have been initialized before the run-time 
+% documentation can be querried.
+%% Component list
+% DIsplay the list of components in the QMol-grid package
+
+QMol_doc.showComponents;
+%% References
+% The documentation part of the QMol-grid package enables dynamic compilation 
+% of the list of cited references when running the code. These references are 
+% defined in the <./QMol_doc.html |QMol_doc|> (for kernel-level components) and 
+% <./QMol_info.html |QMol_info|> (for implementation components) classes. The 
+% two combined, the current list of citable references are
+%% 
+% * [Anderson 1965] D.G. Anderson, "Iterative procedures for nonlinear integral 
+% equations," Journal of the ACM 12, 547 (1965).
+% * [Baker 2015] T.E. Baker, E.M. Stoudenmire, L.O. Wagner, K. Burke, and S.R. 
+% White, "One-dimensional mimicking of electronic structure: The case for exponentials," 
+% Physical Review B 91, 235141 (2015).
+% * [Blanes 2002] S. Blanes and P.C. Moan, "Practical symplectic partitioned 
+% Runge-Kutta and Runge-Kutta-Nystrom methods," Journal of Computational and Applied 
+% Mathematics 142, 313 (2002).
+% * [Casa 2006] F. Casas and A. Iserles, "Explicit Magnus expansions for nonlinear 
+% equations," Journal of Physics A: Mathematical and General 39, 5445 (2006).
+% * [Forest 1990] E. Forest and R.D. Ruth, "Fourth-order symplectic integration," 
+% Physica D: Nonlinear Phenomena 43, 105 (1990).
+% * [Helbig 2011] N. Helbig, J.I. Fuks, M. Casula, M.J. Verstraete, M.A.L. Marques, 
+% I.V. Tokatly, and A. Rubio, "Density functional theory beyond the linear regime: 
+% Validating an adiabatic local density approximation," Physical Review A 83, 
+% 032503 (2011).
+% * [Javanainen 1988] J. Javanainen, J.H. Eberly, and Q. Su, "Numerical simulations 
+% of multiphoton ionization and above-threshold electron spectra," Physical Review 
+% A 38, 3430 (1988).
+% * [Johnson 1988] D. D. Johnson, "Modified Broyden''s method for accelerating 
+% convergence in self-consistent calculations," Physical Review B 38, 12807 (1988).
+% * [Kohn 1965] W. Kohn and L.J. Sham, "Self-Consistent Equations Including 
+% Exchange and Correlation Effects," Physical Review 140, A1133 (1965).
+% * [Legrand 2002] C. Legrand, E. Suraud, and P.-G. Reinhard, "Comparison of 
+% self-interaction-corrections for metal clusters," Journal of Physics B: Atomic, 
+% Molecular and Optical Physics 35, 1115 (2002).
+% * [Mauger 2024] F. Mauger, C. Chandre, M.B. Gaarde, K. Lopata, and K.J. Schafer, 
+% "Hamiltonian formulation and symplectic split-operator schemes for time-dependent 
+% density-functional-theory equations of electron dynamics in molecules," Communications 
+% in Nonlinear Science and Numerical Simulation 129, 107685 (2024).
+% * [Mauger XXXX] F. Mauger, et al., "QMol-grid: A MATLAB package for quantum-mechanical 
+% simulations in atomic and molecular systems," arXiv:xxx (XXXX).
+% * [REF] Missing reference.
+%% 
+% References in the <./QMol_doc.html |QMol_doc|> and <./QMol_info.html |QMol_info|> 
+% classes are handled in a similar fashion. Future versions of the QMol-grid package 
+% might move some of the reference from <./QMol_info.html |QMol_info|> to <./QMol_doc.html 
+% |QMol_doc|> without warning.
+%% Contributors
+% Code development
+%% 
+% * Francois Mauger
+% Algorithms and release
+%% 
+% * Cristel Chandre
+% * Francois Mauger
+% Tutorials
+%% 
+% * William DeNooyer
+% * Francois Mauger
+%% For developers
+% The QMol-grid package does not provide automatic listing of its components. 
+% These must be specified in
+%% 
+% * <./QMol_doc.html |QMol_doc|> (|showComponents| method) for kernel components
+% * <./QMol_info.html |QMol_info|> (|showComponents| method) for implementation-specific 
+% components
+% * <./QMol_testInfo.html |QMol_testInfo|> (|testList| method) for test-suite 
+% components
+##### SOURCE END #####
+-->
+</div></body></html>

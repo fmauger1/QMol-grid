@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2024a"><title>Test suite</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 20px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S3 { margin: 10px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 15px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block }
+.S4 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S6 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0.555556px solid rgb(217, 217, 217); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S7 { border-left: 0.555556px solid rgb(217, 217, 217); border-right: 0.555556px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0.555556px solid rgb(217, 217, 217); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span>Test suite</span></h1><div  class = 'S1'><span>The QMol-grid package provides a suite of tests that performs low-level checks on the various properties that are defined throughout its components. The test suite can be used to check basic functions after installing the package or modifying its components.</span></div><h2  class = 'S2'><span>Run the test suite</span></h2><h4  class = 'S3'><span>Run the entire suite of tests</span></h4><div  class = 'S1'><span>Run all available unit tests using</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >QMol_test.test;</span></span></div></div></div><h4  class = 'S3'><span>Run selected tests</span></h4><div  class = 'S1'><span>Run unit tests on selected components using</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'test1'</span><span >,</span><span style="color: #a709f5;">'test2'</span><span >,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S5'><span>The input </span><span style=' font-family: monospace;'>test</span><span> names correspond to the QMol-grid classes to be tested, omitting the initial '</span><span style=' font-family: monospace;'>QMol_</span><span>' part of the name, i.e., </span><span style=' font-family: monospace;'>'test1'</span><span> runs the unit tests for the </span><span style=' font-family: monospace;'>QMol_test1</span><span> component. Names of tests are case insensitive.</span></div><h4  class = 'S3'><span>Run tests in summary mode</span></h4><div  class = 'S1'><span>Run the same units test as above but with only a summary of the results being desplayed</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S6'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'-summary'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: #a709f5;">'-summary'</span><span >,</span><span style="color: #a709f5;">'test1'</span><span >,</span><span style="color: #a709f5;">'test2'</span><span >,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><h2  class = 'S2'><span>For developers</span></h2><div  class = 'S1'><span>For good practice, every component component (class) or method added to the QMol-grid package should implement its associated unit tests -- see </span><a href = "./QMol_test.html"><span style=' font-family: monospace;'>QMol_test</span></a><span> for guidelines with defining unit tests.</span></div>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% Test suite
+% The QMol-grid package provides a suite of tests that performs low-level checks 
+% on the various properties that are defined throughout its components. The test 
+% suite can be used to check basic functions after installing the package or modifying 
+% its components.
+%% Run the test suite
+% Run the entire suite of tests
+% Run all available unit tests using
+
+QMol_test.test;
+% Run selected tests
+% Run unit tests on selected components using
+
+QMol_test.test('test1','test2',___);
+%% 
+% The input |test| names correspond to the QMol-grid classes to be tested, omitting 
+% the initial '|QMol_|' part of the name, i.e., |'test1'| runs the unit tests 
+% for the |QMol_test1| component. Names of tests are case insensitive.
+% Run tests in summary mode
+% Run the same units test as above but with only a summary of the results being 
+% desplayed
+
+QMol_test.test('-summary');
+QMol_test.test('-summary','test1','test2',___);
+%% For developers
+% For good practice, every component component (class) or method added to the 
+% QMol-grid package should implement its associated unit tests REPLACE_WITH_DASH_DASH see <./QMol_test.html 
+% |QMol_test|> for guidelines with defining unit tests.
+##### SOURCE END #####
+-->
+</div></body></html>
