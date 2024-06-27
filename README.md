@@ -194,13 +194,13 @@ producing
 [&uarr;](#table-of-contents)
 ___
 ## Reference
-- F. Mauger and C. Chandre, *QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems*, [arXiv:24](https://arxiv.org/abs/24)
+- F. Mauger and C. Chandre, *QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems*, [arXiv:2406.17938](https://arxiv.org/abs/2406.17938)
 ```bibtex
 @unpublished{mauger2024,
   title = {QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems},
   author = {Mauger, Fran\c{c}ois and Chandre, Cristel},
   year = {2024},
-  URL = {https://arxiv.org/abs/24}
+  URL = {https://arxiv.org/abs/2406.17938}
 }
 ```
 For more information: <fmauger@lsu.edu>
