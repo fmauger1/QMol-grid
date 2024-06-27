@@ -98,7 +98,7 @@ function showHeader
 
     % QMol header
     fprintf('########################### QMol-grid package ############################\n');
-    fprintf('Quantum simulation methods for atomic and molecular systems [Mauger XXXX].\n\n')
+    fprintf('Quantum simulation methods for atomic and molecular systems [Mauger 2024b]\n\n')
 
     fprintf('  * Kernel (release)\n');QMol_doc.showKernelHeader; QMol_info.showHeader; fprintf('\n');
 
@@ -178,8 +178,8 @@ function showBibliography(ref)
 %showBibliography displays the list of cited references (ref)
 
     % Add reference to package
-    if isempty(ref),    ref     =   { 'Mauger XXXX'};
-    else,               ref     =   [{'Mauger XXXX'}, ref];                 end
+    if isempty(ref),    ref     =   { 'Mauger 2024b'};
+    else,               ref     =   [{'Mauger 2024b'}, ref];                end
 
     % Print reference list
         % Section header
@@ -257,10 +257,10 @@ function mauger2024
              '    electron dynamics in molecules," Communications in Nonlinear Science \n' ...
              '    and Numerical Simulation 129, 107685 (2024).\n']);
 end
-function maugerxxxx
-    fprintf(['  [Mauger XXXX] F. Mauger and C. Chandre, "QMol-grid: A MATLAB package\n' ...
+function mauger2024b
+    fprintf(['  [Mauger 2024b] F. Mauger and C. Chandre, "QMol-grid: A MATLAB package\n' ...
              '    for quantum-mechanical simulations in atomic and molecular systems," \n' ...
-             '    arXiv:xxx (XXXX).\n']);
+             '    arXiv:2406.17938 (2024).\n']);
 end                                                                                    %\n (last possible position for line break)
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
