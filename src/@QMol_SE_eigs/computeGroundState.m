@@ -16,7 +16,11 @@ function computeGroundState(obj,SE)
         SE.initialize(0);
     end
     
-    if obj.dispGS,  obj.showDocumentation;  fprintf('\n');  end
+    if obj.dispGS                                                           % doc, ref, and funding info
+        ref     =   obj.showDocumentation;  fprintf('\n');
+        QMol_doc.showBibliography(ref);
+        QMol_doc.showFunding;
+    end
 
     % Compute eigen states ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     obj.computeEigenstates;
