@@ -1,0 +1,16 @@
+List of changes since v1.21.000 release, in chronological order
+(note: only changes to the code, not the documentation, are listed)
+
+
+%%%%% v1.21.001 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In QMol_SE_eigs
+    01.21.001   07/01/2024  F. Mauger
+        Add (missing) reference and funcing information to ground-state
+        run time documentation
+
+In QMol_SE_eig_basis
+    01.21.001   07/01/2024  F. Mauger
+        Add (missing) reference and funcing information to ground-state
+        run time documentation
+
+Update documentation pages accordingly

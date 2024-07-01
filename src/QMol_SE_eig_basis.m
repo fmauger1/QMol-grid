@@ -5,11 +5,14 @@ classdef QMol_SE_eig_basis < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.21.001   07/01/2024  F. Mauger
+%       Add (missing) reference and funcing information to ground-state
+%       run time documentation
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.21.001','07/01/2024','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_SE_eig_basis})
@@ -118,7 +121,11 @@ function computeGroundState(obj,SE)
         SE.initialize(0);
     end
     
-    if obj.disp,    obj.showDocumentation;      fprintf('\n');      end
+    if obj.disp                                                             % doc, ref, and funding info
+        ref     =   obj.showDocumentation;  fprintf('\n');
+        QMol_doc.showBibliography(ref);
+        QMol_doc.showFunding;
+    end
 
     % Compute eigen states ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     obj.computeEigenstates;
