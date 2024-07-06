@@ -1,5 +1,11 @@
 List of changes since v1.21.000 release, in reverse chronological order
 
+%%%%% v1.21.001 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In QMol_TDSE_sympSplitOp
+    01.21.001   07/06/2024  F. Mauger
+        Fix wave-function projection basis given as a matrix
+
+Miscellaneous edits in the documentation
 
 %%%%% v1.21.001 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In QMol_SE_eigs
