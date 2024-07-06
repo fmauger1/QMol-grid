@@ -4,11 +4,13 @@ classdef QMol_TDSE_sympSplitOp < QMol_TDSE
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.21.001   07/06/2024  F. Mauger
+%       Fix wave-function projection basis given as a matrix
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.21.001','07/06/2024','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_TDSE})

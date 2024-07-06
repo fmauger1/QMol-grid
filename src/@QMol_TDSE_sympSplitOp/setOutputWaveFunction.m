@@ -51,8 +51,11 @@ function setOutputWaveFunction(obj,opt)
             if obj.sEF,         obj.setOutputExternalField('oWfcnP','init');    end
             
             % Projection basis
-            if isempty(obj.sWfcnB)  % Project on initial wave functions
+            if isempty(obj.sWfcnB)                                      % Project on initial wave functions
                 obj.oWfcnP.basis    =   QMol_disc_basis('x',obj.SE.disc.x,'v',obj.SE.wfcn.wfcn);
+                obj.oWfcnP.basis.initialize;
+            elseif isnumeric(obj.sWfcnB)
+                obj.oWfcnP.basis    =   QMol_disc_basis('x',obj.SE.disc.x,'v',obj.sWfcnB);
                 obj.oWfcnP.basis.initialize;
             else
                 obj.oWfcnP.basis    =   obj.sWfcnB;
