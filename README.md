@@ -32,8 +32,9 @@ ___
 ___
 
 ## Installation
-- from a release: download the zipped file in the release, and unzip the content of the folder `/src/`, including all its subfolders, in a folder of the type `<user>/Documents/MATLAB/QMol-grid` or
-- from the github repository (development version): download the entire content of the folder `/src/`, including all its subfolders, in a folder of the type `<user>/Documents/MATLAB/QMol-grid`
+- include the entire content of the folder `/src/`, including all its subfolders, in a folder of the type `<user>/Documents/MATLAB/QMol-grid`
+  - from a release: download the zipped file in the release, and unzip the content to get the `/src/` folder
+  - from the github repository (development version): download the entire content of the folder `/src/`, including all its subfolders
 - add permanently the folder `<user>/Documents/MATLAB/QMol-grid` (without its subfolders) to [MATLAB path](https://mathworks.com/help/matlab/matlab_env/what-is-the-matlab-search-path.html)
 - after successful installation, the package documentation will be accessible in MATLAB's, in the "Supplemental Software" section
 
