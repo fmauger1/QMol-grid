@@ -25,6 +25,7 @@ The time-propagators are computed using symplectic-split operators (2nd, 4th, an
 ___
 ## Table of Contents
   * [Installation](#installation)
+  * [Documentation](#documentation)
   * [Example 1: Schrödinger-equation ground state ](#example1)
   * [Example 2: Time-dependent density-functional theory](#example2)
   * [Reference](#reference)
@@ -57,6 +58,16 @@ QMol_test.test;
 - The current release only supports one-dimensional computations 
 - Time-dependent Hartree Fock is currently not available
 - Time propagation on basis sets is currently not available 
+
+[&uarr;](#table-of-contents)
+___
+
+## Documentation
+
+A full description of the `QMol-grid` package, including all possible input parameters and calculation features is included in the MATLAB documentation provided with the package. After installation, the package documentation is accessible in MATLAB, in the ``Supplemental Software'' section. The documentation includes a series of tutorials, starting with `SE` ground-state calculations, and going through `TDSE`, `DFT`, and `TDDFT` calculations to help new users getting familiarized with setting up calculations, input parameters, and output variables. Throughout, the documentation also includes many script samples illustrating how one can use the various features. Finally, the documentation discusses the required class structure for advanced users who wish to add their own functionalities to the package and inherit common interface methods to the `QMol-grid` package.
+
+(_Under construction:_) The [wiki](https://github.com/fmauger1/QMol-grid/wiki) provides a copy of the `QMol-grid` package documentation.
+
 
 [&uarr;](#table-of-contents)
 ___
