@@ -6,11 +6,13 @@ classdef QMol_DFT_Vx_LDA_soft < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.21.001   07/10/2024  F. Mauger
+%       Correct typo in run-time documentation
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.21.001','07/10/2024','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_DFT_Vx_LDA_soft})
@@ -28,7 +30,7 @@ function ref = showDocumentation(obj)
     
     % Header
     fprintf('  * Slater-exchange functional           local-density approximation (LDA)\n');
-    fprintf('    for a one-dimensional (1D) soft-Coulomb electron-electron interation\n');
+    fprintf('    for a one-dimensional (1D) soft-Coulomb electron-electron interaction\n');
     fprintf('    potential, of the form\n');
     fprintf('        Vee(x) = -%s / sqrt( x^2 + %s^2 )\n',num2str(obj.Z,'%9.3g'),num2str(obj.a,'%9.3g'));
     fprintf('    The LDA Slater exchange is approximated by the scaled energy-per-\n')

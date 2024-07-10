@@ -13,11 +13,13 @@ classdef QMol_DFT_Vc_LDA_soft < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.21.001   07/10/2024  F. Mauger
+%       Correct typo in run-time documentation
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.21.001','07/10/2024','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_DFT_Vc_LDA_soft})
@@ -35,15 +37,15 @@ function ref = showDocumentation(obj)
     
     % Header
     fprintf('  * Correlation functional               local-density approximation (LDA)\n');
-    fprintf('    for the one-dimensional (1D) soft-Coulomb electron-electron interation\n');
-    fprintf('    potential Vee(x) = 1 / sqrt( x^2 + 1 ) [Helbig 2011]');
+    fprintf('    for a one-dimensional (1D) soft-Coulomb electron-electron interaction\n');
+    fprintf('    potential of the form Vee(x) = 1 / sqrt( x^2 + 1 ) [Helbig 2011]');
     ref                 =   {'Helbig 2011'};
 
     % SIC (if any)
     if obj.SIC == 0
         fprintf('.\n');
     elseif obj.SIC == 1
-        fprintf(', with an average-\n    density self-interaction correction (ADSIC) [Legrand 2002].\n');
+        fprintf(', with\n    an average-density self-interaction correction (ADSIC) [Legrand 2002].\n');
         ref             =   [ref, {'Legrand 2002'}];
     end
 

@@ -6,11 +6,13 @@ classdef QMol_DFT_Vx_LDA_exp < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.21.001   07/10/2024  F. Mauger
+%       Correct typo in run-time documentation
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.21.001','07/10/2024','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_DFT_Vx_LDA_exp})
@@ -28,7 +30,7 @@ function ref = showDocumentation(obj)
     
     % Header
     fprintf('  * Slater-exchange functional           local-density approximation (LDA)\n');
-    fprintf('    for exponential-potential electron-electron interation [Baker 2015],\n');
+    fprintf('    for exponential-potential electron-electron interaction [Baker 2015],\n');
     fprintf('    parameterized as:\n');
     fprintf('      Vee(x) = %s * exp( - |x| / %s)',num2str(obj.V0,'%9.3g'),num2str(obj.s,'%9.3g'));
     ref                 =   {'Baker 2015'};
