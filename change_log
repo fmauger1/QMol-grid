@@ -1,5 +1,20 @@
 List of changes since v1.21.000 release, in reverse chronological order
 
+%%%%% v1.21.003 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In QMol_DFT_Vc_LDA_soft
+    01.21.001   07/10/2024  F. Mauger
+        Correct typo in run-time documentation
+
+In QMol_DFT_Vx_LDA_exp
+    01.21.001   07/10/2024  F. Mauger
+        Correct typo in run-time documentation
+
+In QMol_DFT_Vx_LDA_soft 
+    01.21.001   07/10/2024  F. Mauger
+        Correct typo in run-time documentation
+
+Miscellaneous edits in the documentation
+
 %%%%% v1.21.002 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In QMol_TDSE_sympSplitOp
     01.21.001   07/06/2024  F. Mauger
