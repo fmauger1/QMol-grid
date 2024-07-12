@@ -66,7 +66,7 @@ ___
 
 A full description of the `QMol-grid` package, including all possible input parameters and calculation features is included in the MATLAB documentation provided with the package. After installation, the package documentation is accessible in MATLAB, in the "Supplemental Software" section. The documentation includes a series of tutorials, starting with `SE` ground-state calculations, and going through `TDSE`, `DFT`, and `TDDFT` calculations to help new users getting familiarized with setting up calculations, input parameters, and output variables. Throughout, the documentation also includes many script samples illustrating how one can use the various features. Finally, the documentation discusses the required class structure for advanced users who wish to add their own functionalities to the package and inherit common interface methods to the `QMol-grid` package.
 
-(_Under construction:_) The [wiki](https://github.com/fmauger1/QMol-grid/wiki) provides a copy of the `QMol-grid` package documentation.
+The [wiki](https://github.com/fmauger1/QMol-grid/wiki) provides a copy of the `QMol-grid` package documentation.
 
 
 [&uarr;](#table-of-contents)
