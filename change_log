@@ -1,5 +1,18 @@
 List of changes since v1.21.000 release, in reverse chronological order
 
+%%%%% v1.21.005 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In QMol_TDSE_sympSplitOp
+    01.21.002   07/30/2024  F. Mauger
+        Fix updating of potentialVector, electricField, and 
+        electricFieldDerivative (externalField is cleared to allow for the
+        new field to be defined at initialization)
+
+In QMol_TDDFT_sympSplitOp
+    01.21.001   07/30/2024  F. Mauger
+        Fix updating of potentialVector, electricField, and 
+        electricFieldDerivative (externalField is cleared to allow for the
+        new field to be defined at initialization)
+
 %%%%% v1.21.004 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Correct miscellaneous typos throughout the documentation
 
