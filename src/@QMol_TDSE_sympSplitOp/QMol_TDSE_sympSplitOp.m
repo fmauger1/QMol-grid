@@ -6,11 +6,15 @@ classdef QMol_TDSE_sympSplitOp < QMol_TDSE
 %       Prepare 01.21 release
 %   01.21.001   07/06/2024  F. Mauger
 %       Fix wave-function projection basis given as a matrix
+%   01.21.002   07/30/2024  F. Mauger
+%       Fix updating of potentialVector, electricField, and 
+%       electricFieldDerivative (externalField is cleared to allow for the
+%       new field to be defined at initialization)
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.001','07/06/2024','F. Mauger')
+    QMol_doc.showVersion('01.21.002','07/30/2024','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_TDSE})
@@ -84,21 +88,24 @@ methods
         elseif ~isempty(obj.EF),                    val     =   obj.EF.A;
         else,                                       val     =   [];         end
     end
-    function set.potentialVector(obj,val),          obj.FA  =   val;        end
+    function set.potentialVector(obj,val),          obj.FA  =   val;        
+                                                    obj.EF  =   [];         end
     % electricField ~~~~~~~~~~~~~~~~~~~~~~~~
     function val = get.electricField(obj)
         if ~isempty(obj.FE),                        val     =   obj.FE;     %#ok<ALIGN> 
         elseif ~isempty(obj.EF),                    val     =   obj.EF.E;
         else,                                       val     =   [];         end
     end
-    function set.electricField(obj,val),            obj.FE  =   val;        end
+    function set.electricField(obj,val),            obj.FE  =   val;        
+                                                    obj.EF  =   [];         end
     % electricFieldDerivative ~~~~~~~~~~~~~~
     function val = get.electricFieldDerivative(obj)
         if ~isempty(obj.FDE),                       val     =   obj.FDE;    %#ok<ALIGN> 
         elseif ~isempty(obj.EF),                    val     =   obj.EF.DE;
         else,                                       val     =   [];         end
     end
-    function set.electricFieldDerivative(obj,val),  obj.FDE =   val;        end
+    function set.electricFieldDerivative(obj,val),  obj.FDE =   val;        
+                                                    obj.EF  =   [];         end
 end
 %% Initialization %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Access=public)
