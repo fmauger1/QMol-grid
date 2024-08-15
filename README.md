@@ -33,6 +33,12 @@ ___
 ___
 
 ## Installation
+The `QMol-grid` package can be installed directly from MATLAB or this GitHub repository.
+
+**From MALAB:**
+- In the Add-Ons explorer, search for "QMol-grid" and the add the package to MATLAB. This will install the latest release version of `QMol-grid`.
+
+**From this GitHub repository:**
 - include the entire content of the folder `/src/`, including all its subfolders, in a folder of the type `<user>/Documents/MATLAB/QMol-grid`
   - from a release: download the zipped file in the release, and unzip the content to get the `/src/` folder
   - from the github repository (development version): download the entire content of the folder `/src/`, including all its subfolders
