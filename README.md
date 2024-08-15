@@ -81,10 +81,11 @@ We model the one-dimensional hydrogen model atom using a soft-Coulomb potential 
 ```Matlab
 H = QMol_Va_softCoulomb('softeningParameter',sqrt(2));
 ```
-where  we choose the softening parameter $a=\sqrt{2}$ to match H's ground state energy. By default, the atom is located at the origin $x=0$. Note that H only corresponds to the atomic model, which is shared with molecular systems and various quantum frameworks. Thus, it must be turned into a valid Schrödinger-equation potential, using
+where `'softeningParameter'` specifies the value for the parameter $a$. Here we choose the softening parameter $a=\sqrt{2}$ to match H's ground state energy. By default, the atom is located at the origin $x=0$. Note that H only corresponds to the atomic model, which is shared with molecular systems and various quantum frameworks. Thus, it must be turned into a valid Schrödinger-equation potential, using
 ```Matlab
 V = QMol_SE_V('atom',H);
 ```
+Here `'atom'` indicates to the `QMol_SE_V` object that the list of atomic centers is provided next -- here a single H effective potential.
 
 The simulation domain must be a Cartesian grid -- with all increasing, equally spaced discretization points -- and should be wide enough and with small enough of a discretization step to properly capture the wave function. In our case we select a domain ranging -15 to 15 a.u., with a discretization steps of 0.1 a.u.
 ```Matlab
@@ -97,14 +98,16 @@ SE = QMol_SE(                        ...
          'xspan',                x,  ...
          'potential',            V);
 ```
+Like above, when creating the `SE` object, we recognize the definition of the discretization domain and effective potential with the keywords `'xspan'` and `'potential'`, respectively.
 
 We next move to calculating its associated ground-state wave function and energy using the two commands
 ```Matlab
 GSS = QMol_SE_eigs;
 GSS.computeGroundState(SE);
 ```
+The first line creates the eigen-state solver while the second performs the actual ground-state calculation on the Schrödinger-equation object `SE`.
 
-At the end of the calculation, the ground-state wave function is stored in the input Schrödinger-equation object SE, together with relevant information such as the domain discretization. For instance, solely relying on SE, one can plot the ground-state wave function with
+At the end of the calculation, the ground-state wave function is stored in the input object `SE`, together with relevant information such as the domain discretization. For instance, solely relying on `SE`, one can plot the ground-state wave function with
 ```Matlab
 figure
     plot(SE.xspan,SE.waveFunction.waveFunction,'-','LineWidth',2)
@@ -130,7 +133,7 @@ The `QMol-grid` package relies on the canonical Hamiltonian structure of TDDFT [
 In this example, we illustrate how to use the `QMol-grid` package to integrate the TDDFT dynamics of an open-shell one-dimentional molecular ion model with 3 atomic centers and 5 active electrons.
 
 ### Initial condition
-In the `QMol-grid` package, TDDFT simulations are decoupled from setting up the initial condition, which must be done independently. For our example, we start by calculating the neutral-molecule ground state:
+In the `QMol-grid` package, TDDFT simulations are decoupled from setting up the initial condition, which must be done independently. Similar to [example 1](#example1), we build the molecular model out of 3 one-dimensional atomic models, each contributing 2 electrons to the molecule, using soft-Coulomb potentials. For our example, we start by calculating the neutral-molecule ground state:
 ```Matlab
 % Molecular model
 V_1     =   QMol_Va_softCoulomb('atom','X_1','charge',2,'position',-3);
@@ -154,6 +157,8 @@ DFT     =   QMol_DFT_spinPol(                                       ...
 SCF     =   QMol_DFT_SCF_Anderson;
 SCF.solveSCF(DFT);
 ```
+The "`% Molecular model`" block defines the atomic effective potential, specifying the name, bare charge, and location of each atomic center, respectively. The "`% DFT model`" block first defines the molecular potential `Vext`, followed by the DFT functionals `Vh` and `Vxc` to be used in the (TD)DFT calculations -- see the documentation's ground-state DFT tutorial for further details regarding the model parameters. The final block "`% DFT ground state`" first creates the eigen-state DFT solver, here an Anderson mixing scheme, and performs the ground-state self-consistent field (SCF) calculation.
+
 Next, we manually induce an excitation in the molecular cation by successively (i) replacing one of the Kohn-sham orbitals by a superposition of molecular-orbital states (excitation part) and (ii) removing an electron, going from 3 to 2, from the down-spin Kohn-Sham orbitals (ionization part).
 ```Matlab
 % Induce excitation
@@ -165,7 +170,7 @@ DFT.set('occupation',{[1 1 1],[1 1]});
 We now have a non-stationary set of Kohn-Sham orbitals, leading to field-free dynamics under the flow of equation (2.1).
 
 ### TDDFT simulation
-With the DFT molecular model, including the initial condition, in hand, we now move to integrating the subsequent field-free TDDFT dynamics. For this, we select a [fourth-order Forest Ruth](https://doi.org/10.1016/0167-2789(90)90019-L) symplectic split-operator scheme (see [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685) for more details).
+With the DFT molecular model, including the initial condition, in hand, we now move to integrating the subsequent field-free TDDFT dynamics. For this, we select a [fourth-order Forest Ruth](https://doi.org/10.1016/0167-2789(90)90019-L) symplectic split-operator scheme (see [Mauger 2024](https://doi.org/10.1016/j.cnsns.2023.107685) for more details). Note that, here the field-free TDDFT dynamics does not lead to any ionization and therefore no boundary conditions need be specified at the edges of the domain. For field-driven simulations, absorbing boundary conditions can be specified to avoid spurious boundary effects.
 ```Matlab
 TDDFT   =   QMol_TDDFT_SSO_4FR(                     ...
                 'time',                 0:10:100,   ...
@@ -203,7 +208,17 @@ producing
   <img src="https://github.com/fmauger1/QMol-grid/blob/main/GS__T07.png" alt="Example 2" width="300"/>
 </p>
 
+### Profiling (estimating the memory footprint)
+Before running the TDDFT calculation, the user has the possibility to check how much memory the simulation requires to run and store the requested one-body densities. Using the same calculation workflow as above, right after creating the `TDDFT` object, the memory footprint is obtained with
+```Matlab
+TDDFT.initialize(DFT);
+QMol_DFT_profiler(TDDFT,'memory');
+```
+
+In our case, the estimated total TDDFT-object size is 1.8~MB with 1.5~MB for the saved electron density. Saving the `TDDFT` and `DFT` object in a MATLAB file at the end of the propagation produces a 1.6~MB `.mat` file. We mostly attribute the slight difference with the profiler estimate to run-time memory overhead associated with internal variables that are not stored in the saved objects.
+
 [&uarr;](#table-of-contents)
+
 ___
 ## Reference
 - F. Mauger and C. Chandre, *QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems*, [arXiv:2406.17938](https://arxiv.org/abs/2406.17938)
