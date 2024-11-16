@@ -6,11 +6,15 @@ classdef (Abstract) QMol_doc < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release + consolidate bibliography
+%   01.21.001   09/12/2024  F. Mauger
+%       Correct typo in [Mauger 2024]
+%   01.21.002   11/16/2024  F. Mauger
+%       Update reference [Mauger 2024b] to published version
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.21.002','11/16/2024','F. Mauger')
 end
 end
 methods (Static,Access=?QMol_doc)
@@ -252,15 +256,15 @@ function legrand2002
 end
 function mauger2024
     fprintf(['  [Mauger 2024] F. Mauger, C. Chandre, M.B. Gaarde, K. Lopata, and K.J. \n' ...
-             '    Schafer, "Hamiltonian  formulation and symplectic split-operator \n' ...
-             '    schemes for time-dependent  density-functional-theory equations of \n' ...
+             '    Schafer, "Hamiltonian formulation and symplectic split-operator \n' ...
+             '    schemes for time-dependent density-functional-theory equations of \n' ...
              '    electron dynamics in molecules," Communications in Nonlinear Science \n' ...
              '    and Numerical Simulation 129, 107685 (2024).\n']);
 end
 function mauger2024b
-    fprintf(['  [Mauger 2024b] F. Mauger and C. Chandre, "QMol-grid: A MATLAB package\n' ...
+    fprintf(['  [Mauger 2024b] F. Mauger and C. Chandre, "QMol-grid : A MATLAB package\n' ...
              '    for quantum-mechanical simulations in atomic and molecular systems," \n' ...
-             '    arXiv:2406.17938 (2024).\n']);
+             '    SoftwareX 28, 101968 (2024).\n']);
 end                                                                                    %\n (last possible position for line break)
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

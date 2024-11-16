@@ -6,7 +6,7 @@ classdef QMol_SE_eig_basis < QMol_suite
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
 %   01.21.001   07/01/2024  F. Mauger
-%       Add (missing) reference and funcing information to ground-state
+%       Add (missing) reference and funding information to ground-state
 %       run time documentation
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
