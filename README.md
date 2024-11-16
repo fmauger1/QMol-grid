@@ -227,13 +227,16 @@ In our case, the estimated total TDDFT-object size is 1.8~MB with 1.5~MB for the
 
 ___
 ## Reference
-- F. Mauger and C. Chandre, *QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems*, [arXiv:2406.17938](https://arxiv.org/abs/2406.17938)
+- F. Mauger and C. Chandre, *QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems,* [SoftwareX 28, 101968 (2024)](https://doi.org/10.1016/j.softx.2024.101968)
 ```bibtex
-@unpublished{mauger2024,
+@article{mauger2024,
   title = {QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems},
   author = {Mauger, Fran\c{c}ois and Chandre, Cristel},
+  journal = {SoftwareX},
+  volume = {28},
+  pages = {101968},
   year = {2024},
-  URL = {https://arxiv.org/abs/2406.17938}
+  doi = {10.1016/j.softx.2024.101968}
 }
 ```
 For more information: <fmauger@lsu.edu>
