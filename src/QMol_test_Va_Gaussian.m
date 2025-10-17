@@ -4,11 +4,13 @@ classdef QMol_test_Va_Gaussian < QMol_test
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.22.000   04/22/2025  F. Mauger
+%       Add test for copyPotential
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=?QMol_test)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.22.000','04/22/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_test})
@@ -38,6 +40,12 @@ function testUnit(obj)
 
     dx                  =   1e-5;
     obj.showResult('getPotentialDerivative' ,max(abs( Va.getPotentialDerivative(1,x)-(V(x+.5*dx)-V(x-.5*dx))/dx )) < 5e-10);
+
+    % Potential copy
+    Vc                  =   Va.copyPotential;
+    Va.clear;
+
+    obj.showResult('copyPotential',Vc.V0 == V0 && Vc.s == s && Vc.X0 == X0);
     
 end
 end

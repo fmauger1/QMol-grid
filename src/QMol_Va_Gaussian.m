@@ -18,11 +18,13 @@ classdef QMol_Va_Gaussian < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.22.000   04/22/2025  F. Mauger
+%       Add copyPotential (+ new version number) + fix clear method (typo)
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.22.000','04/22/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_Va_Gaussian})
@@ -133,7 +135,7 @@ function clear(obj,varargin)
     % Reset default parameters (if needed)
     if isempty(obj.V0),         obj.V0      =   1;      end
     if isempty(obj.s),          obj.s       =   2;      end
-    if isempty(obj.x0),         obj.X0      =   0;      end
+    if isempty(obj.X0),         obj.X0      =   0;      end
 end
 function initialize(obj,~)
 %initialize nothing to initialize. For good measure update isInit property
@@ -161,6 +163,10 @@ function V = getPotentialDerivative(obj,~,x)
 %getPotentialDerivative returns the derivative of the (Gaussian)
 %   potential at querry points
     V                   =   obj.V0/obj.s^2*(x-obj.X0).*exp(-.5*(x-obj.X0).^2/obj.s^2);
+end
+function Va = copyPotential(obj)
+%copyPotential returns a copy of the pseudopotential
+    Va                  =   QMol_Va_Gaussian('name',obj.name,'V0',obj.V0,'s',obj.s,'X0',obj.X0,'m',obj.m,'p',obj.p);
 end
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
