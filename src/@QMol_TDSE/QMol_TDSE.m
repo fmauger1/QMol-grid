@@ -34,11 +34,13 @@ classdef (Abstract) QMol_TDSE < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.23.000   05/26/2025  F. Mauger
+%       Fix memory profiler for installable output function
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.23.000','05/26/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_TDSE})
@@ -68,7 +70,7 @@ function mem = getMemoryProfileWaveFunction(obj,opt)
     
     if (obj.sWfcn || obj.sWfcnP)   &&   opt
         QMol_SE_profiler.showMemoryFootprint('Wave functions', 0,1);
-        if obj.sWfcn,   QMol_DSE_profiler.showMemoryFootprint('Wave functions ouput has an undefined memory footprint', 0,2); end
+        if obj.sWfcn,   QMol_SE_profiler.showMemoryFootprint('Wave functions ouput has an undefined memory footprint', 0,2); end
         if obj.sWfcnP,  QMol_SE_profiler.showMemoryFootprint('Projection of the wave functions ouput has an undefined memory footprint', 0,2); end
     end
 

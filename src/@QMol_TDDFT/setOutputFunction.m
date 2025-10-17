@@ -1,5 +1,5 @@
 function setOutputFunction(obj,opt)
-%setOutputIonization 
+%setOutputFunction 
 
 switch lower(opt)
 case {'init','initialize','initialization'} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

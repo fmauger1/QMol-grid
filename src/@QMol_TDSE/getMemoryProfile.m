@@ -6,13 +6,13 @@ function mem = getMemoryProfile(obj,opt)
     % Initialization ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if nargin < 2,  opt     =   false;  end
 
-    % DFT model memory footprint ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    % SE model memory footprint ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if ~obj.SE.isInit,      obj.SE.initialize;                              end
 
     fprintf('\n    ------------------------- SE model ------------------------\n');
     mem                 =   obj.SE.getMemoryProfile(opt);
 
-    % TDDFT propagator footprint ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    % TDSE propagator footprint ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     fprintf('\n    --------------------- TDSE propagator ---------------------\n');
     mem                 =   mem + obj.getMemoryProfilePropagator(opt);
 
@@ -141,7 +141,7 @@ function mem = getMemoryProfile(obj,opt)
         % Output function of the wave functions
         ind             =   obj.getOutputIndex(obj.sFT);
 
-        R               =   obj.sFKSO(obj.SE.Wfcn,obj.tspan(1));                                    if isreal(R)
+        R               =   obj.sF(obj.SE.wfcn,obj.tspan(1));                                      if isreal(R)
         m               =   QMol_SE_profiler.getMemoryFootprint(numel(ind)*(numel(R)+1),'real');   else
         m               =   QMol_SE_profiler.getMemoryFootprint(numel(ind)* numel(R)   ,'imag') + ...
                             QMol_SE_profiler.getMemoryFootprint(numel(ind)             ,'real');   end

@@ -1,5 +1,5 @@
 function saveOutputFunction(obj,k,t)
-%saveOutputEnergy
+%saveOutputFunction
     
     % Save output function of the density ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if k == obj.oFRho.ind(obj.oFRho.n)

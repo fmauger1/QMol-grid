@@ -1,5 +1,5 @@
 function setOutputRestart(obj,opt)
-%initializeOutputDFT
+%setOutputRestart
 
 switch lower(opt)
 case {'init','initialize','initialization'} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

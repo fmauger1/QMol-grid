@@ -32,7 +32,7 @@ function initialize(obj,SE,isRst)
         % Output data (will perform necessary cleanup)
         obj.setOutputSE('init');                                            % SE object in separate files
         obj.setOutputDipole('init');                                        % dipole/velocity/acceleration
-        obj.setOutputEnergy('init');                                        % SE and orbital energies
+        obj.setOutputEnergy('init');                                        % SE and wave function energies
         obj.setOutputIonization('init');                                    % Ionization
         obj.setOutputWaveFunction('init');                                  % Wave function(s)
         obj.setOutputFunction('init');                                      % Output function

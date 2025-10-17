@@ -1,13 +1,19 @@
 function ref = showDoc(obj)
 %showDoc displays the documentation reflecting the specific implementation
-%   of the TDSE solver
+%   of the TDDFT solver
 
-    % Implementation of the TDSE model
-    fprintf('  * Symplectic split-operator propagation scheme [Mauger 2024],\n');
-    if isempty(obj.splitMotif),             fprintf('    with a VTV split motif.\n');
-    elseif strcmpi(obj.splitMotif,'vtv'),   fprintf('    with a VTV split motif.\n');
-    elseif strcmpi(obj.splitMotif,'tvt'),   fprintf('    with a TVT split motif.\n');
-    else,   warning('QMol:TDSE:splitMotif',['Unknown motif for symplectic split ' obj.splitMotif])
+    % Implementation of the TDDFT model
+    fprintf('  * Extended symplectic split-operator propagation scheme [Mauger 2025],\n');
+    fprintf('    restrain = %5.3f\n',obj.w);                                if obj.spltV
+    fprintf('    splitting the potential\n');                               end
+    if isempty(obj.splitMotif),                                         fprintf('    with a HHR split motif.\n');
+    elseif strcmpi(obj.splitMotif,'hhr'),                               fprintf('    with a HHR split motif.\n');
+    elseif strcmpi(obj.splitMotif,'hrh'),                               fprintf('    with a HRH split motif.\n');
+    elseif strcmpi(obj.splitMotif,'tvr'),                               fprintf('    with a TVR split motif.\n');
+    elseif strcmpi(obj.splitMotif,'trv'),                               fprintf('    with a TRV split motif.\n');
+    elseif any(strcmpi(obj.splitMotif,{'hhr hybrid','hybrid hhr'})),    fprintf('    with a hybrid HHR split motif.\n');
+    elseif any(strcmpi(obj.splitMotif,{'hrh hybrid','hybrid hrh'})),    fprintf('    with a hybrid HRH split motif.\n');
+    else,   warning('QMol:TDDFT:splitMotif',['Unknown motif for symplectic split ' obj.splitMotif])
     end
     obj.version;
 
@@ -32,7 +38,7 @@ function ref = showDoc(obj)
         case {'velocity','velocity gauge','velocity_gauge','a'},    FG  =   2;
         case {'none','off'},                                        FG  =   0;
         otherwise
-            warning('QMol:TDSE:gaugeField', ['Unknown gauge-field option ' obj.EFG '; Default gauge mode used instead.'])
+            warning('QMol:TDDFT:gaugeField', ['Unknown gauge-field option ' obj.Gfield '; Default gauge mode used instead.'])
 
             if isempty(obj.EF),                                     FG  =   0;  %#ok<ALIGN> % No field to work with
             elseif isa(obj.EF.electricField,'function_handle'),     FG  =   1;              % Length gauge
@@ -46,9 +52,9 @@ function ref = showDoc(obj)
                     else,                   fprintf('  * Field free propagation\n');    end
     elseif FG == 1,                         fprintf('  * Field driven propagation\n    dipole approximation, length gauge\n');
     elseif FG == 2,                         fprintf('  * Field driven propagation\n    dipole approximation, velocity gauge\n');
-    else,   error('QMol:TDSE:sympSplitOpGauge','Unexpected gauge mode');               end
+    else,   error('QMol:TDDFT:sympSplitOpGauge','Unexpected gauge mode');               end
 
     % References
-    ref                 =   {'Mauger 2024'};
+    ref                 =   {'Mauger 2025'};
 
 end

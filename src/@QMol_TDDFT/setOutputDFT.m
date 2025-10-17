@@ -1,5 +1,5 @@
 function setOutputDFT(obj,opt)
-%initializeOutputDFT
+%setOutputDFT
 
 % NOTE: does not call setOutputChildren
 

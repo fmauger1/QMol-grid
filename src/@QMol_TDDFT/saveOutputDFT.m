@@ -1,7 +1,7 @@
 function saveOutputDFT(obj,t)
 %saveOutputDFT
     
-    % Extract relevalt data
+    % Extract relevant data
     DFT                 =   obj.DFT;
     externalField       =   obj.EF;
 

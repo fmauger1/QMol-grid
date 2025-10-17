@@ -1,5 +1,5 @@
 function saveOutputSE(obj,t)
-%saveOutputDFT
+%saveOutputSE
     
     % Extract relevalt data
     SE                  =   obj.SE;

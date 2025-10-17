@@ -1,5 +1,5 @@
 function setOutputFunction(obj,opt)
-%setOutputIonization 
+%setOutputFunction 
 
 switch lower(opt)
 case {'init','initialize','initialization'} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -34,7 +34,7 @@ case {'init','initialize','initialization'} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             if obj.sEF,         obj.addOutputExternalField('oF',1,obj.tspan(1)); end
 
             % Update next to save
-            if isscalar(obj.oF.ind),        obj.oF.n    =  -1;              % done with output function of density
+            if isscalar(obj.oF.ind),        obj.oF.n    =  -1;              % done with output function
             else,                           obj.oF.n    =   2;              end
 
         end
