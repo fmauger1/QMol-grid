@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2025a"><title>QMol_TDCI_abs_mask</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 25px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.S3 { margin: 15px 10px 5px 4px; padding: 0px; line-height: 20.4px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 17px; font-weight: 700; text-align: left;  }
+.S4 { margin: 10px 10px 5px 4px; padding: 0px; line-height: 18px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 15px; font-weight: 700; text-align: left;  }
+.S5 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S6 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block; min-width: 100%; }
+.S7 { border-left: 0.666667px solid rgb(217, 217, 217); border-right: 0.666667px solid rgb(217, 217, 217); border-top: 0.666667px solid rgb(217, 217, 217); border-bottom: 0.666667px solid rgb(217, 217, 217); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S8 { margin: 10px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S9 { border-left: 0.666667px solid rgb(217, 217, 217); border-right: 0.666667px solid rgb(217, 217, 217); border-top: 0.666667px solid rgb(217, 217, 217); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S10 { border-left: 0.666667px solid rgb(217, 217, 217); border-right: 0.666667px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0.666667px solid rgb(217, 217, 217); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span style=' font-family: monospace;'>QMol_TDCI_abs_mask</span></h1><div  class = 'S1'><span>Mask type damping matrix for TDCI calculations.</span></div><h2  class = 'S2'><span>Description</span></h2><div  class = 'S1'><span>Use </span><span style=' font-family: monospace;'>QMol_TDCI_abs_mask</span><span> to define the damping matrix modeling mask-type absorbing-boundary conditions in TDCI calculations. The damping matrix shoud be specified in the configuration-state basis associated with the (TD)CI model to be propagated. Physical damping matrices are symmetric real, but the class does not check or enforce this.</span></div><div  class = 'S1'><span>After each time step in the TDCI propagation, the CI wave function is multiplied by the damping matrix. The damping strength should be set between 0 and 1, with 0 corresponding to full damping and 1 to no damping.</span></div><h2  class = 'S2'><span>Class properties</span></h2><h3  class = 'S3' id = 'H_9E118FF3' ><span>Mask function</span></h3><div  class = 'S1'><span>The </span><span style=' font-family: monospace;'>QMol_TDCI_abs_mask</span><span> class defines the following public get-access properties; each can be changed using the </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span> method:</span></div><h4  class = 'S4' id = 'H_AF6C7188' ><span style=' font-family: monospace;'>dampingMatrix (M)</span></h4><div  class = 'S1'><span>Damping matrix </span><span style=' font-family: monospace;'>[ matrix (default []) ]</span></div><ul  class = 'S5'><li  class = 'S6'><span>The damping matrix must be square with its size matching the number of configuration states in the TDCI propagation.</span></li></ul><h3  class = 'S3'><span>Other properties</span></h3><div  class = 'S1'><span>These properties cannot be edited with the </span><a href = "#H_4405B79D"><span style=' font-family: monospace;'>set</span></a><span> method.</span></div><h4  class = 'S4' id = 'H_11930D30' ><span style=' font-family: monospace;'>isInitialized (isInit)</span></h4><div  class = 'S1'><span>Whether the absorbing-boundary mask object is properly initialized. This is used throughout the QMol-grid package to check that the absorber object holds meaningful information and is ready for use.</span></div><h2  class = 'S2'><span>Class methods</span></h2><h3  class = 'S3'><span>Creation</span></h3><h4  class = 'S4'><span>constructor</span></h4><div  class = 'S1'><span>Create an absorbing-boundary mask object with empty class properties.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj = QMol_TDCI_abs_mask;</span></span></div></div></div><div  class = 'S8'><span>Create an absorbing-boundary mask object with the </span><span style=' font-family: monospace;'>name</span><span> properties set to the specified </span><span style=' font-family: monospace;'>value</span><span>. Several </span><span style=' font-family: monospace;'>name-value</span><span> pairs can be specified consecutively. Suitable </span><span style=' font-family: monospace;'>name</span><span> is any of the </span><a href = "#H_9E118FF3"><span>mask function</span></a><span> properties and is case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >obj = QMol_TDCI_abs_mask(name1,value1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >obj = QMol_TDCI_abs_mask(name1,value1,name2,value2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><h3  class = 'S3'><span>Changing class properties</span></h3><h4  class = 'S4' id = 'H_4405B79D' ><span style=' font-family: monospace;'>set</span></h4><div  class = 'S1'><span>Update the </span><span style=' font-family: monospace;'>name</span><span> properties of an absorbing-boundary mask object to the specified </span><span style=' font-family: monospace;'>value</span><span>. Several </span><span style=' font-family: monospace;'>name-value</span><span> pairs can be specified consecutively. Suitable </span><span style=' font-family: monospace;'>name</span><span> is any of the </span><a href = "#H_9E118FF3"><span>mask function</span></a><span> properties and is case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >obj.set(name1,value1);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >obj.set(name1,value1,name2,value2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S8'><span>This is the common name-value pair assignment method used throughout the QMol-grid package. The </span><span style=' font-family: monospace;'>set</span><span> method also </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the class. After running, the </span><span style=' font-family: monospace;'>set</span><span> property updates the </span><a href = "#H_11930D30"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to a </span><span style=' font-family: monospace;'>false</span><span> value.</span></div><h4  class = 'S4' id = 'H_BF84FCE7' ><span style=' font-family: monospace;'>reset</span></h4><div  class = 'S1'><span>Reset the object by deleting/re-initializing all run-time properties of the class and updating the </span><a href = "#H_11930D30"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to </span><span style=' font-family: monospace;'>false</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.reset;</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>This is the common </span><span style=' font-family: monospace;'>reset</span><span> method available to all classes throughout the QMol-grid package.</span></li></ul><h4  class = 'S4' id = 'H_C729A888' ><span style=' font-family: monospace;'>clear</span></h4><div  class = 'S1'><span>Clear all class properties.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.clear;</span></span></div></div></div><div  class = 'S8'><span>Clear a specific set of the class properties. Suitable </span><span style=' font-family: monospace;'>name</span><span> is any of the </span><a href = "#H_9E118FF3"><span>mask function</span></a><span> properties and is case insensitive.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >obj.clear(name1,name2,</span><span style="color: rgb(225, 27, 20);">___</span><span >);</span></span></div></div></div><div  class = 'S8'><span>This is the common </span><span style=' font-family: monospace;'>clear</span><span> method available to all classes throughout the QMol-grid package. The </span><span style=' font-family: monospace;'>clear</span><span> method also </span><a href = "#H_BF84FCE7"><span style=' font-family: monospace;'>reset</span></a><span> the class. The </span><span style=' font-family: monospace;'>clear</span><span> method can be used to delete specific properties before saving an instance of the </span><span style=' font-family: monospace;'>QMol_TDCI_abs_mask</span><span> class.</span></div><h3  class = 'S3'><span>Initializing the object</span></h3><h4  class = 'S4' id = 'H_09FAB436' ><span style=' font-family: monospace;'>initialize</span></h4><div  class = 'S1'><span>Initialize a </span><span style=' font-family: monospace;'>QMol_TDCI_abs_mask</span><span> object and set the </span><a href = "#H_11930D30"><span style=' font-family: monospace;'>isInitialized</span></a><span> flag to </span><span style=' font-family: monospace;'>true</span><span>.</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >obj.initialize();</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >obj.initialize(SE);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>Optionally pass the CI object for which the mask should be initialized.</span></li></ul><h3  class = 'S3'><span>Using the CAP damping matrix</span></h3><h4  class = 'S4'><span style=' font-family: monospace;'>getDampingMatrix</span></h4><div  class = 'S1'><span>Get the CAP damping matrix with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >M = obj.getDampingMatrix()</span></span></div></div></div><h3  class = 'S3'><span style=' font-family: monospace;'>Run-time documentation</span></h3><h4  class = 'S4' id = 'H_E3988947' ><span style=' font-family: monospace;'>getMemoryProfile</span></h4><div  class = 'S1'><span>Get an estimate of the memory held by a </span><span style=' font-family: monospace;'>QMol_TDCI_abs_mask</span><span> object with either</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >mem = obj.getMemoryProfile;</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >mem = obj.getMemoryProfile(false);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>The output </span><span style=' font-family: monospace;'>mem</span><span> is the estimated size in bytes.</span></li></ul><div  class = 'S1'><span>Additionally display the detail of the memory footprint with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >mem = obj.getMemoryProfile(true);</span></span></div></div></div><h4  class = 'S4' id = 'H_4D7CFC3D' ><span style=' font-family: monospace;'>showDocumentation</span></h4><div  class = 'S1'><span>Display the run-time documentation for the specific configuration of a </span><span style=' font-family: monospace;'>QMol_TDCI_abs_mask</span><span> object</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >ref = obj.showDocumentation;</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span>The output </span><span style=' font-family: monospace;'>ref</span><span> is a cell vector containing the list of references to be included in the bibliography.</span></li></ul><h2  class = 'S2'><span>Test suite</span></h2><div  class = 'S1'><span>Run the test suite for the class in normal or </span><a href = "./Test_suite.html"><span>summary mode</span></a><span> respectively with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S9'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: rgb(167, 9, 245);">'TDCI_abs_mask'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S10'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: rgb(167, 9, 245);">'-summary'</span><span >,</span><span style="color: rgb(167, 9, 245);">'TDCI_abs_mask'</span><span >);</span></span></div></div></div><h2  class = 'S2'><span>Notes</span></h2><ul  class = 'S5'><li  class = 'S6'><span style=' font-family: monospace;'>QMol_TDCI_abs_mask</span><span> was introduced in version 01.23.</span></li></ul>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% |QMol_TDCI_abs_mask|
+% Mask type damping matrix for TDCI calculations.
+%% Description
+% Use |QMol_TDCI_abs_mask| to define the damping matrix modeling mask-type absorbing-boundary 
+% conditions in TDCI calculations. The damping matrix shoud be specified in the 
+% configuration-state basis associated with the (TD)CI model to be propagated. 
+% Physical damping matrices are symmetric real, but the class does not check or 
+% enforce this.
+% 
+% After each time step in the TDCI propagation, the CI wave function is multiplied 
+% by the damping matrix. The damping strength should be set between 0 and 1, with 
+% 0 corresponding to full damping and 1 to no damping.
+%% Class properties
+% Mask function
+% The |QMol_TDCI_abs_mask| class defines the following public get-access properties; 
+% each can be changed using the |set| method:
+% |dampingMatrix (M)|
+% Damping matrix |[ matrix (default []) ]|
+%% 
+% * The damping matrix must be square with its size matching the number of configuration 
+% states in the TDCI propagation.
+% Other properties
+% These properties cannot be edited with the |set| method.
+% |isInitialized (isInit)|
+% Whether the absorbing-boundary mask object is properly initialized. This is 
+% used throughout the QMol-grid package to check that the absorber object holds 
+% meaningful information and is ready for use.
+%% Class methods
+% Creation
+% constructor
+% Create an absorbing-boundary mask object with empty class properties.
+
+obj = QMol_TDCI_abs_mask;
+%% 
+% Create an absorbing-boundary mask object with the |name| properties set to 
+% the specified |value|. Several |name-value| pairs can be specified consecutively. 
+% Suitable |name| is any of the mask function properties and is case insensitive.
+
+obj = QMol_TDCI_abs_mask(name1,value1);
+obj = QMol_TDCI_abs_mask(name1,value1,name2,value2,___);
+% Changing class properties
+% |set|
+% Update the |name| properties of an absorbing-boundary mask object to the specified 
+% |value|. Several |name-value| pairs can be specified consecutively. Suitable 
+% |name| is any of the mask function properties and is case insensitive.
+
+obj.set(name1,value1);
+obj.set(name1,value1,name2,value2,___);
+%% 
+% This is the common name-value pair assignment method used throughout the QMol-grid 
+% package. The |set| method also |reset| the class. After running, the |set| property 
+% updates the |isInitialized| flag to a |false| value.
+% |reset|
+% Reset the object by deleting/re-initializing all run-time properties of the 
+% class and updating the |isInitialized| flag to |false|.
+
+obj.reset;
+%% 
+% * This is the common |reset| method available to all classes throughout the 
+% QMol-grid package.
+% |clear|
+% Clear all class properties.
+
+obj.clear;
+%% 
+% Clear a specific set of the class properties. Suitable |name| is any of the 
+% mask function properties and is case insensitive.
+
+obj.clear(name1,name2,___);
+%% 
+% This is the common |clear| method available to all classes throughout the 
+% QMol-grid package. The |clear| method also |reset| the class. The |clear| method 
+% can be used to delete specific properties before saving an instance of the |QMol_TDCI_abs_mask| 
+% class.
+% Initializing the object
+% |initialize|
+% Initialize a |QMol_TDCI_abs_mask| object and set the |isInitialized| flag 
+% to |true|.
+
+obj.initialize();
+obj.initialize(SE);
+%% 
+% * Optionally pass the CI object for which the mask should be initialized.
+% Using the CAP damping matrix
+% |getDampingMatrix|
+% Get the CAP damping matrix with
+
+M = obj.getDampingMatrix()
+% |Run-time documentation|
+% |getMemoryProfile|
+% Get an estimate of the memory held by a |QMol_TDCI_abs_mask| object with either
+
+mem = obj.getMemoryProfile;
+mem = obj.getMemoryProfile(false);
+%% 
+% * The output |mem| is the estimated size in bytes.
+%% 
+% Additionally display the detail of the memory footprint with
+
+mem = obj.getMemoryProfile(true);
+% |showDocumentation|
+% Display the run-time documentation for the specific configuration of a |QMol_TDCI_abs_mask| 
+% object
+
+ref = obj.showDocumentation;
+%% 
+% * The output |ref| is a cell vector containing the list of references to be 
+% included in the bibliography.
+%% Test suite
+% Run the test suite for the class in normal or <./Test_suite.html summary mode> 
+% respectively with
+
+QMol_test.test('TDCI_abs_mask');
+QMol_test.test('-summary','TDCI_abs_mask');
+%% Notes
+%% 
+% * |QMol_TDCI_abs_mask| was introduced in version 01.23.
+##### SOURCE END #####
+-->
+</div></body></html>
