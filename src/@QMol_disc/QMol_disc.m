@@ -10,11 +10,13 @@ classdef QMol_disc < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.22.000   04/20/2025  F. Mauger
+%       Integrale CI module (+ new version number)
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.22.000','04/20/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_disc})
@@ -86,7 +88,7 @@ end
 properties (Dependent,GetAccess=public,SetAccess=?QMol_suite)
     xspan                  % x
 end
-properties (Transient,GetAccess=public,SetAccess={?QMol_disc,?QMol_DFT,?QMol_SEq})
+properties (Transient,GetAccess=public,SetAccess={?QMol_disc,?QMol_DFT,?QMol_SEq,?QMol_CI})
     % Linked objects
     QM                     % Parent QMol (theory) object
 end

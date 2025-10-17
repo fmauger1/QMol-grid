@@ -2,7 +2,6 @@ function [E,DE] = SE_energyWaveFunction(obj,V,wfcn)
 %SE_energyWaveFunction computes the wave-function energies, defined as
 %   E = < psi | H | psi > and error DE = || H | psi > - E | psi > ||
     
-    
     % Initialization
     E                   =   NaN(size(wfcn.wfcn,2),1);
     DE                  =   NaN(size(wfcn.wfcn,2),1);

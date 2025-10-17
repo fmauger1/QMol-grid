@@ -2,7 +2,7 @@ function E = SE_energyKinetic(obj,wfcn)
 %SE_kineticEnergy computes the kinetic energy of the member SE, and
 %   associated wave function, object
 
-    % Parse orbitals
+    % Parse wave functions
     E                   =   0;
     IR                  =   isreal(wfcn.wfcn);
 
