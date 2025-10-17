@@ -1,7 +1,7 @@
 # QMol-grid: A MATLAB package for quantum-mechanical simulations in atomic and molecular systems
 
-![Version](https://img.shields.io/badge/version-v1.21.006-blue)
-[![Generic badge](https://img.shields.io/badge/MATLAB-R2022a-orange)](https://fr.mathworks.com/products/matlab.html)
+![Version](https://img.shields.io/badge/version-v1.23.001-blue)
+[![Generic badge](https://img.shields.io/badge/MATLAB-R2023b-orange)](https://fr.mathworks.com/products/matlab.html)
 [![License](https://img.shields.io/badge/license-BSD-lightgray)](https://github.com/fmauger1/QMol-grid/blob/main/LICENSE)
 
 The `QMol-grid` package provides a suite of routines for performing quantum-mechanical simulations in atomic and molecular systems in one spatial dimension. All simulations use an underlying Cartesian-grid discretization scheme. The `QMol-grid` package is written using MATLAB's object-oriented features and handle classes.
@@ -9,9 +9,12 @@ The `QMol-grid` package provides a suite of routines for performing quantum-mech
 The `QMol-grid` package provides support for the following types of computations:
 - `DFT` Ground- and excited-state density-functional theory, both using a Cartesian grid or basis-set discretization
 - `HF` Ground- and excited-state Hartree Fock, both using a Cartesian grid or basis-set discretization
+- `CI` Ground- and excited-state configuration interaction, both using a Cartesian grid or basis-set discretization
 - `SE` Ground- and excited-state Schrödinger equation, both using a Cartesian grid or basis-set discretization
 - `TDDFT` Real-time time-dependent density-functional theory, using a Cartesian grid
+- `TDHF` Time-dependent Hartree Fock, using a Cartesian grid
 - `TDSE` Time-dependent Schrödinger equation, using a Cartesian grid
+- `TDCI` Time-dependent configuration interaction, using a Cartesian grid
 
 The time-propagators are computed using symplectic-split operators (2nd, 4th, and 6th order in time, and spectral in space). They support field-free and laser-driven simulations (in the dipole approximation) with the following on-the-fly features, each specifying their own time sampling
 - Checkpointing, with the creation of a restart MATLAB file that can be used to resume a calculation that was stopped before it was finished
@@ -62,7 +65,6 @@ QMol_test.test;
 ### Limitations
 
 - The current release only supports one-dimensional computations 
-- Time-dependent Hartree Fock is currently not available
 - Time propagation on basis sets is currently not available 
 
 [&uarr;](#table-of-contents)
@@ -221,7 +223,7 @@ TDDFT.initialize(DFT);
 QMol_DFT_profiler(TDDFT,'memory');
 ```
 
-In our case, the estimated total TDDFT-object size is 1.8~MB with 1.5~MB for the saved electron density. Saving the `TDDFT` and `DFT` object in a MATLAB file at the end of the propagation produces a 1.6~MB `.mat` file. We mostly attribute the slight difference with the profiler estimate to run-time memory overhead associated with internal variables that are not stored in the saved objects.
+In our case, the estimated total TDDFT-object size is 1.8 $\sim$ MB with 1.5 $\sim$ MB for the saved electron density. Saving the `TDDFT` and `DFT` object in a MATLAB file at the end of the propagation produces a 1.6~MB `.mat` file. We mostly attribute the slight difference with the profiler estimate to run-time memory overhead associated with internal variables that are not stored in the saved objects.
 
 [&uarr;](#table-of-contents)
 
@@ -243,7 +245,7 @@ For more information: <fmauger@lsu.edu>
 
 
 ## Acknowledgments
-The original development of the `QMol-grid` package, and its (TD)DFT features, was supported by the U.S. Department of Energy, Office of Science, Office of Basic Energy Sciences, under Award No. DE-SC0012462.
-Addition of the (TD)SE features was supported by the National Science Foundation under Grant No. PHY-2207656.
+- The original development of the `QMol-grid` package, and its (TD)DFT features, was supported by the U.S. Department of Energy, Office of Science, Office of Basic Energy Sciences, under Award No. DE-SC0012462.
+- Addition of the (TD)SE, (TD)CI, and extended TDDFT features was supported by the National Science Foundation under Grant No. PHY-2207656.
 
 [&uarr;](#table-of-contents)
