@@ -7,11 +7,13 @@ classdef QMol_DFT_Vx_XX_conv < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.23.000   07/23/2025  F. Mauger
+%       Fix getPotentialDerivative
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.23.000','07/22/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_DFT_Vx_XX_conv})
@@ -193,8 +195,8 @@ function DV = getPotentialDerivative(obj,~,~,DV,isAdd)
     end
 
     % Return the handle to the XX potential derivative operator
-    if obj.DFT.isSpinPol,   DV.add(@(opt,p,isUp) obj.applyPotentialDerivative(opt,p,isUp));
-    else,                   DV.add(@(opt,p)      obj.applyPotentialDerivative(opt,p));       end
+    if obj.DFT.isSpinPol,   DV.add(1,@(opt,p,isUp) obj.applyPotentialDerivative(opt,p,isUp));   % first input is the dimension
+    else,                   DV.add(1,@(opt,p)      obj.applyPotentialDerivative(opt,p));        end
 end
 function setPotentialKernel(obj)
 %setPotentialKernel sets the kernel to be used for the computation of 

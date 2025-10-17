@@ -1,7 +1,24 @@
 classdef (Abstract) QMol_doc < QMol_suite
-%QMol_doc run-time documentation interface for the QMol toolbox. It defines
-%   > display list of components
-%   > bibliographic entries for kernel components
+%QMol_doc run-time documentation interface for the QMol-grid package.
+%
+%   QMol_doc.showComponents() display the complete list of components
+%   (classes) in the QMol-grid package.
+%
+%   Editable properties: N/A
+%
+%   Methods: showComponents
+%
+%   See also QMol_suite, QMol_test 
+
+%   NOTES:
+%     * Internally, QMol_doc also defines common methods for run-time
+%       documentation that can be used by other QMol-grid classes,
+%       including displaying the header (showHeader), license (showLicense), 
+%       funding (showFunding), footer (showFooter), version (showVersion),
+%       section header (showSection), and the list of referenced
+%       bibliographic entries (showBibliography).
+%     * QMol_doc also contains the part of the citable bibliographic
+%       entries in the package. 
     
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
@@ -10,11 +27,36 @@ classdef (Abstract) QMol_doc < QMol_suite
 %       Correct typo in [Mauger 2024]
 %   01.21.002   11/16/2024  F. Mauger
 %       Update reference [Mauger 2024b] to published version
+%   01.21.003   12/08/2024  F. Mauger
+%       Clean docstring
+%   01.22.00    04/19/2025  F. Mauger
+%       Integrale CI module (+ new version number)
+%   01.22.001   04/30/2025  F. Mauger
+%       Integrate CI module split
+%   01.23.000   05/22/2025  F. Mauger
+%       Add QMol_progressBar
+%   01.23.001   05/25/2025  F. Mauger
+%       Add QMol_TDCI, QMol_profiler, QMol_cte, QMol_CI_profiler
+%       Add placeholder reference to [Mauger 2025]
+%   01.23.002   05/26/2025  F. Mauger
+%       Add [Lopata 2013] reference
+%   01.23.003   06/04/2025  F. Mauger
+%       Add QMol_TDCI_sympSplitOp and QMol_TDCI_SSO_2S
+%   01.23.004   06/07/2025  F. Mauger
+%       Add QMol_TDCI_SSO_4FR, QMol_TDCI_SSO_4BM, QMol_TDCI_SSO_6BM
+%   01.23.005   07/22/2025  F. Mauger
+%       Add QMol_TDDFT_extSymp, QMol_TDDFT_ESSO_2S
+%   01.23.006   07/23/2025  F. Mauger
+%       Add QMol_TDDFT_ESSO_4FR, QMol_TDDFT_ESSO_4BM, QMol_TDDFT_ESSO_6BM
+%   01.23.007   08/06/2025  F. Mauger
+%       Update [Mauger 2025] and [Visentin 2025]
+%   01.23.008   10/07/2025  F. mauger
+%       Update funding acknowledgement for extended TDDFT
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.002','11/16/2024','F. Mauger')
+    QMol_doc.showVersion('01.23.008','10/07/2025','F. Mauger')
 end
 end
 methods (Static,Access=?QMol_doc)
@@ -27,9 +69,15 @@ end
 end
 methods (Static,Access=public)
 function showComponents
-%showComponents displays the list of available components in the QMol
-%   toolbox. Components associated with the selected discretization
-%   framework are listed in the QMol_info class.
+%showComponents display the list of components in the QMol-grid package.
+%
+%   QMol_doc.showComponents;
+
+%   NOTES:
+%     * Components associated with the selected discretization framework 
+%       are listed in the QMol_info class.
+%       Warning: this will probably change when support for 2 (and 3)
+%       dimensional calculations is included.
     
     % Header
     QMol_doc.showHeader;
@@ -39,6 +87,9 @@ function showComponents
     QMol_doc.showInfo;
     QMol_info.showInfo;
     QMol_test.showInfo;
+    QMol_cte.showInfo;
+    QMol_profiler.showInfo;
+    QMol_progressBar.showInfo;
     fprintf('\n')
 
     fprintf('  Density-functional theory (DFT)\n');
@@ -51,11 +102,18 @@ function showComponents
 
     fprintf('  Time-dependent DFT (TDDFT)\n');
     QMol_TDDFT.showInfo;
+
     QMol_TDDFT_sympSplitOp.showInfo;
     QMol_TDDFT_SSO_2S.showInfo;
     QMol_TDDFT_SSO_4BM.showInfo;
     QMol_TDDFT_SSO_4FR.showInfo;
     QMol_TDDFT_SSO_6BM.showInfo;
+
+    QMol_TDDFT_extSymp.showInfo;
+    QMol_TDDFT_ESSO_2S.showInfo;
+    QMol_TDDFT_ESSO_4BM.showInfo;
+    QMol_TDDFT_ESSO_4FR.showInfo;
+    QMol_TDDFT_ESSO_6BM.showInfo;
     fprintf('\n')
 
     fprintf('  Schrodinger equation (SE)\n');
@@ -72,6 +130,20 @@ function showComponents
     QMol_TDSE_SSO_4BM.showInfo;
     QMol_TDSE_SSO_4FR.showInfo;
     QMol_TDSE_SSO_6BM.showInfo;
+    fprintf('\n')
+
+    fprintf('  Configuration interaction (CI)\n');
+    QMol_CI.showInfo;
+    QMol_CI_profiler.showInfo;
+    fprintf('\n')
+
+    fprintf('  Time-dependent configuration interaction (TDCI)\n');
+    QMol_TDCI.showInfo;
+    QMol_TDCI_sympSplitOp.showInfo;
+    QMol_TDCI_SSO_2S.showInfo;
+    QMol_TDCI_SSO_4FR.showInfo;
+    QMol_TDCI_SSO_4BM.showInfo;
+    QMol_TDCI_SSO_6BM.showInfo;
     fprintf('\n')
 
     fprintf('  Miscellaneous\n');
@@ -98,7 +170,7 @@ end
 %% Run-time documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=?QMol_suite)
 function showHeader
-%showHeader displays the header for the QMol toolbox
+%showHeader displays the header for the QMol-grid package
 
     % QMol header
     fprintf('########################### QMol-grid package ############################\n');
@@ -123,7 +195,7 @@ end
 function showLicense
 %showLicense displays the license (2-Clause BSD License)
 
-    fprintf('  Copyright (c) 2024, Francois Mauger\n  All right reserved\n\n');
+    fprintf('  Copyright (c) 2025, Francois Mauger\n  All right reserved\n\n');
 
     fprintf('  Redistribution and use in source and binary forms, with or without\n')
     fprintf('  modification, are permitted provided that the following conditions are\n');
@@ -151,26 +223,26 @@ function showLicense
 end
 function showFunding
 %showFunding displays the funding source that supported the development of
-%   the toolbox
+%   the QMol-grid package
     
     QMol_doc.showSection('Funding');
-    fprintf('    The original development of the QMol-grid toolbox, and its (TD)DFT\n');
+    fprintf('    The original development of the QMol-grid package, and its (TD)DFT\n');
     fprintf('  features, was supported by the U.S. Department of Energy, Office of\n');
     fprintf('  Science, Office of Basic Energy Sciences, under Award No. DE-SC0012462.\n');
-    fprintf('    Addition of the (TD)SE features was supported by the National Science\n');
-    fprintf('  Foundation under Grant No. PHY-2207656.\n\n');
+    fprintf('    Addition of the (TD)SE, (TD)CI, and extended TDDFT features was\n');
+    fprintf('  supported by the National Science Foundation under Grant No. PHY-2207656.\n\n');
 end
 function showFooter
-%showFooter displays the footer for the QMol toolbox
+%showFooter displays the footer for the QMol-grid package
     fprintf('##########################################################################\n');
 end
 function showVersion(V,L,A)
 %showVersion formats and displays the input version, last modification 
-%   date, and author 
+%   date, and author(s) 
     fprintf('    V-%-9s (%-10s) %+45s\n',V,L,A);
 end
 function showSection(S)
-%showSection formats and diplays a section break
+%showSection formats and displays a section break
     if nargin == 0   ||   isempty(S)
         fprintf('==========================================================================\n');
     else
@@ -254,6 +326,11 @@ function legrand2002
              '    self-interaction-corrections for metal clusters," J. Phys. B 35, 1115\n' ...
              '    (2002).\n']);
 end
+function lopata2013
+    fprintf(['  [Lopata 2013] K. Lopata and N. Govind, "Near and Above Ionization\n' ...
+             '    Electronic Excitations with Non-Hermitian Real-Time Time-Dependent\n' ...
+             '    Density Functional Theory," J. Chem. Theory Comput. 9, 4939 (2013).\n']);
+end
 function mauger2024
     fprintf(['  [Mauger 2024] F. Mauger, C. Chandre, M.B. Gaarde, K. Lopata, and K.J. \n' ...
              '    Schafer, "Hamiltonian formulation and symplectic split-operator \n' ...
@@ -265,6 +342,16 @@ function mauger2024b
     fprintf(['  [Mauger 2024b] F. Mauger and C. Chandre, "QMol-grid : A MATLAB package\n' ...
              '    for quantum-mechanical simulations in atomic and molecular systems," \n' ...
              '    SoftwareX 28, 101968 (2024).\n']);
+end
+function mauger2025
+    fprintf(['  [Mauger 2025] F. Mauger and C. Chandre, "Extended phase-space symplectic\n' ...
+             '    integration for electronic dynamics," in preparation (2025).\n']);
+end
+function visentin2025
+    fprintf(['  [Visentin 2025] G. Visentin and F. Mauger, "Configuration-interaction\n' ...
+             '    calculations with density-functional theory molecular orbitals for\n' ...
+             '    modeling valence- and core-excited states in molecules,"\n' ...
+             '     	arXiv:2509.08245 (2025).\n']);
 end                                                                                    %\n (last possible position for line break)
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

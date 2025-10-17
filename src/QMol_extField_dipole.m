@@ -4,11 +4,13 @@ classdef QMol_extField_dipole < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.23.000   06/04/2025  F. Mauger
+%       Add support for TDCI + update release number
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.23.000','06/04/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_extField_dipole})
@@ -100,7 +102,7 @@ properties (Dependent,GetAccess=public,SetAccess=?QMol_suite)
     electricField                   % E
     electricFieldDerivative         % DE
 end
-properties (Transient,Hidden,GetAccess=?QMol_suite,SetAccess={?QMol_extField_dipole,?QMol_TDDFT,?QMol_TDSE})
+properties (Transient,Hidden,GetAccess=?QMol_suite,SetAccess={?QMol_extField_dipole,?QMol_TDDFT,?QMol_TDCI,?QMol_TDSE})
     % Linked objects
     disc
 end

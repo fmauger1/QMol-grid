@@ -249,7 +249,7 @@ end
 %% QMol-grid package methods %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Access=?QMol_suite)
 function getDensity(obj,occ,KSO)
-%getDensity builds the one-body density for KOhn-Sham orbitals and
+%getDensity builds the one-body density for Kohn-Sham orbitals and
 %   occupation coefficients
 
     % For basis-set models, reconstruct the density

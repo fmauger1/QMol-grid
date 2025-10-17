@@ -12,11 +12,15 @@ classdef QMol_DFT_Vext < QMol_Vmol
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.22.000   04/20/2025  F. Mauger
+%       Integrale CI module (+ new version number)
+%   01.22.001   04/22/2025  F. Mauger
+%       Add copyPotential
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.22.001','04/22/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_Vmol})
@@ -93,7 +97,7 @@ properties (Dependent,GetAccess=public,SetAccess=?QMol_suite)
     externalPotential               % Vext
     externalPotentialDerivative     % DVext
 end
-properties (Transient,Hidden,GetAccess=?QMol_suite,SetAccess={?QMol_DFT_Vext,?QMol_DFT})
+properties (Transient,Hidden,GetAccess=?QMol_suite,SetAccess={?QMol_DFT_Vext,?QMol_DFT,?QMol_CI})
     % Linked objects
     DFT                             % DFT.disc always defines the discretization domain
 end
@@ -235,6 +239,23 @@ function E = getEnergy(obj,rho)
     else
         E               =   sum(obj.V.*rho.rho)*obj.DFT.disc.dx;
     end
+end
+function V = copyPotential(obj)
+%copyPotential returns a copy of the external potential
+%   Each of the atom center pseudopotential is itself a copy of those in
+%   the external-potential object.
+
+    % Copy pseudopotential atomic centers
+    if isempty(obj.atom)
+        atom            =   [];
+    else
+        atom            =   cell(size(obj.atom));               for k = 1:numel(atom)
+        atom{k}         =   obj.atom{k}.copyPotential;          end
+    end
+
+    % Copy the potential
+    V                   =   QMol_DFT_Vext('atom',atom,'Vext',obj.Vext,'DVext',obj.DVext,'diffDx',obj.diffDx);
+
 end
 end
 methods (Access=private)

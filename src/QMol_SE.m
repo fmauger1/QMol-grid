@@ -26,9 +26,9 @@ end
 methods (Access=?QMol_SEq)
 function ref = showDoc(obj)
 %showDoc displays the documentation reflecting the specific implementation
-%   of the DFT model
+%   of the SE model
 
-    % Implementation of the DFT model
+    % Implementation of the SE model
     fprintf('  * Schrodinger equation (SE)\n');
     obj.version;
 

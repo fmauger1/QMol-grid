@@ -5,10 +5,23 @@ classdef(Abstract) QMol_info < QMol_doc
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release + consolidate bibliography
+%   01.22.000   04/19/2025  F. Mauger
+%       Integrale CI module (+ new version number)
+%   01.22.001   04/30/2025  F. Mauger
+%       Integrate CI module split
+%   01.23.000   06/04/2025  F. Mauger
+%       Add QMol_TDCI_abs_CAP and QMol_TDCI_abs_mask
+%       Add QMol_TDCI_SSO
+%   01.23.001   06/06/2025  F. Mauger
+%       Add QMol_TDCI_abs_CAP_space
+%   01.23.002   06/07/2025  F. Mauger
+%       Add QMol_TDCI_abs_mask_space
+%   01.23.003   07/22/2025  F. Mauger
+%       Add QMol_TDDFT_ESSO
 
 % 2-Clause BSD License
 %
-% Copyright (c) 2024, Francois Mauger, all right reserved
+% Copyright (c) 2025, Francois Mauger, all right reserved
 %
 % Redistribution and use in source and binary forms, with or without
 % modification, are permitted provided that the following conditions are
@@ -36,7 +49,7 @@ classdef(Abstract) QMol_info < QMol_doc
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.23.003','07/22/2025','F. Mauger')
 end
 end
 methods (Static,Access=?QMol_doc)
@@ -107,7 +120,28 @@ function showComponents
 
     fprintf('  Propagators\n');
     QMol_TDDFT_SSO.showInfo;
+    QMol_TDDFT_ESSO.showInfo;
     fprintf('\n')
+
+    % CI ==================================================================
+    QMol_doc.showSection('Configuration-interaction theory');
+    fprintf('  Model\n');
+    QMol_CI_conv.showInfo;
+    fprintf('\n')
+
+    % TDCI ================================================================
+    QMol_doc.showSection('TDCI theory');
+
+    fprintf('  Absorbing boundaries\n');
+    QMol_TDCI_abs_CAP.showInfo;
+    QMol_TDCI_abs_CAP_space.showInfo;
+    QMol_TDCI_abs_mask.showInfo;
+    QMol_TDCI_abs_mask_space.showInfo;
+    fprintf('\n');
+
+    fprintf('  Propagators\n');
+    QMol_TDCI_SSO.showInfo;
+    fprintf('\n');
 
     % SE ==================================================================
     QMol_doc.showSection('Schrodinger-equation theory');

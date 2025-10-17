@@ -10,11 +10,13 @@ classdef QMol_DFT_spinRes < QMol_DFT
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.22.000   04/30/2025  F. Mauger
+%       Make getDiscCopy accessible to QMol_CI
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.22.000','04/30/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_DFT})
@@ -79,7 +81,7 @@ function initialize(obj,varargin)
 
 end
 end
-methods (Hidden,Access = ?QMol_DFT)
+methods (Hidden,Access = {?QMol_DFT,?QMol_CI})
 function disc = getDiscCopy(obj)
 %getDiscCopy returns a streamlined copy of the discretization (object)
     

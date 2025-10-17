@@ -66,7 +66,7 @@ end
 methods (Static=true)
 function cval = ev2au(val)
     % Energy conversion from electron volts to atomic units
-    %   1 [kg] = 1/27.211386245988 [a.u.]
+    %   1 [eV] = 1/27.211386245988 [a.u.]
     cval                =   val/27.211386245988;
 end
 end

@@ -1,21 +1,22 @@
-classdef QMol_SE_profiler < QMol_suite
-%QMol_SE_profiler memory and/or execution time profiling for Schrodinger-
-%   equation model or functional
+classdef QMol_SE_profiler < QMol_profiler
+%QMol_SE_profiler time/memory profiler for Schrodinger-equation systems
     
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.23.000   05/25/2025  F. Mauger
+%       Derive from QMol_profiler
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.23.000','05/25/2025','F. Mauger')
 end
 end
-methods (Static,Access={?QMol_doc,?QMol_SE_profiler})
+methods (Static,Access={?QMol_doc,?QMol_profiler})
 function showInfo
     fprintf('  * QMol_SE_profiler:\n');
-    fprintf('      > memory/execution time profiling for SE\n'); 
+    fprintf('      > Memory/execution time profiling for SE\n'); 
     QMol_SE_profiler.version;
 end
 end
@@ -66,7 +67,7 @@ if any(strcmpi(obj.mode,{'all','memory','size'}))
     % Show total memory footprint
     fprintf('                                                                ----------\n');
     fprintf('                                                        TOTAL =  ');
-    QMol_SE_profiler.showMemoryFormatted(mem);
+    QMol_profiler.showMemoryFormatted(mem);
     fprintf('\n\n');
 
 end
@@ -128,56 +129,6 @@ end
     QMol_doc.showFooter;
     clear obj
 
-end
-end
-%% Memory profiling %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-methods (Static,Access=?QMol_suite)
-function m = getMemoryFootprint(N,opt)
-%getMemoryFootprint obtain the memory footprint of an array with N elements
-%   of the type opt. The memory footpring m is expressed in bites
-
-    % Compute size
-    switch lower(opt)
-        case {'real','double'}
-            m           =   8 * N;
-        case {'imag','complex'}
-            m           =   16 * N;
-        otherwise
-            warning('QMol:SE_profiler:arrayType',['Unknown array type: ' opt '. No memory evaluation performed']);
-            m           =   0;
-    end
-
-end
-function showMemoryFootprint(msg,mem,lvl)
-%showMemoryFootprint displays the memory foortrint 
-    
-    % Initialization
-    if nargin < 3,  lvl = 1;        end
-
-    % Display memory footprint
-    switch lvl
-        case 1
-            fprintf('  * %-60s ',msg);      QMol_SE_profiler.showMemoryFormatted(mem);
-        case 2
-            fprintf('    > %-58s ',msg);    QMol_SE_profiler.showMemoryFormatted(mem);
-        otherwise
-            fprintf('    > %-59s ',msg);    QMol_SE_profiler.showMemoryFormatted(mem);
-            warning('QMol:SE_profiler:showLevel','Maximum show level is 2; Entry downgraded to level 2');
-    end
-    fprintf('\n');
-end
-end
-methods (Static,Access=private)
-function showMemoryFormatted(mem)
-%showMemoryFormatted display the formatted memory footprint
-    
-    if mem == 0   ||   isnan(mem)   || isinf(mem)                           % Do not display
-    elseif mem <= 1024,       fprintf('%6u  B',mem);
-    elseif mem <= 1024^2,   fprintf('%6.1f KB',mem/1024);
-    elseif mem <= 1024^3,   fprintf('%6.1f MB',mem/1024^2);
-    elseif mem <= 1024^4,   fprintf('%6.1f GB',mem/1024^3);
-    else,                   fprintf('%6.1f TB',mem/1024^4);
-    end
 end
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
