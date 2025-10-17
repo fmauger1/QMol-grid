@@ -28,6 +28,11 @@
 <!-- HF -->
         <tocitem target="HF.html">                                      Hartree-Fock theory (HF)
         </tocitem>
+<!-- CI -->
+        <tocitem target="CI.html">                                      Configuration interaction theory (CI)
+            <tocitem target="QMol_CI_conv.html">                            QMol_CI_conv</tocitem>
+            <tocitem target="QMol_CI_profiler.html">                        QMol_CI_profiler</tocitem>
+        </tocitem>
 <!-- SE -->
         <tocitem target="SE.html">                                      Schrodinger equation (SE)
             <tocitem target="QMol_SE.html">                                 QMol_SE</tocitem>
@@ -42,14 +47,29 @@
         <tocitem target="TDDFT.html">                                   Time-dependent density-functional theory (TDDFT)
             <tocitem target="QMol_TDDFT_abs_CAP.html">                      QMol_TDDFT_abs_CAP</tocitem>
             <tocitem target="QMol_TDDFT_abs_mask.html">                     QMol_TDDFT_abs_mask</tocitem>
+            <tocitem target="QMol_TDDFT_ESSO_2S.html">                      QMol_TDDFT_ESSO_2S</tocitem>
+            <tocitem target="QMol_TDDFT_ESSO_4BM.html">                     QMol_TDDFT_ESSO_4BM</tocitem>
+            <tocitem target="QMol_TDDFT_ESSO_4FR.html">                     QMol_TDDFT_ESSO_4FR</tocitem>
+            <tocitem target="QMol_TDDFT_ESSO_6BM.html">                     QMol_TDDFT_ESSO_6BM</tocitem>
             <tocitem target="QMol_TDDFT_SSO_2S.html">                       QMol_TDDFT_SSO_2S</tocitem>
             <tocitem target="QMol_TDDFT_SSO_4BM.html">                      QMol_TDDFT_SSO_4BM</tocitem>
             <tocitem target="QMol_TDDFT_SSO_4FR.html">                      QMol_TDDFT_SSO_4FR</tocitem>
             <tocitem target="QMol_TDDFT_SSO_6BM.html">                      QMol_TDDFT_SSO_6BM</tocitem>
         </tocitem>
 <!-- TDHF -->
-<!--        <tocitem target="TDHF.html">                                    Time-dependent Hartree-Fock theory (TDHF)
-        </tocitem> -->
+        <tocitem target="TDHF.html">                                    Time-dependent Hartree-Fock theory (TDHF)
+        </tocitem>
+<!-- TDCI -->
+        <tocitem target="TDCI.html">                                    Time-dependent configuration interaction theory (TDCI)
+            <tocitem target="QMol_TDCI_abs_CAP.html">                       QMol_TDCI_abs_CAP</tocitem>
+            <tocitem target="QMol_TDCI_abs_CAP_space.html">                 QMol_TDCI_abs_CAP_space</tocitem>
+            <tocitem target="QMol_TDCI_abs_mask.html">                      QMol_TDCI_abs_mask</tocitem>
+            <tocitem target="QMol_TDCI_abs_mask_space.html">                QMol_TDCI_abs_mask_space</tocitem>
+            <tocitem target="QMol_TDCI_SSO_2S.html">                        QMol_TDCI_SSO_2S</tocitem>
+            <tocitem target="QMol_TDCI_SSO_4BM.html">                       QMol_TDCI_SSO_4BM</tocitem>
+            <tocitem target="QMol_TDCI_SSO_4FR.html">                       QMol_TDCI_SSO_4FR</tocitem>
+            <tocitem target="QMol_TDCI_SSO_6BM.html">                       QMol_TDCI_SSO_6BM</tocitem>
+        </tocitem>
 <!-- TDSE -->
         <tocitem target="TDSE.html">                                    Time-dependent Schrodinger equation (TDSE)
             <tocitem target="QMol_TDSE_abs_CAP.html">                       QMol_TDSE_abs_CAP</tocitem>

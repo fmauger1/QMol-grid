@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,IE=9,chrome=1"><meta name="generator" content="MATLAB 2025a"><title>QMol_CI_profiler</title><style type="text/css">.rtcContent { padding: 30px; } .S0 { margin: 3px 10px 5px 4px; padding: 0px; line-height: 28.8px; min-height: 0px; white-space: pre-wrap; color: rgb(192, 76, 11); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 24px; font-weight: 400; text-align: left;  }
+.S1 { margin: 2px 10px 9px 4px; padding: 0px; line-height: 21px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 14px; font-weight: 400; text-align: left;  }
+.S2 { margin: 20px 10px 5px 4px; padding: 0px; line-height: 25px; min-height: 0px; white-space: pre-wrap; color: rgb(33, 33, 33); font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-style: normal; font-size: 20px; font-weight: 700; text-align: left;  }
+.CodeBlock { background-color: #F5F5F5; margin: 10px 15px 10px 0; display: inline-block; min-width: 100%; }
+.S3 { border-left: 0.666667px solid rgb(217, 217, 217); border-right: 0.666667px solid rgb(217, 217, 217); border-top: 0.666667px solid rgb(217, 217, 217); border-bottom: 0px none rgb(33, 33, 33); border-radius: 4px 4px 0px 0px; padding: 6px 45px 0px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S4 { border-left: 0.666667px solid rgb(217, 217, 217); border-right: 0.666667px solid rgb(217, 217, 217); border-top: 0px none rgb(33, 33, 33); border-bottom: 0.666667px solid rgb(217, 217, 217); border-radius: 0px 0px 4px 4px; padding: 0px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }
+.S5 { margin: 10px 0px 20px; padding-left: 0px; font-family: Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif; font-size: 14px;  }
+.S6 { margin-left: 56px; line-height: 21px; min-height: 0px; text-align: left; white-space: pre-wrap;  }
+.S7 { border-left: 0.666667px solid rgb(217, 217, 217); border-right: 0.666667px solid rgb(217, 217, 217); border-top: 0.666667px solid rgb(217, 217, 217); border-bottom: 0.666667px solid rgb(217, 217, 217); border-radius: 4px; padding: 6px 45px 4px 13px; line-height: 18.004px; min-height: 0px; white-space: nowrap; color: rgb(33, 33, 33); font-family: Menlo, Monaco, Consolas, "Courier New", monospace, Menlo, Monaco, Consolas, "Courier New", monospace; font-size: 14px;  }</style></head><body><div class = rtcContent><h1  class = 'S0'><span style=' font-family: monospace;'>QMol_CI_profiler</span></h1><div  class = 'S1'><span>Memory and execution-time profiler for configuration interaction models.</span></div><h2  class = 'S2'><span>Description</span></h2><div  class = 'S1'><span>Use </span><span style=' font-family: monospace;'>QMol_CI_profiler</span><span> to estimate the memory footprint and execution time of a configuration interaction (CI) model or component.</span></div><h2  class = 'S2'><span>Use</span></h2><div  class = 'S1'><span>Run the memory and execution-time profiling with either</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >QMol_CI_profiler(QM);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >QMol_CI_profiler(QM,</span><span style="color: rgb(167, 9, 245);">'all'</span><span >);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span style=' font-family: monospace;'>QM</span><span> is any of a (TD)CI model or potential objects.</span></li><li  class = 'S6'><span>The requirements and side effects as for both memory-only and execution-time-only modes are detailed next.</span></li><li  class = 'S6'><span>Note that for TDCI object only the memory footprint, and not the execution time, is estimated.</span></li></ul><div  class = 'S1'><span>Run only the memory profiling component with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >QMol_CI_profiler(QM,</span><span style="color: rgb(167, 9, 245);">'memory'</span><span >);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span style=' font-style: italic;'>Configuration interaction model case:</span><span> If </span><span style=' font-family: monospace;'>QM</span><span> is a CI model object (</span><a href = "./QMol_CI.html"><span style=' font-family: monospace;'>QMol_CI</span></a><span>), it should define a proper CI model (domain, molecular orbitals, configuration basis); However, it does not need to be initialized before running the memory profiling. The memory profiling uses the object's </span><span style=' font-family: monospace;'>getMemoryProfile</span><span> method and has its side effects: all the configuration interaction model properties are left unchanged while run-time properties may be altered.</span></li><li  class = 'S6'><span style=' font-style: italic;'>TDCI propagator case:</span><span> if QM is a TDCI propagator object, it should define a full CI model. </span></li><li  class = 'S6'><span>In all cases, not all the listed components may be used in actual simulations and the memory estimate tries to be conservative. On the other hand, it only includes the discretization of member components on the domain grid and ignores other (small) properties.</span></li></ul><div  class = 'S1'><span>Run only the execution-time profiling component with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S7'><span style="white-space: pre"><span >QMol_CI_profiler(QM,</span><span style="color: rgb(167, 9, 245);">'time'</span><span >);</span></span></div></div></div><ul  class = 'S5'><li  class = 'S6'><span style=' font-style: italic;'>Configuration interaction model case:</span><span> If </span><span style=' font-family: monospace;'>QM</span><span> is a CI model object (</span><a href = "./QMol_CI.html"><span style=' font-family: monospace;'>QMol_CI</span></a><span>),  it should define a proper CI model (domain, molecular orbitals, configuration basis); However, it does not need to be initialized before running the memory profiling. The execution-time profiling initializes the object and returns it initialized.</span></li><li  class = 'S6'><span style=' font-style: italic;'>TDCI propagator case:</span><span> no execution time profiling is available for TDCI propagators. Run an actual TDCI propagation (over a short time interval) to get an estimate.</span></li></ul><div  class = 'S1'><span>The execution-time profiling is performed by running each listed operation a certain number of times and returns the average elapsed time to do so. The default number of iterations is defined internally based on the dimension of the model. Overwrite this default values and specify the number of iterations </span><span style=' font-family: monospace;'>nbIter</span><span> with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >QMol_CI_profiler(QM,</span><span style="color: rgb(167, 9, 245);">'all'</span><span >,nbIter);     </span><span style="color: rgb(0, 128, 19);">% Both memory and time profiling</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >QMol_CI_profiler(QM,</span><span style="color: rgb(167, 9, 245);">'time'</span><span >,nbIter);    </span><span style="color: rgb(0, 128, 19);">% Execution-time profiling only</span></span></div></div></div><h2  class = 'S2'><span>Test suite</span></h2><div  class = 'S1'><span>Run the test suite for the class in normal or </span><a href = "./Test_suite.html"><span>summary mode</span></a><span> respectively with</span></div><div class="CodeBlock"><div class="inlineWrapper"><div  class = 'S3'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: rgb(167, 9, 245);">'CI_profiler'</span><span >);</span></span></div></div><div class="inlineWrapper"><div  class = 'S4'><span style="white-space: pre"><span >QMol_test.test(</span><span style="color: rgb(167, 9, 245);">'-summary'</span><span >,</span><span style="color: rgb(167, 9, 245);">'CI_profiler'</span><span >);</span></span></div></div></div><h2  class = 'S2'><span>Notes</span></h2><ul  class = 'S5'><li  class = 'S6'><span style=' font-family: monospace;'>QMol_CI_profiler</span><span> was introduced in version 01.23</span></li></ul>
+<br>
+<!-- 
+##### SOURCE BEGIN #####
+%% |QMol_CI_profiler|
+% Memory and execution-time profiler for configuration interaction models.
+%% Description
+% Use |QMol_CI_profiler| to estimate the memory footprint and execution time 
+% of a configuration interaction (CI) model or component.
+%% Use
+% Run the memory and execution-time profiling with either
+
+QMol_CI_profiler(QM);
+QMol_CI_profiler(QM,'all');
+%% 
+% * |QM| is any of a (TD)CI model or potential objects.
+% * The requirements and side effects as for both memory-only and execution-time-only 
+% modes are detailed next.
+% * Note that for TDCI object only the memory footprint, and not the execution 
+% time, is estimated.
+%% 
+% Run only the memory profiling component with
+
+QMol_CI_profiler(QM,'memory');
+%% 
+% * _Configuration interaction model case:_ If |QM| is a CI model object (<./QMol_CI.html 
+% |QMol_CI|>), it should define a proper CI model (domain, molecular orbitals, 
+% configuration basis); However, it does not need to be initialized before running 
+% the memory profiling. The memory profiling uses the object's |getMemoryProfile| 
+% method and has its side effects: all the configuration interaction model properties 
+% are left unchanged while run-time properties may be altered.
+% * _TDCI propagator case:_ if QM is a TDCI propagator object, it should define 
+% a full CI model. 
+% * In all cases, not all the listed components may be used in actual simulations 
+% and the memory estimate tries to be conservative. On the other hand, it only 
+% includes the discretization of member components on the domain grid and ignores 
+% other (small) properties.
+%% 
+% Run only the execution-time profiling component with
+
+QMol_CI_profiler(QM,'time');
+%% 
+% * _Configuration interaction model case:_ If |QM| is a CI model object (<./QMol_CI.html 
+% |QMol_CI|>),  it should define a proper CI model (domain, molecular orbitals, 
+% configuration basis); However, it does not need to be initialized before running 
+% the memory profiling. The execution-time profiling initializes the object and 
+% returns it initialized.
+% * _TDCI propagator case:_ no execution time profiling is available for TDCI 
+% propagators. Run an actual TDCI propagation (over a short time interval) to 
+% get an estimate.
+%% 
+% The execution-time profiling is performed by running each listed operation 
+% a certain number of times and returns the average elapsed time to do so. The 
+% default number of iterations is defined internally based on the dimension of 
+% the model. Overwrite this default values and specify the number of iterations 
+% |nbIter| with
+
+QMol_CI_profiler(QM,'all',nbIter);     % Both memory and time profiling
+QMol_CI_profiler(QM,'time',nbIter);    % Execution-time profiling only
+%% Test suite
+% Run the test suite for the class in normal or <./Test_suite.html summary mode> 
+% respectively with
+
+QMol_test.test('CI_profiler');
+QMol_test.test('-summary','CI_profiler');
+%% Notes
+%% 
+% * |QMol_CI_profiler| was introduced in version 01.23
+##### SOURCE END #####
+-->
+</div></body></html>
