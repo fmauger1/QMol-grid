@@ -1,5 +1,10 @@
 List of changes since v1.21.000 release, in reverse chronological order
 
+%%%%% v1.23.000 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Include support for CI, TDCI, and general purpose TDDFT propagators. This 
+    resulted in a number of classes added and changes in existing
+    components. See the change logs in individual files.
+
 %%%%% v1.21.006 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In QMol_doc
     01.21.002   11/16/2024  F. Mauger
@@ -53,7 +58,8 @@ In QMol_SE_eigs
 
 In QMol_SE_eig_basis
     01.21.001   07/01/2024  F. Mauger
-        Add (missing) reference and funcing information to ground-state
+        Add (missing) reference and funding information to ground-state
         run time documentation
 
 Update documentation pages accordingly
+
