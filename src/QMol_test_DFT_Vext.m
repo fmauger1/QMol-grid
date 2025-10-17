@@ -4,11 +4,13 @@ classdef QMol_test_DFT_Vext < QMol_test
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.22.001   06/17/2024  F. Mauger
+%       Add test for copyPotential
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=?QMol_test)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.22.000','04/22/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_test})
@@ -24,6 +26,7 @@ function testUnit(obj)
     
     % Run test units
     obj.runDefinePotential;
+    obj.runCopyPotential
     obj.runUsePotential;
     
 end
@@ -113,6 +116,37 @@ function runDefinePotential(obj) %=========================================
     R                   =   max(abs( Vext.DV-DV )) < 1e-10;
     obj.showResult('list of atomic centers' ,R);
     if ~R, fprintf('      (check QMol_Va_Gaussian and QMol_Va_softCoulomb components)\n');    end
+
+end
+function runCopyPotential(obj) %===========================================
+%runCopyPotential unit tests for copying the external potential
+    
+    % Initialization
+    obj.showSection('Copy potential');
+
+    Va                  =  {QMol_Va_Gaussian('V0',1,'s',.5,'X0',-3), ...
+                            QMol_Va_Gaussian('V0',sqrt(2),'s',exp(1),'X0',log(5)),...
+                            QMol_Va_softCoulomb('Z',1/3,'a',pi,'X0',5)};
+    V                   =   @(x) -3*x./sqrt((x-sqrt(2)).^2 + exp(2));
+    DV                  =   @(x) -3./sqrt((x-sqrt(2)).^2 + exp(2)) + 3*x.*(x-sqrt(2)).*((x-sqrt(2)).^2 + exp(2)).^-1.5;
+
+    Vext                =   QMol_DFT_Vext('atom',Va,'externalPotential',V,'externalPotentialDerivative',DV);
+
+    Vc                  =   Vext.copyPotential;
+    Vext.clear;
+
+    % Check copy
+    obj.showResult('copyPotential (externalPotential)',isequal(Vc.Vext,V));
+    obj.showResult('copyPotential (externalPotentialDerivative)',isequal(Vc.DVext,DV));
+    if numel(Vc.atom) == 3
+        OK1             =   Vc.atom{1}.V0 == Va{1}.V0 && Vc.atom{1}.s == Va{1}.s && Vc.atom{1}.X0 == Va{1}.X0;
+        OK2             =   Vc.atom{2}.V0 == Va{2}.V0 && Vc.atom{2}.s == Va{2}.s && Vc.atom{2}.X0 == Va{2}.X0;
+        OK3             =   Vc.atom{3}.Z  == Va{3}.Z  && Vc.atom{3}.a == Va{3}.a && Vc.atom{3}.X0 == Va{3}.X0;
+
+        obj.showResult('copyPotential (atom)',OK1 && OK2 && OK3);
+    else
+        obj.showResult('copyPotential (atom)',false);
+    end
 
 end
 function runUsePotential(obj) %=========================================
