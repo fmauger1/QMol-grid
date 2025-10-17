@@ -4,11 +4,13 @@ classdef QMol_TDDFT_abs_CAP < QMol_suite
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.23.000   06/04/2025  F. Mauger
+%       Correct reset + update release number
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.23.000','06/04/2024','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_TDDFT_abs_CAP})
@@ -108,7 +110,7 @@ function clear(obj,varargin)
 
     % Reset default parameters (if needed)
     if isempty(obj.L),      obj.L       =   10;                             end
-    if isempty(obj.L),      obj.V0      =   .5;                             end
+    if isempty(obj.V0),     obj.V0      =   .5;                             end
     if isempty(obj.shape),  obj.shape   =   'sin^1/8';                      end
 end
 function initialize(obj,DFT,isFwd)
@@ -132,7 +134,7 @@ function initialize(obj,DFT,isFwd)
     elseif isa(obj.shape,'function_handle'),fcn =   obj.shape;
     else,                                   fcn =   @(x) 1-cos(.5*pi*x).^.125;
         warning('QMol:TDDFT:absorberMaskShape', ...
-            'Unknown/unsupported absorbing-boundary mask sahep; Default cos^1/8 used instead.')
+            'Unknown/unsupported absorbing-boundary mask shape; Default cos^1/8 used instead.')
     end
 
     obj.V               =   zeros(numel(obj.DFT.disc.x),1);

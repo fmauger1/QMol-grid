@@ -284,7 +284,7 @@ function [E1,E2,E3] = getEnergy(obj,I1,I2)
 
     % Compute energy components
     switch lower(opt)
-        % DFT energy -----------------------
+        % SE energy ------------------------
         case {'se','schrodinger','schrodinger equation','schrodinger_equation'}
 
             % Get energy components
@@ -295,7 +295,7 @@ function [E1,E2,E3] = getEnergy(obj,I1,I2)
             
             % Total energy
             E1 = E2 + E3;
-        % Orbital energies -----------------
+        % Wave function energies -----------
         case {'wfcn','wave function','wave_function'}
             % Initialization
             if isempty(IC)
@@ -337,7 +337,7 @@ function showEnergy(obj,opt)
 
     % Show energy
     switch lower(opt)
-        % DFT energy -----------------------
+        % SE energy ------------------------
         case {'se','schrodinger','schrodinger equation','schrodinger_equation'}
             % Initialization
             [Etot,Ekin,Epot]    =   obj.getEnergy('SE');
@@ -355,7 +355,7 @@ function showEnergy(obj,opt)
             % Finalization
             fprintf('  ----------------------------------------------\n');
 
-        % Orbital energies -----------------
+        % Wave function energies -----------
         case {'wfcn','wave function','wave_function'}
             % Initialization
             [E,err]     =   obj.getEnergy('wfcn');

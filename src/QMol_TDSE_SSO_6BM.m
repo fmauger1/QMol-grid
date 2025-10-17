@@ -15,7 +15,7 @@ end
 methods (Static,Access={?QMol_doc,?QMol_TDSE})
 function showInfo
     fprintf('  * QMol_TDSE_SSO_6BM:\n');
-    fprintf('      > Symplectic split-operator TDDFT propagator\n'); 
+    fprintf('      > Symplectic split-operator TDSE propagator\n'); 
     fprintf('      > Optimized Blanes and Moan scheme (6th order)\n'); 
     QMol_TDSE_SSO_6BM.version;
 end

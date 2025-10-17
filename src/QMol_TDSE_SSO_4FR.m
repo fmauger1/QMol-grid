@@ -15,7 +15,7 @@ end
 methods (Static,Access={?QMol_doc,?QMol_TDSE})
 function showInfo
     fprintf('  * QMol_TDSE_SSO_4FR:\n');
-    fprintf('      > Symplectic split-operator TDDFT propagator\n'); 
+    fprintf('      > Symplectic split-operator TDSE propagator\n'); 
     fprintf('      > Forest-Ruth scheme (4th order)\n'); 
     QMol_TDSE_SSO_4FR.version;
 end

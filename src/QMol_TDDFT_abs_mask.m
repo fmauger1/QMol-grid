@@ -124,7 +124,7 @@ function initialize(obj,DFT,~)
     elseif isa(obj.shape,'function_handle'),fcn =   obj.shape;
     else,                                   fcn =   @(x) cos(.5*pi*x).^.125;
         warning('QMol:TDDFT:absorberMaskShape', ...
-            'Unknown/unsupported absorbing-boundary mask sahep; Default cos^1/8 used instead.')
+            'Unknown/unsupported absorbing-boundary mask shape; Default cos^1/8 used instead.')
     end
 
     obj.W               =   ones(numel(obj.DFT.disc.x),1);

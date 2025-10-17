@@ -207,8 +207,8 @@ end
 methods(Access=public)
 function E = getEnergy(obj,wfcn)
 %getEnergy returns the energy associated with the input wave function
-%   object. Empty or missing density uses the wave function of the member 
-%   SE object (discouraged).
+%   object. Empty or missing wave function uses that of the member SE 
+%   object (discouraged).
     
     % Initialization
     if nargin < 2,      wfcn    =   [];                                     end

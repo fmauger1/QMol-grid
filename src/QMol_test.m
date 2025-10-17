@@ -1,16 +1,39 @@
 classdef (Abstract) QMol_test < QMol_suite
-%QMol_test test suite for the QMol package
-%   > Use the '-summary' flag as a first argument to show only the sections
-%     and failed unit tests.
+%QMol_test test suite for the QMol-grid package
+%   By convention, all classes in the QMol-grid package implement a
+%   corresponding unit test, even if no actual test is performed.
+%
+%   QMol_test.test() runs the entire test suite (depending on the system,
+%   this may take a while). The test suite prints out the results of each
+%   test, together with a summary of the number of tests that passed.
+%
+%   QMol_test.test('test1','test2',___) selectively runs the set of named
+%   tests. The input test names correspond to the QMol-grid classes to be 
+%   tested, omitting the initial 'QMol_' part of the name. For instance, 
+%   'test1' runs the unit tests for the QMol_test1 component. Names of 
+%   tests are case insensitive.
+%
+%   Activate the summary mode, where only a summary of the test results is
+%   displayed, by including '-summary' as the first argument
+%       QMol_test.test('-summary')                          all tests
+%       QMol_test.test('-summary','test1','test2',___)      selected tests
+%
+%   Editable properties: N/A
+%
+%   Methods: test
+%
+%   See also QMol_suite, QMol_doc 
     
 %   Version     Date        Author
 %   01.21.000   06/17/2024  F. Mauger
 %       Prepare 01.21 release
+%   01.21.001   12/08/2024  F. Mauger
+%       Clean docstring
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.21.000','06/17/2024','F. Mauger')
+    QMol_doc.showVersion('01.21.001','12/08/2024','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_test})
@@ -20,9 +43,14 @@ end
 end
 methods (Static,Access=?QMol_doc)
 function showComponents
-%showComponents displays the list of available unit tests in the QMol
-%   toolbox. Components associated with the selected discretization
-%   framework are listed in the QMol_info class.
+%showComponents displays the list of available unit tests in the QMol-grid
+%   package. 
+
+%   NOTE: 
+%   * Test components associated with the selected discretization framework
+%     are listed in the QMol_info class.
+%     Warning: this will probably change when support for 2 (and 3)
+%     dimensional calculations is included.
     
     % Get list of unit tests
     l                   =   QMol_testInfo.testList;
@@ -83,6 +111,9 @@ end
 methods (Static,Access=public)
 function test(varargin)
 %test runs the unit tests for the elected input components
+%   QMol_test.test()                        run all tests
+%   QMol_test.test('test1','test2',___)     run selected tests
+%   QMol_test.test('-summary'___)           run in summary mode
 
     % List of tests
     LU                  =   QMol_testInfo.testList;
@@ -169,7 +200,7 @@ function test(varargin)
 end
 end
 %% DFT methods %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-methods(Static,Access=protected)
+methods(Static,Hidden,Access=protected)
 function Ex = DFT_1D_LDA_eps_x(funV,rho)
 %DFT_1D_LDA_eps_x(funV,rho) computes the 1D local-density approximation
 %   (LDA) exchange-energy per particle. funV is a handle function
