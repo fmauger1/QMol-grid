@@ -3,7 +3,7 @@ function ref = showDoc(obj)
 %   of the TDCI solver
 
     % Implementation of the TDCI model
-    fprintf('  * Symplectic split-operator propagation scheme [Mauger 2025],\n');
+    fprintf('  * Symplectic split-operator propagation scheme [Mauger 2024],\n');
     if isempty(obj.splitMotif),             fprintf('    with a HDH split motif.\n');
     elseif strcmpi(obj.splitMotif,'hdh'),   fprintf('    with a HDH split motif.\n');
     elseif strcmpi(obj.splitMotif,'dhd'),   fprintf('    with a DHD split motif.\n');
@@ -48,6 +48,6 @@ function ref = showDoc(obj)
     else,   error('QMol:TDCI:sympSplitOpGauge','Unexpected gauge mode');               end
 
     % References
-    ref                 =   {'Mauger 2025'};
+    ref                 =   {'Mauger 2024'};
 
 end

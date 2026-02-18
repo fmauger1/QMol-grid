@@ -14,9 +14,9 @@ function showDocumentation(obj)
     % Time propagation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     QMol_doc.showSection('Time propagation');
     fprintf('  * The TDCI model dynamics relies on a canonical Hamiltonian formalism\n');
-    fprintf('    [Mauger 2024, Mauger 2025].\n')
+    fprintf('    [Mauger 2024, Mauger 2026].\n')
 
-    ref                 =   [{'Mauger 2024','Mauger 2025'},obj.showDoc];
+    ref                 =   [{'Mauger 2024','Mauger 2026'},obj.showDoc];
 
     fprintf('  * Parameters\n');
     fprintf('    Time interval = %s to %s a.u. (%s to %s fs)\n',...

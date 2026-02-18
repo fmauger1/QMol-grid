@@ -3,8 +3,9 @@ function ref = showDoc(obj)
 %   of the TDDFT solver
 
     % Implementation of the TDDFT model
-    fprintf('  * Extended symplectic split-operator propagation scheme [Mauger 2025],\n');
-    fprintf('    restrain = %5.3f\n',obj.w);                                if obj.spltV
+    fprintf('  * Extended symplectic split-operator propagation scheme [Mauger 2026],\n');  if obj.isMP
+    fprintf('    midpoint projection [Luo 2017]\n');    ref =   {'Mauger 2026','Luo 2017'}; else 
+    fprintf('    restraint = %5.3f [Tao 2016]\n',obj.w);ref =   {'Mauger 2026','Tao 2016'}; end, if obj.spltV
     fprintf('    splitting the potential\n');                               end
     if isempty(obj.splitMotif),                                         fprintf('    with a HHR split motif.\n');
     elseif strcmpi(obj.splitMotif,'hhr'),                               fprintf('    with a HHR split motif.\n');
@@ -53,8 +54,5 @@ function ref = showDoc(obj)
     elseif FG == 1,                         fprintf('  * Field driven propagation\n    dipole approximation, length gauge\n');
     elseif FG == 2,                         fprintf('  * Field driven propagation\n    dipole approximation, velocity gauge\n');
     else,   error('QMol:TDDFT:sympSplitOpGauge','Unexpected gauge mode');               end
-
-    % References
-    ref                 =   {'Mauger 2025'};
 
 end

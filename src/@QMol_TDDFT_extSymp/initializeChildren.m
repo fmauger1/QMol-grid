@@ -10,6 +10,17 @@ function initializeChildren(obj,isRst)
         obj.dv          =   obj.dv * obj.DFT.disc.dy;       if obj.DFT.dim > 2
         obj.dv          =   obj.dv * obj.DFT.disc.dz;       end, end
 
+        if ischar(obj.w),                                                   switch lower(obj.w)
+            case {'midpoint projection','mid-point projection','midpoint','mid-point','mpp','mp'}
+                obj.isMP=   true;
+            otherwise
+                warning('QMol:TDDFT:omega', ['Unknown restraint option ' obj.w '; Default restraint used instead.'])
+                obj.w   =   10;
+                obj.isMP=   false;                                          end
+        else
+            obj.isMP    =   false;
+        end
+
     if isRst
     % Restart ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         % Projection basis

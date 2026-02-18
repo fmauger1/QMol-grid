@@ -13,11 +13,18 @@ classdef QMol_TDDFT_extSymp < QMol_TDDFT
 %       Add HHR hybrid and HRH hybrid split motifs
 %   01.23.002   08/06/20205 F. Mauger
 %       Add option to save distance between extended phase-space copies 
+%   01.24.000   01/13/2026  F. Mauger
+%       Add support for mid-point projection (instead of restraint)
+%   01.24.001   01/16/2026  F. Mauger
+%       Enable tracking the distance between copies with midpoint
+%       projection
+%   01.24.001   01/26/2026  F. Mauger
+%       Update references and make midpoint projection the default
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.23.002','08/06/2025','F. Mauger')
+    QMol_doc.showVersion('01.24.001','01/16/2026','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_TDDFT})
@@ -53,7 +60,7 @@ properties (Dependent,GetAccess=public,SetAccess=?QMol_suite)
     outDistanceCopy         % (oDist) output structure for distance between the extended phase-space copies [ structure | [] (default) ]
 end
 properties (Transient,GetAccess=public,SetAccess=?QMol_suite)
-    omega                   % (w) restrain parameter [ scalar (default 10) ]
+    omega                   % (w) restraint parameter [ 'midpoint projection' (default) | scalar ]
     splitPotential          % (spltV) whether to split the potential operator [ true (default) | false ]
     externalFieldGauge      % EFG ('none'/'off', 'length', or 'velocity')
     potentialVector         %
@@ -63,7 +70,7 @@ end
 properties (Access=protected)
     % Time propagation
     algo                    % split motif to be used (1 = 'HHR', 2 = 'HRH', 3 = 'TVR', 4 = 'TRV', 5 = 'HHR hybrid')
-    w                   =   10      % restrain
+    w                   =   'midpoint projection'      % restraint
     spltV               =   true    % whether to split the potential
     t_                      % internal time variable
     dt_                     % current time step in propagator
@@ -85,6 +92,7 @@ properties (Transient,GetAccess=public,SetAccess=?protected)
     expVup
     expVdw
     % Extended phase space
+    isMP                    % Whether to use the midpoint projection
     pDFT                    % KSO attached to the DFT object
     p1                      % 1st extended phase-space KSOs
     p2                      % 2nd extended phase-space KSOs
@@ -152,7 +160,7 @@ function clear(obj,varargin)
 
     % Reset default parameters (if needed)
     if isempty(obj.diffDT),     obj.diffDT  =   1e-5;                       end
-    if isempty(obj.w),          obj.w       =   10;                         end
+    if isempty(obj.w),          obj.w       =   'midpoint projection';      end
     if isempty(obj.splitMotif), obj.splitMotif= 'TRV';                      end
     if isempty(obj.sDist),      obj.sDist   =   false;                      end
 end
@@ -257,12 +265,13 @@ function setOutputChildren(obj,opt)
             % Clean up any old data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             obj.oDist           =   [];
             
-            % DFT energy ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            % Distance between phase-space copies ~~~~~~~~~~~~~~~~~~~~~~~~~
             if obj.sDist
                 % When to save the distance
                 obj.oDist.ind   =   [obj.getOutputIndex(obj.sDistT),NaN];
                 obj.oDist.time  =   obj.tspan(obj.oDist.ind(1:end-1));
                 obj.oDist.n     =   1;
+                obj.oDist.dist  =   0;
         
                 if obj.sEF,         obj.setOutputExternalField('oDist','init');     end
         
@@ -275,7 +284,7 @@ function setOutputChildren(obj,opt)
         
         case {'clean','finalize','finalization'} %%%%%%%%%%%%%%%%%%%%%%%%%%
             % Main components
-            if obj.sDist,   obj.oDist   =   rmfield(obj.oDist,{'ind','n'});         if obj.sEF %#ok<ALIGN> 
+            if obj.sDist,   obj.oDist   =   rmfield(obj.oDist,{'ind','n','dist'});  if obj.sEF %#ok<ALIGN> 
                             obj.setOutputExternalField('oDist','clean');            end
             else,           obj.oDist   =   [];                                     end
         
@@ -300,12 +309,13 @@ function saveOutputChildren(obj,k,t)
     % Extended phase-space distance ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if k == obj.oDist.ind(obj.oDist.n)
         % Distance
-        if obj.DFT.isSpinPol
+        if obj.isMP
+            obj.oDist.distance(obj.oDist.n)     =   obj.oDist.dist;         % Has been calculated as part of the propagation
+        elseif obj.DFT.isSpinPol
             obj.oDist.distance(obj.oDist.n)     =   sqrt(sum(abs(obj.p1.KSOup-obj.p2.KSOup).^2,'all')*obj.dv + ...
                                                          sum(abs(obj.p1.KSOdw-obj.p2.KSOdw).^2,'all')*obj.dv);
         else
             obj.oDist.distance(obj.oDist.n)     =   sqrt(sum(abs(obj.p1.KSO  -obj.p2.KSO  ).^2,'all')*obj.dv);
-
         end
         
         % Add external field
