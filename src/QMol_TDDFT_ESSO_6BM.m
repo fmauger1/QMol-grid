@@ -5,11 +5,13 @@ classdef QMol_TDDFT_ESSO_6BM < QMol_TDDFT_ESSO
 %   Version     Date        Author
 %   01.23.000   07/23/2025  F. Mauger
 %       Creation (from QMol_TDDFT_SSO_4BM version 01.21.000)
+%   01.24.000   01/13/2026  F. Mauger
+%       Add support for midpoint projection
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.23.000','07/23/2025','F. Mauger')
+    QMol_doc.showVersion('01.24.000','01/13/2026','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_TDDFT})
@@ -79,6 +81,20 @@ function applyTimeStep(obj,t)
     obj.chiFchiB([QMol_cte.symp_6BMn_a15 QMol_cte.symp_6BMn_a16 QMol_cte.symp_6BMn_a17], 0);
     obj.chiFchiB([QMol_cte.symp_6BMn_a17 QMol_cte.symp_6BMn_a18 QMol_cte.symp_6BMn_a19], 0);
     obj.chiFchiB([QMol_cte.symp_6BMn_a19 QMol_cte.symp_6BMn_a20                       ], 1);
+
+    % Distance between copies
+    if obj.sDist && obj.isMP && ismembertol(obj.t_,obj.oDist.time,1e-8,'DataScale',1),  if obj.DFT.isSpinPol
+        obj.oDist.dist  =   sqrt(sum(abs(obj.p1.KSOup-obj.p2.KSOup).^2,'all')*obj.dv + ...
+                                 sum(abs(obj.p1.KSOdw-obj.p2.KSOdw).^2,'all')*obj.dv);  else
+        obj.oDist.dist  =   sqrt(sum(abs(obj.p1.KSO  -obj.p2.KSO  ).^2,'all')*obj.dv);  end
+    end
+
+    % Midpoint projection
+    if obj.isMP,                                                                                    if obj.DFT.isSpinPol    % midpoint projection
+        obj.p1.KSOup    =   .5*(obj.p1.KSOup+obj.p2.KSOup);     obj.p2.KSOup    =   obj.p1.KSOup;
+        obj.p1.KSOdw    =   .5*(obj.p1.KSOdw+obj.p2.KSOdw);     obj.p2.KSOdw    =   obj.p1.KSOdw;   else
+        obj.p1.KSO      =   .5*(obj.p1.KSO  +obj.p2.KSO);       obj.p2.KSO      =   obj.p1.KSO;     end
+    end
 
 end
 end

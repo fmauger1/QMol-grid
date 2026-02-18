@@ -9,11 +9,13 @@ classdef QMol_TDDFT_ESSO_2S < QMol_TDDFT_ESSO
 %       Add HRH, TVR, and TRV split motifs
 %   01.23.001   07/25/2024  F. Mauger
 %       Fix inclusion of external field and CAP without potential split
+%   01.24.000   01/13/2026  F. Mauger
+%       Add support for midpoint projection
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.23.001','07/30/2025','F. Mauger')
+    QMol_doc.showVersion('01.24.000','01/13/2026','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_TDDFT})
@@ -148,6 +150,20 @@ function applyTimeStep(obj,t)
             obj.applyExpV1(c,false);    obj.applyExpT2(c);
         otherwise  % ======================================================
             error('QMol:QMol_TDDFT_ESSO_2S:applyTimeStep','Unexpected error; contact a developer');
+    end
+
+    % Distance between copies
+    if obj.sDist && obj.isMP && ismembertol(obj.t_,obj.oDist.time,1e-8,'DataScale',1),  if obj.DFT.isSpinPol
+        obj.oDist.dist  =   sqrt(sum(abs(obj.p1.KSOup-obj.p2.KSOup).^2,'all')*obj.dv + ...
+                                 sum(abs(obj.p1.KSOdw-obj.p2.KSOdw).^2,'all')*obj.dv);  else
+        obj.oDist.dist  =   sqrt(sum(abs(obj.p1.KSO  -obj.p2.KSO  ).^2,'all')*obj.dv);  end
+    end
+
+    % Midpoint projection
+    if obj.isMP,                                                                                    if obj.DFT.isSpinPol    % midpoint projection
+        obj.p1.KSOup    =   .5*(obj.p1.KSOup+obj.p2.KSOup);     obj.p2.KSOup    =   obj.p1.KSOup;
+        obj.p1.KSOdw    =   .5*(obj.p1.KSOdw+obj.p2.KSOdw);     obj.p2.KSOdw    =   obj.p1.KSOdw;   else
+        obj.p1.KSO      =   .5*(obj.p1.KSO  +obj.p2.KSO);       obj.p2.KSO      =   obj.p1.KSO;     end
     end
 end
 end

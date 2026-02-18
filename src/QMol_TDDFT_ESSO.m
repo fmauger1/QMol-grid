@@ -9,11 +9,13 @@ classdef QMol_TDDFT_ESSO < QMol_TDDFT_extSymp
 %       Fix inclusion of external field and CAP without potential split
 %   01.23.002   08/06/2025  F. Mauger
 %       Skip mixing (restrain) for omega = 0
+%   01.24.000   01/13/2026  F. Mauger
+%       Add mid-point projection option 
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.23.002','08/06/2025','F. Mauger')
+    QMol_doc.showVersion('01.24.000','01/24/2025','F. Mauger')
 end
 end
 methods (Static,Access={?QMol_doc,?QMol_TDDFT})
@@ -458,7 +460,7 @@ function applyExpR(obj,c)
     h                   =   c*obj.dt_;
     
     % Mixing wave functions
-    if obj.w ~= 0, if obj.DFT.isSpinPol                                     %#ok<ALIGN>
+    if ~obj.isMP && obj.w ~= 0, if obj.DFT.isSpinPol                        %#ok<ALIGN>     no restraint for midpoint projection or w = 0
         obj.pDFT.KSOup  =   .5*(obj.p1.KSOup+obj.p2.KSOup);                 obj.pDFT.KSOdw  =   .5*(obj.p1.KSOdw+obj.p2.KSOdw);
         obj.p1.KSOup    =   obj.pDFT.KSOup;                                 obj.p1.KSOdw    =   obj.pDFT.KSOdw;
         obj.pDFT.KSOup  =   obj.pDFT.KSOup-obj.p2.KSOup;                    obj.pDFT.KSOdw  =   obj.pDFT.KSOdw-obj.p2.KSOdw;

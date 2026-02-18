@@ -52,11 +52,15 @@ classdef (Abstract) QMol_doc < QMol_suite
 %       Update [Mauger 2025] and [Visentin 2025]
 %   01.23.008   10/07/2025  F. mauger
 %       Update funding acknowledgement for extended TDDFT
+%   01.24.000   01/13/2026  F. Mauger
+%       Start new version
+%   01.24.001   01/26/2025  F. Mauger
+%       Update [Mauger 2026], add [Luo 2017] and [Tao 2016]
 
 %% Documentation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 methods (Static,Access=private)
 function version
-    QMol_doc.showVersion('01.23.008','10/07/2025','F. Mauger')
+    QMol_doc.showVersion('01.24.001','01/26/2026','F. Mauger')
 end
 end
 methods (Static,Access=?QMol_doc)
@@ -195,7 +199,7 @@ end
 function showLicense
 %showLicense displays the license (2-Clause BSD License)
 
-    fprintf('  Copyright (c) 2025, Francois Mauger\n  All right reserved\n\n');
+    fprintf('  Copyright (c) 2026, Francois Mauger\n  All right reserved\n\n');
 
     fprintf('  Redistribution and use in source and binary forms, with or without\n')
     fprintf('  modification, are permitted provided that the following conditions are\n');
@@ -331,6 +335,11 @@ function lopata2013
              '    Electronic Excitations with Non-Hermitian Real-Time Time-Dependent\n' ...
              '    Density Functional Theory," J. Chem. Theory Comput. 9, 4939 (2013).\n']);
 end
+function luo2017
+    fprintf(['  [Luo 2017] J. Luo, X. Wu, G. Huang, and F. Liu, "Eplicit symplectic-like\n' ...
+             '    integrators with midpoint permutations for spinning compact binaries,"\n' ...
+             '    The Astrophysical Journal 834, 64 (2017).\n']);
+end
 function mauger2024
     fprintf(['  [Mauger 2024] F. Mauger, C. Chandre, M.B. Gaarde, K. Lopata, and K.J. \n' ...
              '    Schafer, "Hamiltonian formulation and symplectic split-operator \n' ...
@@ -343,9 +352,14 @@ function mauger2024b
              '    for quantum-mechanical simulations in atomic and molecular systems," \n' ...
              '    SoftwareX 28, 101968 (2024).\n']);
 end
-function mauger2025
-    fprintf(['  [Mauger 2025] F. Mauger and C. Chandre, "Extended phase-space symplectic\n' ...
-             '    integration for electronic dynamics," in preparation (2025).\n']);
+function mauger2026
+    fprintf(['  [Mauger 2026] F. Mauger and C. Chandre, "Extended phase-space symplectic\n' ...
+             '    integration for electronic dynamics," arXiv:2510.16542 (2026).\n']);
+end
+function tao2016
+    fprintf(['  [Tao 2016] M. Tao, "Explicit symplectic approximation of nonseparable\n' ...
+             '    Hamiltonians: Algorithm and long time performance," Physical Review E\n' ... 
+             '    94, 043303 (2016).\n']);
 end
 function visentin2025
     fprintf(['  [Visentin 2025] G. Visentin and F. Mauger, "Configuration-interaction\n' ...
